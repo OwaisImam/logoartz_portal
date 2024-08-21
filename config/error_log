@@ -1,0 +1,76 @@
+[18-Sep-2023 07:48:23 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[18-Sep-2023 07:48:28 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[24-Sep-2023 13:56:05 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[24-Sep-2023 13:56:15 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[27-Sep-2023 09:48:45 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[05-Oct-2023 15:16:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[05-Oct-2023 15:16:09 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[07-Oct-2023 10:57:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[07-Oct-2023 10:57:39 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[24-Oct-2023 15:29:34 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[26-Oct-2023 15:59:04 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[26-Oct-2023 15:59:06 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[14-Dec-2023 18:23:21 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[24-Dec-2023 12:19:49 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[24-Dec-2023 12:19:54 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[22-Mar-2024 11:44:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[22-Mar-2024 11:44:44 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/cache.php on line 18
+[22-May-2024 14:13:37 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/database.php:16
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/database.php on line 16
+[22-Jul-2024 05:00:11 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home1/logoartz/login.logoartz.com/config/database.php:16
+Stack trace:
+#0 {main}
+  thrown in /home1/logoartz/login.logoartz.com/config/database.php on line 16
