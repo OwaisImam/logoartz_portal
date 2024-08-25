@@ -102,8 +102,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             
             <?php if($OrderStatus == 0) { ?>
@@ -236,14 +236,6 @@
           </div>
           </div>
           
-          
-
-     
-     
-     
-     
-     
-            
 
 <?php if($OrderStatus == 0){  ?>        
                 
@@ -255,20 +247,7 @@
                 </div>
                 <div class="clear"></div>
                 </div>
-  <?php }else{?>
-  
-            
-         <h4 style="color: #ec914d">Auto Alert Email</h4>
-            <div class="my-details">
-                <div class="left">
-                    <h3>LogoArtz Server Machine</h3>
-                    <p>Email: <a class="mailto" href="mailto:technical-team@logoartz.com">technical-team@logoartz.com</a></p>
-                </div>
-
-                <div class="clear"></div>
-            </div>
-            
-<?php } ?>
+  <?php }?>
   
 
      <!--<p style="text-align: center; font-size: 16px">Developed by: <a target="_blank" class="mailto" href="http://boostanz.com">Boostanz Technologies</a></p>-->

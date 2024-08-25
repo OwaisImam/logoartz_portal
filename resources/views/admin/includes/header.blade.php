@@ -36,8 +36,6 @@ $salesperson = ["salesperson"];
                 <ul class="nav navbar-nav">
                     <li class="<?php echo ($segment == "dashboard" ? 'active' : '') ?>"><a href="{{ url('admin') }}">Dashboard</a></li>
 
-
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Digitizing <span class="caret"></span><span class="label label-menu">{{ $totalnewdigi!=0 ? $totalnewdigi : ''}}</span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -47,7 +45,6 @@ $salesperson = ["salesperson"];
                             <li><a href="{{ url('admin') }}/digi/orders/1">Order Revision<span class="label label-menu">{{ $digiorder_rev!=0 ? $digiorder_rev : ''}}</span></a></li>
                             <li><a href="{{ url('admin') }}/digi/orders/2">Quote<span class="label label-menu">{{ $diginewquotes!=0 ? $diginewquotes : ''}}</span></a></li>
                             <li><a href="{{ url('admin') }}/digi/orders/4">Quote Revision<span class="label label-menu">{{ $digiquote_rev!=0 ? $digiquote_rev : ''}}</span></a></li>
-                        
                         </ul>
                     </li>
                     <li class="dropdown">

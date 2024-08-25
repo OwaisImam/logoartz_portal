@@ -6,14 +6,15 @@ use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use Hash;
-use DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\VectorRevFiles;
 use App\Models\VectorRevision;
 use App\DigiRevFiles;
-
-
+use Exception;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class Order extends CustomerController {
 
@@ -242,6 +243,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                     $fl->move($path ,$filename1);
+                    $attachFiles[] = $path. $filename1;
                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File1' => $filename1]);
                 }
             }
@@ -253,6 +255,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                     $fl->move($path ,$filename2);
+                    $attachFiles[] = $path. $filename2;
                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File2' => $filename2]);
                 }
             }
@@ -264,7 +267,8 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                      $fl->move($path ,$filename3);
-                    \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File3' => $filename3]);
+                     $attachFiles[] = $path. $filename3;
+                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File3' => $filename3]);
                 }
             }
 
@@ -275,6 +279,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                     $fl->move($path ,$filename4);
+                    $attachFiles[] = $path. $filename4;
                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File4' => $filename4]);
                 }
             }
@@ -315,9 +320,16 @@ class Order extends CustomerController {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom, $ccMail) {
+                    , function($message) use ($mailFrom, $ccMail, $attachFiles) {
                     
                         $message->to(\Session::get('Email'))->from($mailFrom, 'Logo Artz')->cc($ccMail)->subject('Logo Artz - Order Confirmation');
+                        if (!empty($attachFiles)) {
+                            foreach ($attachFiles as $attachmentPath) {
+                                if (file_exists($attachmentPath)) {
+                                    $message->attach($attachmentPath);
+                                }
+                            }
+                        }
             });
 
                  }else{
@@ -338,10 +350,17 @@ class Order extends CustomerController {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                     
                         $message->to(\Session::get('Email'))->from($mailFrom, 'Logo Artz')
                         ->subject('Logo Artz - Order Confirmation');
+                        if (!empty($attachFiles)) {
+                            foreach ($attachFiles as $attachmentPath) {
+                                if (file_exists($attachmentPath)) {
+                                    $message->attach($attachmentPath);
+                                }
+                            }
+                        }
                          });
                  }
 
@@ -367,8 +386,15 @@ class Order extends CustomerController {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ]
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                 $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Vector Order Received');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
 
             
@@ -559,6 +585,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                     $fl->move($path ,$filename1);
+                    $attachFiles[] = $path. $filename1;
                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File1' => $filename1]);
                 }
             }
@@ -572,7 +599,8 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                      $fl->move($path ,$filename2);
-                    \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File2' => $filename2]);
+                     $attachFiles[] = $path. $filename2;
+                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File2' => $filename2]);
                 }
             }
 
@@ -585,6 +613,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                     $fl->move($path ,$filename3);
+                    $attachFiles[] = $path. $filename3;
                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File3' => $filename3]);
                 }
             }
@@ -598,7 +627,8 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/vector/';
                      $fl->move($path ,$filename4);
-                    \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File4' => $filename4]);
+                     $attachFiles[] = $path. $filename4;
+                     \DB::table('vector_order')->where('VectorOrderID', $InsertID)->update(['File4' => $filename4]);
                 }
             }
             
@@ -617,10 +647,6 @@ class Order extends CustomerController {
                  $Cell = $Cus_info->Cell;
                  $Company = $Cus_info->Company;
                 
-            
-             
-            
-            
                // Email for Customer
                   $mailFrom = 'technical-team@logoartz.com';
                   \Mail::send('includes.emails.vecsubmitorder', [
@@ -638,8 +664,15 @@ class Order extends CustomerController {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                 $message->to(\Session::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Quote Confirmation');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
             
             // Email for Admin
@@ -663,8 +696,15 @@ class Order extends CustomerController {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ]
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                 $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Vector Quote Received');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
 
 
@@ -674,364 +714,374 @@ class Order extends CustomerController {
     }
 
     public function plc_digi_order() {
-        
- 
+        try {
+            DB::beginTransaction();
+            $fileCount = 0;
 
-        $fileCount = 0;
+            $error1 = false;
+            $msg1 = "";
 
-        $error1 = false;
-        $msg1 = "";
+            $error2 = false;
+            $msg2 = "";
 
-        $error2 = false;
-        $msg2 = "";
+            $error3 = false;
+            $msg3 = "";
 
-        $error3 = false;
-        $msg3 = "";
+            $error4 = false;
+            $msg4 = "";
 
-        $error4 = false;
-        $msg4 = "";
+            $errors = false;
 
-        $errors = false;
+            $errors = false;
 
-
-        $errors = false;
-
-
-        
-        $allowed_ext = ['jpg', 'pdf', 'PDF', 'JPG', 'JPEG', 'jpeg', 'eps', 'png', "PNG", 'psd', 'PSD','gif','EMB', 'DST', 'ai', 'PDF', 'cdr' , 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps'];
-
-        if (Input::hasFile('FileOne')) {
-            $fl = Input::file('FileOne');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error1 = true;
-                    $msg1 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
-        if (Input::hasFile('FileTwo')) {
-            $fl = Input::file('FileTwo');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error2 = true;
-                    $msg2 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
-
-        if (Input::hasFile('FileThree')) {
-            $fl = Input::file('FileThree');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error3 = true;
-                    $msg3 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
-        if (Input::hasFile('FileFour')) {
-            $fl = Input::file('FileFour');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error4 = true;
-                    $msg4 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
-
-        $valid["DesignName"] = 'required|max:20';
-        $valid["PoNum"] = 'max:20';
-        $valid["ReqFormat"] = 'required|max:50';
-        if (Input::has('ReqFormat') && Input::get('ReqFormat') == "Other") {
-            $valid["OtherFormat"] = 'required|max:100';
-        }
-        $valid["Fabric"] = 'required|max:100';
-
-        $valid["Placement"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
-        $valid["Scale"] = 'required|max:1000';
-        $valid["NumofClr"] = 'required|max:20';
-        $valid["FabricClr"] = 'max:100';
-        $valid["Clrblending"] = 'required|max:100';
-        $valid["PicEmb"] = 'required|max:20';
-        $valid["BackFill"] = 'required|max:100';
-        $valid["AddIns"] = 'max:100';
-        $valid["CCOrder"] = 'max:100';
-        $valid["OrderType"] = 'required|max:100';
-
-
-        $valid_name["DesignName"] = "Design Name";
-        $valid_name["ReqFormat"] = "Requried Format";
-        $valid_name["Fabric"] = "Fabrics";
-        $valid_name["OtherFormat"] = "OtherFormat";
-        $valid_name["Placement"] = "Placement";
-        $valid_name["Width"] = "Width";
-        $valid_name["Height"] = "Height";
-        $valid_name["Scale"] = "Scale";
-        $valid_name["NumofClr"] = "Number of Color";
-        $valid_name["Clrblending"] = "Color Blending";
-        $valid_name["FabricClr"] = "Fabric Color";
-        $valid_name["PicEmb"] = "Piture Embroidery";
-        $valid_name["BackFill"] = "Background Fill";
-        $valid_name["AddIns"] = "Addistional Instruction";
-        $valid_name["CCOrder"] = "CC Order";
-        $valid_name["OrderType"] = "Order Type Urgent or Normal";
-
-     
-
-
-        $messages = [
-            'required' => 'Please enter :attribute.',
-            'CountryID.min' => 'Please select :attribute.',
-            'max' => 'No more characters allowed in :attribute.'
-        ];
-
-
-        $v = Validator::make(Input::all(), $valid, $messages);
-        $v->setAttributeNames($valid_name);
-
-        if ($v->fails() || $error1 || $error2 || $error3 || $error4 || $fileCount == 0) {
-            if ($error1 || $error2 || $error3 || $error4 || $errors || $fileCount == 0) {
-                
-
-                if ($fileCount == 0) {
-                    return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', "Please upload artwork");
-                } else {
-                    return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', $msg1 . '<br>' . $msg2 . '<br>' . $msg3 . '<br>' . $msg4);
-                }
-            } else {
-                return redirect()->back()->withErrors($v->errors())->withInput();
-            }
-        } else {
-
-            $ordertype = 0;
-
-            $CustomerID = \Session::get('CustomerID');
-
-            $free_placed = \DB::table('customers')->where('CustomerID', $CustomerID)->where('FreeOrderPlaced', 1)->count();
-
-            if ($free_placed == 0) {
-                $ordertype = 3;
-                \DB::table('customers')->where('CustomerID', $CustomerID)->update(['FreeOrderPlaced' => 1]);
-            }
-            $OrderData = [
-
-                'CustomerID' => $CustomerID,
-                'DesignName' => Input::get('DesignName'),
-                'SalesPersonID' => \Session::get('SalesPersonID'),
-                'PONumber' => Input::get('PoNum'),
-                'ReqFormat' => Input::get('ReqFormat'),
-                'OtherFormat' => Input::get('OtherFormat'),
-                'Fabric' => Input::get('Fabric'),
-                'Placement' => Input::get('Placement'),
-                'Width' => Input::get('Width'),
-                'Height' => Input::get('Height'),
-                'Scale' => Input::get('Scale'),
-                'NoOfColors' => Input::get('NumofClr'),
-                'FabricColor' => Input::get('FabricClr'),
-                'ColorBlending' => Input::get('Clrblending'),
-                'BackgroundFill' => Input::get('BackFill'),
-                'PictureEmbroidery' => Input::get('PicEmb'),
-                'MoreInstructions' => Input::get('AddIns'),
-                'File1' => Input::get('File1'),
-                'File2' => Input::get('File2'),
-                'CC' => Input::get('CCOrder'),
-                'Status' => 4,
-                'OrderType' => $ordertype,
-                'OrderStatus' => Input::get('OrderType'),
-                'DateAdded' => new \DateTime(),
-                'DateModified' => new \DateTime()
-            ];
-
-
-
-
-
-
-            DB::table('digitizing_orders')->insert($OrderData);
-
-            $InsertID = \DB::getPdo()->lastInsertId();
-            
-                   
-
-  
-
+            $allowed_ext = ['jpg', 'pdf', 'PDF', 'JPG', 'JPEG', 'jpeg', 'eps', 'png', "PNG", 'psd', 'PSD','gif','EMB', 'DST', 'ai', 'PDF', 'cdr' , 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps'];
 
             if (Input::hasFile('FileOne')) {
                 $fl = Input::file('FileOne');
                 if (!empty($fl)) {
-                    
-                  
-                    $filename1 = $InsertID . '_' . str_random(5) . '1.' . $fl->getClientOriginalExtension();
-
-                    $path = public_path('uploads') . '/orders/digi/';
-                    $fl->move($path ,$filename1);
-                    \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File1' => $filename1]);
+                    $ext = $fl->getClientOriginalExtension();
+                    if (!in_array($ext, $allowed_ext)) {
+                        $error1 = true;
+                        $msg1 = "Invalid File type";
+                    } else {
+                        $fileCount++;
+                    }
                 }
             }
-
 
 
             if (Input::hasFile('FileTwo')) {
                 $fl = Input::file('FileTwo');
                 if (!empty($fl)) {
-                    $filename2 = $InsertID . '_' . str_random(5) . '2.' . $fl->getClientOriginalExtension();
-
-                    $path = public_path('uploads') . '/orders/digi/';
-                     $fl->move($path ,$filename2);
-                    \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File2' => $filename2]);
+                    $ext = $fl->getClientOriginalExtension();
+                    if (!in_array($ext, $allowed_ext)) {
+                        $error2 = true;
+                        $msg2 = "Invalid File type";
+                    } else {
+                        $fileCount++;
+                    }
                 }
             }
+
 
 
             if (Input::hasFile('FileThree')) {
                 $fl = Input::file('FileThree');
                 if (!empty($fl)) {
-                    $filename3 = $InsertID . '_' . str_random(5) . '3.' . $fl->getClientOriginalExtension();
-                    $path = public_path('uploads') . '/orders/digi/';
-                    $fl->move($path ,$filename3);
-                    \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File3' => $filename3]);
+                    $ext = $fl->getClientOriginalExtension();
+                    if (!in_array($ext, $allowed_ext)) {
+                        $error3 = true;
+                        $msg3 = "Invalid File type";
+                    } else {
+                        $fileCount++;
+                    }
                 }
             }
-
 
 
             if (Input::hasFile('FileFour')) {
                 $fl = Input::file('FileFour');
                 if (!empty($fl)) {
-                    $filename4 = $InsertID . '_' . str_random(5) . '4.' . $fl->getClientOriginalExtension();
-                    $path = public_path('uploads') . '/orders/digi/';
-                    $fl->move($path ,$filename4);
-                    \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File4' => $filename4]);
+                    $ext = $fl->getClientOriginalExtension();
+                    if (!in_array($ext, $allowed_ext)) {
+                        $error4 = true;
+                        $msg4 = "Invalid File type";
+                    } else {
+                        $fileCount++;
+                    }
                 }
             }
-            
-            
-            
-             $CustomerID = \Session::get('CustomerID');
-             $Cus_info =  DB::table('customers')->where('CustomerID', $CustomerID)->first();
-             $Cus_order = DB::table('digitizing_orders')->where('OrderID', $InsertID)->first();
-             
-             
-                 $email = '';
-                 $cus_email = $Cus_info->Email;
-                 $email = $cus_email;
-                 $Name = $Cus_info->CustomerName;
-                 $Cell = $Cus_info->Cell;
-                 $Company = $Cus_info->Company;
-                 
-
-                
-                 if(Input::get('CCOrder') != ''){
-                     $ccMail = Input::get('CCOrder');
-
-                  $mailFrom = 'technical-team@logoartz.com';
-                  \Mail::send('includes.emails.digisubmitorder', [
-                  "CustomerName" => $Name,
-                  "OrderType" => 'digitizing order',
-                  "OrderStatus" => 0,
-                  "Msg"   => 'Your Order has been submit.',
-                  "DesignName" => $Cus_order->DesignName,
-                  "RequriedFormat" => $Cus_order->ReqFormat,
-                  "FABRIC" => $Cus_order->Fabric,
-                  "PLACEMENT" => $Cus_order->Placement,
-                  "Width" => $Cus_order->Width,
-                  "Height" => $Cus_order->Height,
-                  "Scale" => $Cus_order->Scale,
-                  "NumClr" => $Cus_order->NoOfColors,
-                  "Fbrclr" => $Cus_order->FabricColor,
-                  "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
-                  ] 
-                    , function($message) use ($mailFrom, $ccMail) {
-                             $message->to(\Session::get('Email'))->cc($ccMail)
-                             ->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
-                        });
 
 
 
-                 }else{
+            $valid["DesignName"] = 'required|max:20';
+            $valid["PoNum"] = 'max:20';
+            $valid["ReqFormat"] = 'required|max:50';
+            if (Input::has('ReqFormat') && Input::get('ReqFormat') == "Other") {
+                $valid["OtherFormat"] = 'required|max:100';
+            }
+            $valid["Fabric"] = 'required|max:100';
+
+            $valid["Placement"] = 'required|max:100';
+            $valid["Width"] = 'required|max:100';
+            $valid["Height"] = 'required|max:100';
+            $valid["Scale"] = 'required|max:1000';
+            $valid["NumofClr"] = 'required|max:20';
+            $valid["FabricClr"] = 'max:100';
+            $valid["Clrblending"] = 'required|max:100';
+            $valid["PicEmb"] = 'required|max:20';
+            $valid["BackFill"] = 'required|max:100';
+            $valid["AddIns"] = 'max:100';
+            $valid["CCOrder"] = 'max:100';
+            $valid["OrderType"] = 'required|max:100';
+
+
+            $valid_name["DesignName"] = "Design Name";
+            $valid_name["ReqFormat"] = "Requried Format";
+            $valid_name["Fabric"] = "Fabrics";
+            $valid_name["OtherFormat"] = "OtherFormat";
+            $valid_name["Placement"] = "Placement";
+            $valid_name["Width"] = "Width";
+            $valid_name["Height"] = "Height";
+            $valid_name["Scale"] = "Scale";
+            $valid_name["NumofClr"] = "Number of Color";
+            $valid_name["Clrblending"] = "Color Blending";
+            $valid_name["FabricClr"] = "Fabric Color";
+            $valid_name["PicEmb"] = "Piture Embroidery";
+            $valid_name["BackFill"] = "Background Fill";
+            $valid_name["AddIns"] = "Addistional Instruction";
+            $valid_name["CCOrder"] = "CC Order";
+            $valid_name["OrderType"] = "Order Type Urgent or Normal";
+
+        
+
+
+            $messages = [
+                'required' => 'Please enter :attribute.',
+                'CountryID.min' => 'Please select :attribute.',
+                'max' => 'No more characters allowed in :attribute.'
+            ];
+
+
+            $v = Validator::make(Input::all(), $valid, $messages);
+            $v->setAttributeNames($valid_name);
+
+            if ($v->fails() || $error1 || $error2 || $error3 || $error4 || $fileCount == 0) {
+                if ($error1 || $error2 || $error3 || $error4 || $errors || $fileCount == 0) {
                     
-                  $mailFrom = 'technical-team@logoartz.com';
-                  \Mail::send('includes.emails.digisubmitorder', [
-                  "CustomerName" => $Name,
-                  "OrderType" => 'digitizing order',
-                  "OrderStatus" => 0,
-                  "Msg"   => 'Your Order has been submit.',
-                  "DesignName" => $Cus_order->DesignName,
-                  "RequriedFormat" => $Cus_order->ReqFormat,
-                  "FABRIC" => $Cus_order->Fabric,
-                  "PLACEMENT" => $Cus_order->Placement,
-                  "Width" => $Cus_order->Width,
-                  "Height" => $Cus_order->Height,
-                  "Scale" => $Cus_order->Scale,
-                  "NumClr" => $Cus_order->NoOfColors,
-                  "Fbrclr" => $Cus_order->FabricColor,
-                  "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
-                  ] 
-                    , function($message) use ($mailFrom) {
-                             $message->to(\Session::get('Email'))
-                             ->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
+
+                    if ($fileCount == 0) {
+                        return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', "Please upload artwork");
+                    } else {
+                        return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', $msg1 . '<br>' . $msg2 . '<br>' . $msg3 . '<br>' . $msg4);
+                    }
+                } else {
+                    return redirect()->back()->withErrors($v->errors())->withInput();
+                }
+            } else 
+            {
+
+                $ordertype = 0;
+
+                $CustomerID = \Session::get('CustomerID');
+
+                $free_placed = \DB::table('customers')->where('CustomerID', $CustomerID)->where('FreeOrderPlaced', 1)->count();
+
+                if ($free_placed == 0) {
+                    $ordertype = 3;
+                    \DB::table('customers')->where('CustomerID', $CustomerID)->update(['FreeOrderPlaced' => 1]);
+                }
+                $OrderData = [
+
+                    'CustomerID' => $CustomerID,
+                    'DesignName' => Input::get('DesignName'),
+                    'SalesPersonID' => \Session::get('SalesPersonID'),
+                    'PONumber' => Input::get('PoNum'),
+                    'ReqFormat' => Input::get('ReqFormat'),
+                    'OtherFormat' => Input::get('OtherFormat'),
+                    'Fabric' => Input::get('Fabric'),
+                    'Placement' => Input::get('Placement'),
+                    'Width' => Input::get('Width'),
+                    'Height' => Input::get('Height'),
+                    'Scale' => Input::get('Scale'),
+                    'NoOfColors' => Input::get('NumofClr'),
+                    'FabricColor' => Input::get('FabricClr'),
+                    'ColorBlending' => Input::get('Clrblending'),
+                    'BackgroundFill' => Input::get('BackFill'),
+                    'PictureEmbroidery' => Input::get('PicEmb'),
+                    'MoreInstructions' => Input::get('AddIns'),
+                    'File1' => Input::get('File1'),
+                    'File2' => Input::get('File2'),
+                    'CC' => Input::get('CCOrder'),
+                    'Status' => 4,
+                    'OrderType' => $ordertype,
+                    'OrderStatus' => Input::get('OrderType'),
+                    'DateAdded' => new \DateTime(),
+                    'DateModified' => new \DateTime()
+                ];
+
+
+                DB::table('digitizing_orders')->insert($OrderData);
+
+                $InsertID = \DB::getPdo()->lastInsertId();
+
+                if (Input::hasFile('FileOne')) {
+                    $fl = Input::file('FileOne');
+                    if (!empty($fl)) {
+
+                        $filename1 = $InsertID . '_' . str_random(5) . '1.' . $fl->getClientOriginalExtension();
+                        $path = public_path('uploads') . '/orders/digi/';
+                        $fl->move($path ,$filename1);
+
+                        $attachFiles[] = $path. $filename1;
+
+                        \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File1' => $filename1]);
+                    }
+                }
+
+                if (Input::hasFile('FileTwo')) {
+                    $fl = Input::file('FileTwo');
+                    if (!empty($fl)) {
+                        $filename2 = $InsertID . '_' . str_random(5) . '2.' . $fl->getClientOriginalExtension();
+
+                        $path = public_path('uploads') . '/orders/digi/';
+                        $fl->move($path ,$filename2);
+                        $attachFiles[] = $path. $filename2;
+                        \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File2' => $filename2]);
+                    }
+                }
+
+
+                if (Input::hasFile('FileThree')) {
+                    $fl = Input::file('FileThree');
+                    if (!empty($fl)) {
+                        $filename3 = $InsertID . '_' . str_random(5) . '3.' . $fl->getClientOriginalExtension();
+                        $path = public_path('uploads') . '/orders/digi/';
+                        $fl->move($path ,$filename3);
+                        $attachFiles[] = $path. $filename3;
+                        \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File3' => $filename3]);
+                    }
+                }
+
+
+
+                if (Input::hasFile('FileFour')) {
+                    $fl = Input::file('FileFour');
+                    if (!empty($fl)) {
+                        $filename4 = $InsertID . '_' . str_random(5) . '4.' . $fl->getClientOriginalExtension();
+                        $path = public_path('uploads') . '/orders/digi/';
+                        $fl->move($path ,$filename4);
+                        $attachFiles[] = $path. $filename4;
+                        \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File4' => $filename4]);
+                    }
+                }
+                
+                
+                
+                $CustomerID = \Session::get('CustomerID');
+                $Cus_info =  DB::table('customers')->where('CustomerID', $CustomerID)->first();
+                $Cus_order = DB::table('digitizing_orders')->where('OrderID', $InsertID)->first();
+                
+                
+                    $email = '';
+                    $cus_email = $Cus_info->Email;
+                    $email = $cus_email;
+                    $Name = $Cus_info->CustomerName;
+                    $Cell = $Cus_info->Cell;
+                    $Company = $Cus_info->Company;
+                    
+                    
+                    if(Input::get('CCOrder') != ''){
+                        $ccMail = Input::get('CCOrder');
+
+                    $mailFrom = 'technical-team@logoartz.com';
+                    Mail::send('includes.emails.digisubmitorder', [
+                    "CustomerName" => $Name,
+                    "OrderType" => 'digitizing order',
+                    "OrderStatus" => 0,
+                    "Msg"   => 'Your Order has been submit.',
+                    "DesignName" => $Cus_order->DesignName,
+                    "RequriedFormat" => $Cus_order->ReqFormat,
+                    "FABRIC" => $Cus_order->Fabric,
+                    "PLACEMENT" => $Cus_order->Placement,
+                    "Width" => $Cus_order->Width,
+                    "Height" => $Cus_order->Height,
+                    "Scale" => $Cus_order->Scale,
+                    "NumClr" => $Cus_order->NoOfColors,
+                    "Fbrclr" => $Cus_order->FabricColor,
+                    "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
+                    ] 
+                        , function($message) use ($mailFrom, $ccMail, $attachFiles) {
+                                $message->to('owaisimam2@gmail.com')
+                                ->cc($ccMail)
+                                ->from($mailFrom, 'Logo Artz')
+                                ->subject('Logo Artz - Order Confirmation');
+
+                                if (!empty($attachFiles)) {
+                                    foreach ($attachFiles as $attachmentPath) {
+                                        if (file_exists($attachmentPath)) {
+                                            $message->attach($attachmentPath);
+                                        }
+                                    }
+                                }
                         });
 
+                    }else{ 
+                        
+                        $mailFrom = 'technical-team@logoartz.com';
+                        Mail::send('includes.emails.digisubmitorder', [
+                        "CustomerName" => $Name,
+                        "OrderType" => 'digitizing order',
+                        "OrderStatus" => 0,
+                        "Msg"   => 'Your Order has been submit.',
+                        "DesignName" => $Cus_order->DesignName,
+                        "RequriedFormat" => $Cus_order->ReqFormat,
+                        "FABRIC" => $Cus_order->Fabric,
+                        "PLACEMENT" => $Cus_order->Placement,
+                        "Width" => $Cus_order->Width,
+                        "Height" => $Cus_order->Height,
+                        "Scale" => $Cus_order->Scale,
+                        "NumClr" => $Cus_order->NoOfColors,
+                        "Fbrclr" => $Cus_order->FabricColor,
+                        "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
+                        ] 
+                            , function($message) use ($mailFrom, $attachFiles) {
+                                    $message->to('owaisimam2@gmail.com')
+                                    ->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
+                                    if (!empty($attachFiles)) {
+                                        foreach ($attachFiles as $attachmentPath) {
+                                            if (file_exists($attachmentPath)) {
+                                                $message->attach($attachmentPath);
+                                            }
+                                        }
+                                    }
+                            });
+                    }
+                    
+        
+                // Email for Admin
+                    
+                    $mailFrom = 'technical-team@logoartz.com';
+                    \Mail::send('includes.emails.digisubmitorder', [
+                    "CustomerName" => $Name,
+                    "CusEmail" => $email,
+                    "CusPhone" => $Cell,
+                    "CusCompany" => $Company,
+                    "OrderType" => 'digitizing order',
+                    "OrderStatus" => 1,
+                    "Msg"   => 'place a order.',
+                    "DesignName" => $Cus_order->DesignName,
+                    "RequriedFormat" => $Cus_order->ReqFormat,
+                    "FABRIC" => $Cus_order->Fabric,
+                    "PLACEMENT" => $Cus_order->Placement,
+                    "Width" => $Cus_order->Width,
+                    "Height" => $Cus_order->Height,
+                    "Scale" => $Cus_order->Scale,
+                    "NumClr" => $Cus_order->NoOfColors,
+                    "Fbrclr" => $Cus_order->FabricColor,
+                    "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
+                    ]
+                        , function($message) use ($mailFrom, $attachFiles) {
+                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Digitizing Order Received');
+                    if (!empty($attachFiles)) {
+                        foreach ($attachFiles as $attachmentPath) {
+                            if (file_exists($attachmentPath)) {
+                                $message->attach($attachmentPath);
+                            }
+                        }
+                    }
+                });
+                DB::commit();
+                return redirect('/digi-order')->with('success', 'Thank You !! Order Submited Successfully');
+            }
 
+        } catch(Exception $e) {
+            Log::error($e);
+            DB::rollback();
+            return redirect('/digi-order')->with('error', 'Something went wrong');
 
-
-                 }
-                 
-            
-     
-            // Email for Admin
-                
-                $mailFrom = 'technical-team@logoartz.com';
-                  \Mail::send('includes.emails.digisubmitorder', [
-                  "CustomerName" => $Name,
-                  "CusEmail" => $email,
-                  "CusPhone" => $Cell,
-                  "CusCompany" => $Company,
-                  "OrderType" => 'digitizing order',
-                  "OrderStatus" => 1,
-                  "Msg"   => 'place a order.',
-                  "DesignName" => $Cus_order->DesignName,
-                  "RequriedFormat" => $Cus_order->ReqFormat,
-                  "FABRIC" => $Cus_order->Fabric,
-                  "PLACEMENT" => $Cus_order->Placement,
-                  "Width" => $Cus_order->Width,
-                  "Height" => $Cus_order->Height,
-                  "Scale" => $Cus_order->Scale,
-                  "NumClr" => $Cus_order->NoOfColors,
-                  "Fbrclr" => $Cus_order->FabricColor,
-                  "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
-                  ]
-                    , function($message) use ($mailFrom) {
-                $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Digitizing Order Received');
-            });
-
-            
-
-
-
-            return redirect('/digi-order')->with('success', 'Thank You !! Order Submited Successfully');
         }
+    }
 
 
         // public function countries_dd() {
@@ -1127,9 +1177,8 @@ class Order extends CustomerController {
         //         }
         //     }
         // }
-    }
 
-    public function plc_digi_quote() {
+        public function plc_digi_quote() {
 
         $fileCount = 0;
 
@@ -1308,24 +1357,21 @@ class Order extends CustomerController {
                 'DateModified' => new \DateTime()
             ];
 
-
-
-
-
- 
             DB::table('digitizing_orders')->insert($OrderData);
 
 
             $InsertID = \DB::getPdo()->lastInsertId();
+            $attachFiles = [];
 
-
+            
             if (Input::hasFile('FileOne')) {
                 $fl = Input::file('FileOne');
                 if (!empty($fl)) {
                     $filename1 = $InsertID . '_' . str_random(5) . 'quote1.' . $fl->getClientOriginalExtension();
 
-                    $path = public_path('uploads') . '/orders/digi';
+                    $path = public_path('uploads') . '/orders/digi/';
                     $fl->move($path ,$filename1);
+                    $attachFiles[] = $path. $filename1;
                     \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File1' => $filename1]);
                     
                 }
@@ -1339,7 +1385,8 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/digi/';
                      $fl->move($path ,$filename2);
-                    \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File2' => $filename2]);
+                     $attachFiles[] = $path. $filename2;
+                     \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File2' => $filename2]);
                 }
             }
 
@@ -1350,6 +1397,7 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/digi/';
                     $fl->move($path ,$filename3);
+                    $attachFiles[] = $path. $filename3;
                     \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File3' => $filename3]);
                 }
             }
@@ -1363,6 +1411,8 @@ class Order extends CustomerController {
 
                     $path = public_path('uploads') . '/orders/digi/';
                      $fl->move($path ,$filename4);
+                     $attachFiles[] = $path. $filename4;
+
                     \DB::table('digitizing_orders')->where('OrderID', $InsertID)->update(['File4' => $filename4]);
                 }
             }
@@ -1371,7 +1421,6 @@ class Order extends CustomerController {
              $CustomerID = \Session::get('CustomerID');
              $Cus_info =  DB::table('customers')->where('CustomerID', $CustomerID)->first();
              $Cus_order = DB::table('digitizing_orders')->where('OrderID', $InsertID)->first();
-             
              
                  $email = '';
                  $cus_email = $Cus_info->Email;
@@ -1398,10 +1447,17 @@ class Order extends CustomerController {
                   "Fbrclr" => $Cus_order->FabricColor,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom) {
-                $message->to(\Session::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Quote Confirmation');
+                    , function($message) use ($mailFrom, $attachFiles) {
+                    $message->to(\Session::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Quote Confirmation');
+                
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
-            
             // Email for Admin
                 
                 $mailFrom = 'technical-team@logoartz.com';
@@ -1424,14 +1480,17 @@ class Order extends CustomerController {
                   "Fbrclr" => $Cus_order->FabricColor,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ]
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                 $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Digitzing Quote Received');
+                
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
-
-            
-
-
-
 
             return redirect('/digi_quote')->with('success', 'Thank You! Quotation Submitted Successfully');
         }

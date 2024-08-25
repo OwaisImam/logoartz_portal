@@ -31,7 +31,7 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                         <img src="{{ asset('assets/admin') }}/dist/img/logo.png') }}" width="200" height="100">
+                         <img src="{{ asset('assets/admin') }}/dist/img/logo-v1.png') }}" width="200" height="100">
                     </div>
                     <div class="col-md-8 pull-right">
                           <div class="col-sm-12 text-center breadcrumb-block pull-right">

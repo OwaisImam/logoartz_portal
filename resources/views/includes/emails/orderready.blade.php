@@ -89,8 +89,8 @@
 
     <body>  designName
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Hi {{ $CustomerName }},</p>
             <p class="blue-text">Your {{ $designName }} {{ $OrderType }} design is ready please click the link below and check the attached files on portal. if you need any of our assistance, please feel free to let us known.</p> <br>

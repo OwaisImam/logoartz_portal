@@ -89,8 +89,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Dear {{ $FirstName }},</p>
             <p class="blue-text">Thank you for registration in <b>Logo Artz</b>, all we need to confirm your email by clicking here, before you can start enjoying the best and most seamless designing experience ever!</p>

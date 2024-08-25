@@ -89,8 +89,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Hi {{ $CustomerName }},</p>
             <p class="blue-text">Your {{ $designName }} {{ $OrderType }} is ready. It well take {{ $timeFrame }} and ${{ $Price }} to complete this project for you.</p> <br>

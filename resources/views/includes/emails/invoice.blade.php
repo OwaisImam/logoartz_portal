@@ -89,8 +89,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Dear {{ $CustomerName }},</p>
             <p class="blue-text">{{ $Message }}</p> <br>
@@ -101,7 +101,7 @@
              <div class="my-details">
                   <h3>Thank you!</h3>
                 <div >
-                     <img style="float: left;" src="{{ asset('assets/web/img/logo.png') }}" /><br><br>
+                     <img style="float: left;" src="{{ asset('assets/web/img/logo-v1.png') }}" /><br><br>
                      <h3 style="text-align: center;">LogoArtz Finance Department</h3>
                     <p>Email: <a class="mailto" href="mailto:technical-team@logoartz.com">technical-team@logoartz.com</a></p>
                      <p>Phone: 917-310-3789</p>

@@ -102,8 +102,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Dear admin,</p>
             <p class="blue-text"> {{ $CustomerName }} Place a order.</p> <br>
@@ -174,16 +174,6 @@
           </div>
           </div>
             
-                
-         <h4 style="color: #ec914d">Auto Alert Email</h4>
-            <div class="my-details">
-                <div class="left">
-                    <h3>LogoArtz Server Machine</h3>
-                    <p>Email: <a class="mailto" href="mailto:info@logoartz.com">technical-team@logoartz.com</a></p>
-                </div>
-
-                <div class="clear"></div>
-            </div>
         </div>
     </body>
 </html>

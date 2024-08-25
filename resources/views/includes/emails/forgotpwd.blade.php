@@ -89,8 +89,8 @@
 
     <body>
         <div class="container">
-                    <img src="{{ asset('assets/web/img/logo.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo.png') }}" />-->
+                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
+            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
             <div class="border"></div>
             <p class="blue-text">Dear {{ $CustomerName }},</p>
             <p class="blue-text">Recently a request was submitted to reset your password for our client area. If you did not request this, please ignore this email.</p> <br>

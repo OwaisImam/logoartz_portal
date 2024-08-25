@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
     // Route::get('/', 'Web\Home@index');
-    Route::get('/', 'Web\Home@login');
+    Route::get('/', 'Web\Home@login')->name('home');
     Route::get('/login', 'Web\Home@login');
     Route::post('/login', 'Web\Home@submit_login');
     Route::get('/register', 'Web\Register@index');

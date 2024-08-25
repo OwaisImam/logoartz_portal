@@ -76,12 +76,12 @@
                      ?>
                      <a href="{{url('/CustomerDash')}}">
                     <!--<img src="{{ asset('assets/web') }}/images/logo.png"  alt="LogoArtz">-->
-                    <img src="https://www.logoartz.com/assets/images/lalogo2.png?v=1" height="52"  alt="LogoArtz">
+                    <img src="https://www.logoartz.com/assets/images/logo-v1.png?v=1" height="52"  alt="LogoArtz">
                     </a>
                    <?php }else{ ?>
                       <a href="{{url('/')}}">
                      <!--<img src="{{ asset('assets/web') }}/images/logo.png" alt="LogoArtz">-->
-                     <img src="https://www.logoartz.com/assets/images/lalogo2.png?v=1" height="53"  alt="LogoArtz">
+                     <img src="https://www.logoartz.com/assets/images/logo-v1.png?v=1" height="53"  alt="LogoArtz">
                       </a>
                    <?php  } ?>
 
