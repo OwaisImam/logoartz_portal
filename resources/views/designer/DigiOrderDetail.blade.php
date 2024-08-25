@@ -256,14 +256,6 @@ if(!empty($DigiOrders)){
               <div class="row">
 
             
-              <div class="col-md-6"> 
-                     <div class="form-group">
-                <label>Customer Name</label>
-                <div><h4>{{ $DigiOrders->CustomerName }} </h4> </div>
-              </div>
-
-                        
-              </div>
               @if($DigiOrders->OrderType == 2 || $DigiOrders->OrderType == 4)
                 <div class="col-md-6"> 
                     <div class="form-group">

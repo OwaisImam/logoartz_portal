@@ -630,15 +630,15 @@ public function vdestroy_record($id){
         $valid["Fabric"] = 'required|max:100';
 
         $valid["Placement"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
+        $valid["Width"] = 'nullable|max:100';
+        $valid["Height"] = 'nullable|max:100';
         $valid["Scale"] = 'required|max:1000';
-        $valid["NumofClr"] = 'required|max:20';
+        $valid["NumofClr"] = 'nullable|max:20';
         $valid["FabricClr"] = 'max:100';
         $valid["Clrblending"] = 'required|max:100';
         $valid["PicEmb"] = 'required|max:20';
         $valid["BackFill"] = 'required|max:100';
-        $valid["AddIns"] = 'max:100';
+        $valid["AddIns"] = 'max:25000';
 
         $valid_name["DesignName"] = "Design Name";
         $valid_name["ReqFormat"] = "Requried Format";
@@ -828,13 +828,13 @@ public function updateVecOrder()
             $valid["OtherFormat"] = 'required|max:100';
         }
         $valid["UsedFor"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
+        $valid["Width"] = 'nullable|max:100';
+        $valid["Height"] = 'nullable|max:100';
         $valid["Scale"] = 'required|max:1000';
-        $valid["RequriedClr"] = 'required|max:100';
+        $valid["RequriedClr"] = 'nullable|max:100';
         $valid["NumofClr"] = 'required|max:20';
         $valid["ReqSep"] = 'required|max:100';
-        $valid["AddIns"] = 'required|max:100';
+        $valid["AddIns"] = 'nullable|max:25000';
         $valid["CCOrder"] = 'max:100';
 
 
@@ -2893,9 +2893,8 @@ die;
           $this->data['mail'] = $query->Email;
           
     
-            
           // Email ALert For Customer
-          if($OrderType != ""){
+          if(isset($OrderType)){
 
                if($OrderType == 1){
                     // Order Revision Email
@@ -2909,6 +2908,17 @@ die;
                         , function($message) use ($mailFrom) {
                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
                       });
+
+                      $mailFrom = 'technical-team@logoartz.com';
+                        \Mail::send('includes.emails.orderready', [
+                        "CustomerName" => $CustomerName,
+                        "OrderType" => 'digitizing order',
+                        "designName" => $designName
+                        ]
+                            , function($message) use ($mailFrom) {
+                            $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                        });
+
                       
                     if(\Mail::failures()) {
 
@@ -2924,7 +2934,7 @@ die;
 
 
 
-                }
+                     }
 
 
                } elseif ($OrderType == 9) {
@@ -2940,6 +2950,18 @@ die;
                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Revision Ready');
                       });              
                       
+                        // Email for Admin
+                $mailFrom = 'technical-team@logoartz.com';
+                \Mail::send('includes.emails.freeorderready', [
+                "CustomerName" => $CustomerName,
+                "OrderType" => 'digitizing order',
+                 "designName" => $designName
+                ]
+                    , function($message) use ($mailFrom) {
+                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Revision Ready');
+                 });
+                 
+
                     if(\Mail::failures()) {
 
                            $mailFrom = 'technical-team@logoartz.com';
@@ -2971,7 +2993,19 @@ die;
                         , function($message) use ($mailFrom) {
                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Ready');
                       }); 
-                      
+
+
+                        // Email for Admin
+                $mailFrom = 'technical-team@logoartz.com';
+                \Mail::send('includes.emails.freeorderready', [
+                "CustomerName" => $CustomerName,
+                "OrderType" => 'digitizing order',
+                 "designName" => $designName
+                ]
+                    , function($message) use ($mailFrom) {
+                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Ready');
+                 });
+
                       if(\Mail::failures()) {
 
                           $mailFrom = 'technical-team@logoartz.com';
@@ -2996,10 +3030,21 @@ die;
                    "designName" => $designName
                   ]
                     , function($message) use ($mailFrom) {
-                $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
                  });
                  
-                 
+
+                   // Email for Admin
+                $mailFrom = 'technical-team@logoartz.com';
+                \Mail::send('includes.emails.orderready', [
+                "CustomerName" => $CustomerName,
+                "OrderType" => 'digitizing order',
+                 "designName" => $designName
+                ]
+                    , function($message) use ($mailFrom) {
+                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                 });
+
                   if(\Mail::failures()) {
 
                   $mailFrom = 'technical-team@logoartz.com';
@@ -3009,16 +3054,14 @@ die;
                    "designName" => $designName
                   ]
                     , function($message) use ($mailFrom) {
-                $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
                  });
 
-
-
-
-                     }
+                 }
 
               } 
 
+              
 
           }
 

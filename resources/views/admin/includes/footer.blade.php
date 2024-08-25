@@ -15,6 +15,6 @@
 <footer class="main-footer">
     <div class="container">
         <div class="pull-right hidden-xs"> </div>
-        <strong>Copyright &copy; 2021</strong>
+        <strong>Copyright &copy; {{ date('Y') }}</strong>
     </div>
 </footer>

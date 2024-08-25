@@ -149,13 +149,13 @@ class Order extends CustomerController {
             $valid["OtherFormat"] = 'required|max:100';
         }
         $valid["UsedFor"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
+        $valid["Width"] = 'nullable|max:100';
+        $valid["Height"] = 'nullable|max:100';
         $valid["Scale"] = 'required|max:1000';
         $valid["RequriedClr"] = 'required|max:100';
-        $valid["NumofClr"] = 'required|max:20';
+        $valid["NumofClr"] = 'nullable|max:20';
         $valid["ReqSep"] = 'required|max:100';
-        $valid["AddIns"] = 'max:100';
+        $valid["AddIns"] = 'max:2500';
         $valid["CCOrder"] = 'max:100';
         $valid["OrderType"] = 'required|max:100';
 
@@ -494,13 +494,13 @@ class Order extends CustomerController {
             $valid["OtherFormat"] = 'required|max:100';
         }
         $valid["UsedFor"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
+        $valid["Width"] = 'nullable|max:100';
+        $valid["Height"] = 'nullable|max:100';
         $valid["Scale"] = 'required|max:1000';
         $valid["RequriedClr"] = 'required|max:100';
-        $valid["NumofClr"] = 'required|max:20';
+        $valid["NumofClr"] = 'nullable|max:20';
         $valid["ReqSep"] = 'required|max:100';
-        $valid["AddIns"] = 'max:100';
+        $valid["AddIns"] = 'max:25000';
         $valid["CCOrder"] = 'max:1000';
         $valid["OrderType"] = 'required|max:100';
 
@@ -803,15 +803,15 @@ class Order extends CustomerController {
             $valid["Fabric"] = 'required|max:100';
 
             $valid["Placement"] = 'required|max:100';
-            $valid["Width"] = 'required|max:100';
-            $valid["Height"] = 'required|max:100';
+            $valid["Width"] = 'nullable|max:100';
+            $valid["Height"] = 'nullable|max:100';
             $valid["Scale"] = 'required|max:1000';
-            $valid["NumofClr"] = 'required|max:20';
+            $valid["NumofClr"] = 'nullable|max:20';
             $valid["FabricClr"] = 'max:100';
             $valid["Clrblending"] = 'required|max:100';
             $valid["PicEmb"] = 'required|max:20';
             $valid["BackFill"] = 'required|max:100';
-            $valid["AddIns"] = 'max:100';
+            $valid["AddIns"] = 'max:25000';
             $valid["CCOrder"] = 'max:100';
             $valid["OrderType"] = 'required|max:100';
 
@@ -1269,15 +1269,15 @@ class Order extends CustomerController {
         }
         $valid["Fabric"] = 'required|max:100';
         $valid["Placement"] = 'required|max:100';
-        $valid["Width"] = 'required|max:100';
-        $valid["Height"] = 'required|max:100';
+        $valid["Width"] = 'nullable|max:100';
+        $valid["Height"] = 'nullable|max:100';
         $valid["Scale"] = 'required|max:1000';
-        $valid["NumofClr"] = 'required|max:20';
+        $valid["NumofClr"] = 'nullable|max:20';
         $valid["FabricClr"] = 'max:100';
         $valid["Clrblending"] = 'required|max:100';
         $valid["PicEmb"] = 'required|max:20';
         $valid["BackFill"] = 'required|max:100';
-        $valid["AddIns"] = 'max:100';
+        $valid["AddIns"] = 'max:25000';
         $valid["CCOrder"] = 'max:1000';
         $valid["OrderType"] = 'required|max:100';
 
