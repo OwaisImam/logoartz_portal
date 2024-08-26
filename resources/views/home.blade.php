@@ -14,20 +14,20 @@
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- All Css -->
-        <link rel="icon" href="{{ asset('assets/web') }}/images/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/bootstrap.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/font-awesome.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/icofont.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/hover-min.css" media="screen">
+        <link rel="icon" href="{{ asset('assets/web/images/favicon.png')}}" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/bootstrap.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/font-awesome.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/icofont.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/hover-min.css') }}" media="screen">
         <!--Owl Carousel-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.carousel.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.theme.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.transitions.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.carousel.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.theme.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.transitions.css') }}" media="screen">
         <!--Portfolio-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/spsimpleportfolio.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/featherlight.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/responsive.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/spsimpleportfolio.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/featherlight.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/style.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/responsive.css') }}" media="screen">
     </head>
 
     <body class="body-innerwrapper">
@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-5 banner-block">
-                                            <img src="{{ asset('assets/web') }}/images/banner1.png" class="img-responsive" alt="Banner">
+                                            <img src="{{ asset('assets/web/images/banner1.png" class="img-responsive" alt="Banner">
                                         </div>
                                     </div>
                                     <div class="item">
@@ -67,7 +67,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-5 banner-block">
-                                            <img src="{{ asset('assets/web') }}/images/DigiBanner.png" class="img-responsive" alt="Banner">
+                                            <img src="{{ asset('assets/web/images/DigiBanner.png" class="img-responsive" alt="Banner">
                                         </div>
                                     </div>
                   </div>
@@ -95,7 +95,7 @@
                                         with attention to detail. Best prices and fastest turnaround guaranteed! Do not hesitate a second to contact 
                                         <br>us and find out about our deals. To see the quality of our raster to vector service, just apply for our free first logo. </p>
 
-                                    <img src="{{ asset('assets/web') }}/images/logo.gif" class="signature animate-in move-up" alt="Signature">
+                                    <img src="{{ asset('assets/web/images/logo.gif" class="signature animate-in move-up" alt="Signature">
                                 </div>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                             with attention to detail. Best prices and fastest turnaround guaranteed! Do not hesitate a second to contact 
                             <br>us and find out about our deals. To see the quality of our raster to vector service, just apply for our free first logo. </p>
 
-                        <img src="{{ asset('assets/web') }}/images/logo.gif" class="signature animate-in move-up" alt="Signature">
+                        <img src="{{ asset('assets/web/images/logo.gif" class="signature animate-in move-up" alt="Signature">
                     </div>-->
 
 
@@ -242,14 +242,14 @@
 
                     <div class="col-sm-12" style="margin-bottom: 30px">
 
-                        <img src="{{ asset('assets/web') }}/images/Digitizing.jpg">
+                        <img src="{{ asset('assets/web/images/Digitizing.jpg') }}">
 
                     </div>
 
                     <!-- 
                                         <div class="col-sm-10 col-sm-offset-1 video text-center animate-in fade-in">
                                             <div class="inner">
-                                                <img src="{{ asset('assets/web') }}/images/banner-3.png" alt="video">
+                                                <img src="{{ asset('assets/web/images/banner-3.png" alt="video">
                                                 <iframe class="lightbox" src="https://www.youtube.com/watch?v=4rKY--qi9aI" width="780" height="440" id="fl3" style="border:none;" allowfullscreen=""></iframe>
                                                 <div class="hover center">
                                                     <div class="inner">
@@ -261,32 +261,32 @@
                                         </div> -->
                     <div class="service-base col-sm-12 no-padding">
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/vectar.png" alt="service">
+                            <img src="{{ asset('assets/web/images/vectar.png" alt="service">
                             <h4><a href="#">Vector</a> </h4>
                             <p>Vector tracing is ideal to for logos, brouchers, billbaords, visitcards, computer-controlled sewing machines, animations, creative art, printing and more.</p>
                         </div>
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/service-layers.png" alt="service">
+                            <img src="{{ asset('assets/web/images/service-layers.png" alt="service">
                             <h4><a href="#">Digitizing</a> </h4>
                             <p>Onsistently unmatched quality - that's the Logo Artz Promise! Smoother production runs and a beautiful embroidered piece Sew outs of every file done here before sending.</p>
                         </div>
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/Wd.png" alt="service">
+                            <img src="{{ asset('assets/web/images/Wd.png" alt="service">
                             <h4><a href="#">Web Development</a> </h4>
                             <p>Put the Internet to work for you with our rich web app development services. We use rapid development methodologies incorporating MVC frameworks (Laravel, CakePHP) and interactive Javascript-based frontends.</p>
                         </div>
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/smm.png" alt="service">
+                            <img src="{{ asset('assets/web/images/smm.png" alt="service">
                             <h4><a href="#">Digital Media Marketing</a> </h4>
                             <p>Social media marketing is a powerful way for businesses of all sizes to reach prospects and customers. Your customers are already interacting with brands through social media, and if you're not speaking directly to your audience through social platforms like Facebook, Twitter, Instagram, and Pinterest, you're missing out!</p>
                         </div>
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/service-devices.png" alt="service">
+                            <img src="{{ asset('assets/web/images/service-devices.png" alt="service">
                             <h4><a href="#"></a>Mobile Application </h4>
                             <p>Leverage the power of portable computing with mobile apps that offer users a seamless experience-whichever device they use. We've been building award-winning apps across multiple niches for mobile operating systems from the Symbian and Blackberry days right up to Android and iOS.</p>
                         </div>
                         <div class="col-sm-4 service-block text-center animate-in move-up">
-                            <img src="{{ asset('assets/web') }}/images/shield.png" alt="service">
+                            <img src="{{ asset('assets/web/images/shield.png" alt="service">
                             <h4><a href="#">Secured Service</a> </h4>
                             <p>We will provide you complete confident for your confidential data</p>
                         </div>
@@ -306,7 +306,7 @@
         <!--                        Vector Tracing is a photo editing technique that converts bitmap images (.bmp,.jpg,.png,e.t.c.) into vectors -->
         <!--                        <br>(.SVG or Scalable Vector Graphics) and is provided as service by photo editors using the appropriate photo -->
         <!--                        <br>editing tools such as Adobe Illustrator (A.I.) or Corel Draw. Not every photo editing tool can convert bitmap images to vectors.</p>-->
-        <!--                    <img src="{{ asset('assets/web') }}/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">-->
+        <!--                    <img src="{{ asset('assets/web/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">-->
         <!--                </div>-->
         <!--                <div class="item green space-top">-->
         <!--                    <h2 class="animate-in move-up">Digitizing</h2>-->
@@ -315,7 +315,7 @@
         <!--                        <br>brand and identity is logo, a literal visual representation of a person or organization's unique brand. Companies -->
         <!--                        <br>like Nike and it's 'swoosh' and a 'bitten apple' for Apple have become iconic in themselves and have become -->
         <!--                        <br>cultural icons than just ordinary logos.</p>-->
-        <!--                    <img src="{{ asset('assets/web') }}/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">-->
+        <!--                    <img src="{{ asset('assets/web/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">-->
         <!--                </div>-->
 
         <!--            </div>-->
@@ -328,7 +328,7 @@
         <!--    <div class="container">-->
         <!--        <div class="row">-->
         <!--            <div class="col-sm-6 action-block">-->
-        <!--                <img src="{{ asset('assets/web') }}/images/vectorBn.jpg" alt="call to action">-->
+        <!--                <img src="{{ asset('assets/web/images/vectorBn.jpg') }}" alt="call to action">-->
         <!--            </div>-->
         <!--            <div class="col-sm-6 action-block">-->
         <!--                <div class="main-heading col-sm-12 no-padding animate-in move-up">-->
@@ -601,25 +601,25 @@
                 <!--        <div class="owl-carousel owl-theme" id="testi-slider">-->
                 <!--            <div class="item">-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-businessman.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-businessman.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Danita O</a> </h3>-->
                                     <!--  <div class="profession">Businessman</div> -->
                 <!--                    <p>"After seeing results from LogoArtz for digitizing of my logo! I love it. I was amazed at the quality and accuracy these guys provide. Absolutely wonderful!"</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-disc-jockey.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-disc-jockey.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Usama</a> </h3>-->
                                     <!-- <div class="profession">Musician</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-journalist.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-journalist.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Ronny Haron</a> </h3>-->
                                     <!-- <div class="profession">Accountant</div>   -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-maid.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-maid.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#"> Rees Z.-->
                 <!--                        </a> </h3>-->
                                     <!-- <div class="profession">Freelancer</div> -->
@@ -628,25 +628,25 @@
                 <!--            </div>-->
                 <!--            <div class="item">-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-businessman.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-businessman.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Martin Jones</a> </h3>-->
                                     <!-- <div class="profession">Businessman</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-disc-jockey.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-disc-jockey.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Dj Rozer</a> </h3>-->
                                     <!--   <div class="profession">Musician</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-journalist.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-journalist.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Ronny Haron</a> </h3>-->
                                     <!--   <div class="profession">Accountant</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-maid.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-maid.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">David Garok</a> </h3>-->
                                     <!--   <div class="profession">Freelancer</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
@@ -654,25 +654,25 @@
                 <!--            </div>-->
                 <!--            <div class="item">-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-businessman.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-businessman.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Martin Jones</a> </h3>-->
                                     <!--    <div class="profession">Businessman</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-disc-jockey.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-disc-jockey.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Dj Rozer</a> </h3>-->
                                     <!--       <div class="profession">Musician</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-journalist.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-journalist.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">Ronny Haron</a> </h3>-->
                                     <!--    <div class="profession">Accountant</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
                 <!--                </div>-->
                 <!--                <div class="col-sm-3 testimonial-block text-center">-->
-                <!--                    <img src="{{ asset('assets/web') }}/images/testimonial-maid.png" alt="Testimonial">-->
+                <!--                    <img src="{{ asset('assets/web/images/testimonial-maid.png" alt="Testimonial">-->
                 <!--                    <h3><a href="#">David Garok</a> </h3>-->
                                     <!--     <div class="profession">Freelancer</div> -->
                 <!--                    <p>"I give you many thanks because you have improved our work. Logo Artz is a beautiful company.We believe very much in the future to work with you.Thank You very much."</p>-->
@@ -736,20 +736,20 @@
     <!--footer-->
 
     <!--All Js-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jQuery.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jQuery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.easing.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <!--<script src="../../../../use.fontawesome.com/e18447245b.js"></script>-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/appear.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/appear.js') }}"></script>
     <!--Portfolio-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/isotope.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/spsimpleportfolio.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/featherlight.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.shuffle.modernizr.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/steller.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/smooth-scroll.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/owl.carousel.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/spsimpleportfolio.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/featherlight.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.shuffle.modernizr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/steller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/smooth-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
     @include('includes/commonscripts')
 </body>
 </html>

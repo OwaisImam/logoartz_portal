@@ -4,7 +4,7 @@
             <div class="col-sm-3 footer-block about-text">
 
                 <span class="img">
-                    <img src="{{ asset('assets/web') }}/img/logo-v1.png?v=1" alt="LogoArtz">
+                    <img src="{{ asset('assets/web/img/logo-v1.png?v=1') }}" alt="LogoArtz">
                 </span>
                 <p>LogoArtz provides best logo design, digitizing, raster to vector services in market, with best prices and discounts.</p>
                 <ul class="social two">

@@ -14,22 +14,22 @@
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- All Css -->
-          <link rel="icon" href="{{ asset('assets/web') }}/images/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/bootstrap.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/font-awesome.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/icofont.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/hover-min.css" media="screen">
+          <link rel="icon" href="{{ asset('assets/web/images/favicon.png')}}" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/bootstrap.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/font-awesome.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/icofont.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/hover-min.css') }}" media="screen">
         <!--Owl Carousel-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.carousel.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.theme.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.transitions.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.carousel.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.theme.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.transitions.css') }}" media="screen">
         <!--Portfolio-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/spsimpleportfolio.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/featherlight.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/responsive.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/spsimpleportfolio.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/featherlight.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/style.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/responsive.css') }}" media="screen">
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/grid-gallery.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/grid-gallery.min.css">
     </head>
 
     <body class="body-innerwrapper">
@@ -79,64 +79,64 @@
 
     <div class="gg-box">
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p1.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p1.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p2.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p2.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p3.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p3.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p4.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p4.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p5.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p5.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p6.jpg">          
+        <img src="{{ asset('assets/web/images/portfolio/p6.jpg') }}">          
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p7.jpg">     
+        <img src="{{ asset('assets/web/images/portfolio/p7.jpg') }}">     
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p8.jpg">   
+        <img src="{{ asset('assets/web/images/portfolio/p8.jpg') }}">   
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p9.jpg">      
+        <img src="{{ asset('assets/web/images/portfolio/p9.jpg') }}">      
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p10.jpg">     
+        <img src="{{ asset('assets/web/images/portfolio/p10.jpg') }}">     
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p11.jpg">     
+        <img src="{{ asset('assets/web/images/portfolio/p11.jpg') }}">     
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p12.jpg"> 
+        <img src="{{ asset('assets/web/images/portfolio/p12.jpg') }}"> 
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p13.jpg">       
+        <img src="{{ asset('assets/web/images/portfolio/p13.jpg') }}">       
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p14.jpg">      
+        <img src="{{ asset('assets/web/images/portfolio/p14.jpg') }}">      
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p15.jpg">     
+        <img src="{{ asset('assets/web/images/portfolio/p15.jpg') }}">     
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p16.jpg">       
+        <img src="{{ asset('assets/web/images/portfolio/p16.jpg') }}">       
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p17.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p17.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p18.jpg">       
+        <img src="{{ asset('assets/web/images/portfolio/p18.jpg') }}">       
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p19.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p19.jpg') }}">
       </div>
       <div class="gg-element">
-        <img src="{{ asset('assets/web') }}/images/portfolio/p20.jpg">
+        <img src="{{ asset('assets/web/images/portfolio/p20.jpg') }}">
       </div>
     </div>
    
@@ -178,7 +178,7 @@
                         </div>
                         <div class="sp-simpleportfolio-item" data-groups='["digi"]'>
                             <div class="sp-simpleportfolio-overlay-wrapper clearfix">
-                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web') }}/images/portfolio/1.png" alt="portfolio">
+                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web/images/portfolio/1.png" alt="portfolio">
                                 <div class="sp-simpleportfolio-overlay">
                                     <div class="sp-vertical-middle">
                                         <div>
@@ -194,7 +194,7 @@
                       
 
                             <div class="sp-simpleportfolio-overlay-wrapper clearfix">
-                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web') }}/images/portfolio/2.png" alt="portfolio">
+                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web/images/portfolio/2.png" alt="portfolio">
                                 <div class="sp-simpleportfolio-overlay">
                                     <div class="sp-vertical-middle">
                                         <div>
@@ -210,7 +210,7 @@
                       
 
                       <div class="sp-simpleportfolio-overlay-wrapper clearfix">
-                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web') }}/images/portfolio/3.jpg" alt="portfolio">
+                                <img class="sp-simpleportfolio-img" src="{{ asset('assets/web/images/portfolio/3.jpg') }}" alt="portfolio">
                                 <div class="sp-simpleportfolio-overlay">
                                     <div class="sp-vertical-middle">
                                         <div>
@@ -397,22 +397,22 @@
 
     <!--All Js-->
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/grid-gallery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/grid-gallery.min.js') }}"></script>
 
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jQuery.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jQuery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.easing.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <!--<script src="../../../../use.fontawesome.com/e18447245b.js"></script>-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/appear.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/appear.js') }}"></script>
     <!--Portfolio-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/isotope.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/spsimpleportfolio.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/featherlight.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.shuffle.modernizr.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/steller.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/smooth-scroll.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/owl.carousel.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/spsimpleportfolio.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/featherlight.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.shuffle.modernizr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/steller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/smooth-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
 
 <script type="text/javascript"> 
  

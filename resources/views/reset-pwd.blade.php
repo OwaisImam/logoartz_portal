@@ -15,19 +15,19 @@
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- All Css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/bootstrap.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/font-awesome.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/icofont.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/hover-min.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/bootstrap.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/font-awesome.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/icofont.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/hover-min.css') }}" media="screen">
         <!--Owl Carousel-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.carousel.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.theme.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.transitions.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.carousel.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.theme.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.transitions.css') }}" media="screen">
         <!--Portfolio-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/spsimpleportfolio.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/featherlight.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/responsive.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/spsimpleportfolio.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/featherlight.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/style.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/responsive.css') }}" media="screen">
     </head>
 
 
@@ -134,19 +134,19 @@
     </div>
     @include('includes/footer')
 
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jQuery.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jQuery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.easing.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <!--<script src="../../../../use.fontawesome.com/e18447245b.js"></script>-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/appear.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/appear.js') }}"></script>
     <!--Portfolio-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/isotope.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/spsimpleportfolio.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/featherlight.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.shuffle.modernizr.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/steller.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/smooth-scroll.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/owl.carousel.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/spsimpleportfolio.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/featherlight.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.shuffle.modernizr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/steller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/smooth-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
 </body>
 </html>

@@ -14,30 +14,30 @@
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- All Css -->
-          <link rel="icon" href="{{ asset('assets/web') }}/images/favicon.png" type="image/x-icon" />
-          <link rel="icon" href="{{ asset('assets/web') }}/images/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/bootstrap.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/font-awesome.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/icofont.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/hover-min.css" media="screen">
+          <link rel="icon" href="{{ asset('assets/web/images/favicon.png')}}" type="image/x-icon" />
+          <link rel="icon" href="{{ asset('assets/web/images/favicon.png')}}" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/bootstrap.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/font-awesome.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/icofont.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/hover-min.css') }}" media="screen">
         <!--Owl Carousel-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.carousel.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.theme.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/owl.transitions.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.carousel.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.theme.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/owl.transitions.css') }}" media="screen">
         <!--Portfolio-->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/spsimpleportfolio.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/featherlight.min.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/style.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web') }}/css/responsive.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/spsimpleportfolio.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/featherlight.min.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/style.css') }}" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/web/css/responsive.css') }}" media="screen">
 
 
 
 
          
     
-        <link rel="stylesheet" href="{{ asset('assets/admin/') }}/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-        <link rel="stylesheet" href="{{ asset('assets/admin/') }}/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/admin/') }}/dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/skins/_all-skins.min.css') }}">
         <style>
             .btn-block{
                 background: radial-gradient(#fff, #ccc);
@@ -275,22 +275,22 @@
 
 <div class="row" style="margin-top: 5px !important">
         <div class="col-md-3">
-           <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/digi-order')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/place_order.png" alt="LogoArtz"><p style="font-size: 16px">Place <br> Digitizing Order</p> </button>
+           <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/digi-order')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/place_order.png" alt="LogoArtz"><p style="font-size: 16px">Place <br> Digitizing Order</p> </button>
            
         
         </div> 
 
         <div class="col-md-3">
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in" href onclick="location.href='{{url('/digi_quote')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/contract.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Digitizing Quote</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in" href onclick="location.href='{{url('/digi_quote')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/contract.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Digitizing Quote</p></button>
         </div>
 
          <div class="col-md-3">
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vector-order')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/place_order.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Vector Order</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vector-order')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/place_order.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Vector Order</p></button>
         </div>
 
 
        <div class="col-md-3">
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vector_quote')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/contract.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Vector Quote</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vector_quote')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/contract.png" alt="LogoArtz"><p style="font-size: 16px">Place <br>Vector Quote</p></button>
         </div>
         
         
@@ -301,22 +301,22 @@
 
       <div class="row" style="margin-top: 25px">
         <div class="col-md-3">
-           <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/dorderrecords')}}'" ><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/books.png" alt="LogoArtz"><p style="font-size: 16px">Digitizing<br>Order Record</p></button>
+           <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/dorderrecords')}}'" ><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/books.png" alt="LogoArtz"><p style="font-size: 16px">Digitizing<br>Order Record</p></button>
            
         
         </div>
 
         <div class="col-md-3" >
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/dquoterecords')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/search.png" alt="LogoArtz"><p style="font-size: 16px">Digitizing<br> Quote Record</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/dquoterecords')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/search.png" alt="LogoArtz"><p style="font-size: 16px">Digitizing<br> Quote Record</p></button>
         </div>
 
          <div class="col-md-3">
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vorderrecords')}}'" ><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/books.png" alt="LogoArtz"><p style="font-size: 16px">Vector<br> Order Record</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vorderrecords')}}'" ><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/books.png" alt="LogoArtz"><p style="font-size: 16px">Vector<br> Order Record</p></button>
         </div>
 
 
        <div class="col-md-3">
-             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vquoterecords')}}'"><img width="130px" src="{{ asset('assets/web') }}/images/customer_dashboard/search.png" alt="LogoArtz"><p style="font-size: 16px">Vector<br> Quote Record</p></button>
+             <button type="button" class="btn btn-block btn-default btn-sm hvr-bounce-in"  href onclick="location.href='{{url('/vquoterecords')}}'"><img width="130px" src="{{ asset('assets/web/images/customer_dashboard/search.png" alt="LogoArtz"><p style="font-size: 16px">Vector<br> Quote Record</p></button>
         </div>
         
         
@@ -339,20 +339,20 @@
     <!--footer-->
 
     <!--All Js-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jQuery.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jQuery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.easing.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/bootstrap.js') }}"></script>
     <!--<script src="../../../../use.fontawesome.com/e18447245b.js"></script>-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/appear.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/appear.js') }}"></script>
     <!--Portfolio-->
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/isotope.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/spsimpleportfolio.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/featherlight.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/jquery.shuffle.modernizr.min.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/steller.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/smooth-scroll.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/owl.carousel.js"></script>
-    <script type="text/javascript" src="{{ asset('assets/web') }}/js/custom.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/isotope.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/spsimpleportfolio.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/featherlight.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/jquery.shuffle.modernizr.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/steller.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/smooth-scroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/owl.carousel.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
     @include('includes/commonscripts')
 </body>
 </html>

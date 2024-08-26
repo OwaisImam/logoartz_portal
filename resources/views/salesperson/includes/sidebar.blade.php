@@ -19,7 +19,7 @@ $conf = ["configuration"];
                 <?php if (\Session::get('AdminProfilePicture') != "" && \Session::get('AdminProfilePicture') != null) { ?>
                     {!! \Html::image('/uploads/administrators/' . \Session::get('AdminProfilePicture'), \Session::get('AdminProfilePicture'), ['class' => 'img-circle' ]) !!}
                 <?php } else { ?>
-                    <img src="{{ asset('assets/admin/') }}/dist/img/avatar.png" class="img-circle" alt="User Image">
+                    <img src="{{ asset('assets/admin/dist/img/avatar.png') }}" class="img-circle" alt="User Image">
                 <?php } ?>
             </div>
             <div class="pull-left info">
