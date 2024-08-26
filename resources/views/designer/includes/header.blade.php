@@ -27,7 +27,7 @@ $did = \Session::get('Dcatagory');
         <div class="container">
 
             <div class="navbar-header">
-                <a href="{{ url('admin') }}" class="navbar-brand"><span class="logo-lg"><img class="img-responsive" src="{{ asset('assets/admin/') }}/images/header-logo.png" style="height: 49px;margin-top: 4px; margin: 0 auto;"></span></a>
+                <a href="{{ url('admin') }}" class="navbar-brand"><span class="logo-lg"><img class="img-responsive" src="{{ asset('assets/admin/') }}/images/header-logo-v2.png" style="height: 49px;margin-top: 4px; margin: 0 auto;"></span></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>

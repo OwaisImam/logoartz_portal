@@ -4,6 +4,11 @@
     </IfModule>
     RewriteEngine On
 
+     # Remove public from URL
+     RewriteCond %{REQUEST_URI} !^/public/
+     RewriteRule ^(.*)$ public/$1 [L,QSA]
+    
+     
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
 RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
