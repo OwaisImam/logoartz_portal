@@ -1,292 +1,302 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ $configuration->WebsiteTitle }} | Customers</title>
-        <!-- Tell the browser to be responsive to screen width -->
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="shortcut icon" href="{{ asset('assets/web/images/favicon.png')}}" type="image/x-icon">
-        <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/css/bootstrap.min.css') }}">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-        <!-- DataTables -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.css') }}">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/AdminLTE.min.css') }}">
-        <!-- AdminLTE Skins. Choose a skin from the css/skins
-             folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/skins/_all-skins.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/plugins/iCheck/minimal/blue.css') }}">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ $configuration->WebsiteTitle }} | Customers</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="{{ asset('assets/web/images/favicon.png') }}" type="image/x-icon">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/skins/_all-skins.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/plugins/iCheck/minimal/blue.css') }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .alert{
-                opacity: 0.5;
-            }
-            .m-l-250{
-                max-height: 250px;
-                overflow-y: auto;
-            }
-        </style>
-    </head>
-    <body class="hold-transition skin-blue layout-top-nav">
-        <div class="wrapper">
+    <style>
+        .alert {
+            opacity: 0.5;
+        }
 
-            @include('admin/includes/header')
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <div class="container">
+        .m-l-250 {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body class="hold-transition skin-blue layout-top-nav">
+    <div class="wrapper">
+
+        @include('admin/includes/header')
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="container">
 
 
 
-                    <section class="content">
-                        <?= $DigiOrders->Status == 5 ? '<div class="alert alert-success">Design Assigned to <a href="' . url("admin/designers/details/" . $DigiOrders->DesignerID) . '">' . $DigiOrders->DesignerName . ' </a></div>' : ($DigiOrders->Status == 3 ? '<div class="alert alert-warning">Message Sent to Customer</div>' : '') ?>
-                        <!-- SELECT2 EXAMPLE -->
-                        <div class="box box-default">
-                            <div class="box-header with-border">
-                                <h3 class="" style="text-align: center;"><strong>Order Detail</strong></h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <div class="row">
+                <section class="content">
+                    <?= $DigiOrders->Status == 5 ? '<div class="alert alert-success">Design Assigned to <a href="' . url('admin/designers/details/' . $DigiOrders->DesignerID) . '">' . $DigiOrders->DesignerName . ' </a></div>' : ($DigiOrders->Status == 3 ? '<div class="alert alert-warning">Message Sent to Customer</div>' : '') ?>
+                    <!-- SELECT2 EXAMPLE -->
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="" style="text-align: center;"><strong>Order Detail</strong></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
 
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>DESIGN CODE </label>
-                                            <p>{{ $DigiOrders->OrderID }}  </p>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>DESIGN CODE </label>
+                                        <p>{{ $DigiOrders->OrderID }} </p>
 
-                                        </div>
                                     </div>
-                                    <!-- /.form-group -->
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>DESIGN NAME</label>
-                                            <p>{{ $DigiOrders->DesignName }} </p>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>PO NUMBER </label>
-                                            <p>{{ $DigiOrders->PONumber }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>REQUIRED FORMAT</label>
-                                            <p>{{ $DigiOrders->ReqFormat }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>OTHER FORMAT </label>
-                                            <p> </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>FABRIC </label>
-                                            <p>{{ $DigiOrders->Fabric }}</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- /.col --
-
-           
-                                    <!-- /.form-group -->
-
-                                    <!-- /.col -->
                                 </div>
-
-
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>NO. OF COLORS </label>
-                                            <p>{{ $DigiOrders->NoOfColors }} </p>
-
-                                        </div>
+                                <!-- /.form-group -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>DESIGN NAME</label>
+                                        <p>{{ $DigiOrders->DesignName }} </p>
                                     </div>
-                                    <!-- /.form-group -->
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>DIMENSIONS</label>
-                                            <p>{{ $DigiOrders->Width.' x '.$DigiOrders->Height.' '.$DigiOrders->Scale }} </p>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>REQ. COLOR</label>
-                                            <p>{{ $DigiOrders->ReqColor }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>SEPARATION</label>
-                                            <p>{{ $DigiOrders->ReqSeparation }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>CC TO</label>
-                                            <p>{{ $DigiOrders->CC }} </p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>UPLOADED ON</label>
-                                            <p>{{ $DigiOrders->DateAdded }} </p>
-                                        </div>
-                                    </div>
-
-                                       <div class="col-md-12">
-                        <div class="form-group">
-                          <label>NOTE</label>
-                             <p>{{ $DigiOrders->CsNote }} </p>
-                            </div>
                                 </div>
 
 
 
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>PO NUMBER </label>
+                                        <p>{{ $DigiOrders->PONumber }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>REQUIRED FORMAT</label>
+                                        <p>{{ $DigiOrders->ReqFormat }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>OTHER FORMAT </label>
+                                        <p> </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>FABRIC </label>
+                                        <p>{{ $DigiOrders->Fabric }}</p>
+                                    </div>
                                 </div>
 
                                 <!-- /.col --
 
            
-                                <!-- /.form-group -->
+                                    <!-- /.form-group -->
 
                                 <!-- /.col -->
-
-
-
-
-
-
-                                <!-- /.row -->
                             </div>
-                            <!-- /.box-body -->
 
-                        </div>
-                        <!-- /.box -->
 
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>NO. OF COLORS </label>
+                                        <p>{{ $DigiOrders->NoOfColors }} </p>
 
-                                <div class="box box-danger">
-                                    <div class="box-header">
-                                        <h3 class="box-title" style="text-align: "><strong>Additional Detail</strong></h3>
                                     </div>
-                                    <div class="box-body">
-                                        <!-- Date dd/mm/yyyy -->
+                                </div>
+                                <!-- /.form-group -->
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>DIMENSIONS</label>
+                                        <p>{{ $DigiOrders->Width . ' x ' . $DigiOrders->Height . ' ' . $DigiOrders->Scale }}
+                                        </p>
+                                    </div>
+                                </div>
 
-                                        <div class="row">
 
 
-                                            <div class="col-md-6"> 
-                                                <div class="form-group">
-                                                    <label>Customer Name</label>
-                                                    <div><h5>{{ $DigiOrders->CustomerName }} </h5> </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>REQ. COLOR</label>
+                                        <p>{{ $DigiOrders->ReqColor }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>SEPARATION</label>
+                                        <p>{{ $DigiOrders->ReqSeparation }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>CC TO</label>
+                                        <p>{{ $DigiOrders->CC }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label>UPLOADED ON</label>
+                                        <p>{{ $DigiOrders->DateAdded }} </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>NOTE</label>
+                                        <p>{{ $DigiOrders->CsNote }} </p>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                            <!-- /.col --
+
+           
+                                <!-- /.form-group -->
+
+                            <!-- /.col -->
+
+
+
+
+
+
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                    <!-- /.box -->
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="box box-danger">
+                                <div class="box-header">
+                                    <h3 class="box-title" style="text-align: "><strong>Additional Detail</strong></h3>
+                                </div>
+                                <div class="box-body">
+                                    <!-- Date dd/mm/yyyy -->
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Customer Name</label>
+                                                <div>
+                                                    <h5>{{ $DigiOrders->CustomerName }} </h5>
                                                 </div>
-
-
                                             </div>
-                                            <div class="col-md-3"> 
-                                                <div class="form-group">
-                                                    <label>STATUS</label>
-                                                    <div><span class="label label-warning"> {{   $OrderStatuses[$DigiOrders->Status] }}</span></div>
 
 
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3"> 
-                                                <div class="form-group">
-                                                    <label>Designer</label>
-                                                    <div><span class="text text-sm"> {{ $DigiOrders->DesignerName }}</span></div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>STATUS</label>
+                                                <div><span class="label label-warning">
+                                                        {{ $OrderStatuses[$DigiOrders->Status] }}</span></div>
 
 
-                                                </div>
                                             </div>
                                         </div>
-                                        <!-- /.form group
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Designer</label>
+                                                <div><span class="text text-sm"> {{ $DigiOrders->DesignerName }}</span>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.form group
                                         -->
 
-                                        <!-- Date mm/dd/yyyy -->
+                                    <!-- Date mm/dd/yyyy -->
 
-                                        <div class="row">
-                                            <!--             <div class="col-md-3"> 
+                                    <div class="row">
+                                        <!--             <div class="col-md-3">
                                                             <div class="form-group">
                                                             <label>Designer PRICE</label>
                                                             <div> <h4><span class="label label-success">${{ $DigiOrders->DesignerPrice }}</span> </h4></div>
                                                             
-                                                            </div> 
-                                                             </div> 
-                                                             <div class="col-md-3"> 
+                                                            </div>
+                                                             </div>
+                                                             <div class="col-md-3">
                                                              <div class="form-group pull-right">
                                                             <label>Admin PRICE</label>
                                                             <div> <h4><span class="label label-success">${{ $DigiOrders->CustomerPrice }}</span> </h4></div>
                                                             
-                                                            </div> 
+                                                            </div>
                                                          </div>-->
-                                            <!-- /.form group -->
+                                        <!-- /.form group -->
 
 
-                                            <!-- phone mask -->
-                                            @if($DigiOrders->OrderType == 4)
-                                            <div class="col-md-12"> 
+                                        <!-- phone mask -->
+                                        @if ($DigiOrders->OrderType == 4)
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Quote Price</label>
                                                     <div>{{ $DigiOrders->CustomerPrice }} </div>
-                                                </div>              
+                                                </div>
                                             </div>
-                                            @endif
-                                            <div class="col-md-12"> 
-                                                <div class="form-group">
-                                                    <label>ADDITIONAL INSTRUCTIONS</label>
-                                                    <div>{{ $DigiOrders->MoreInstructions }} </div>
-                                                </div>              
+                                        @endif
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>ADDITIONAL INSTRUCTIONS</label>
+                                                <div>{{ $DigiOrders->MoreInstructions }} </div>
                                             </div>
-                                            @if(!$Revision->isEmpty())
-                                            <div class="col-md-12"> 
+                                        </div>
+                                        @if (!$Revision->isEmpty())
+                                            <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Client Message(s)</label>
-                                                    @foreach($Revision as $revise)
-                                                    <div>
-                                                        <h4>
-                                                            {{ $revise->Message }}
-                                                            <small class="pull-right">{{ $revise->DateAdded }}</small>
-                                                        </h4>
-                                                    </div>
+                                                    @foreach ($Revision as $revise)
+                                                        <div>
+                                                            <h4>
+                                                                {{ $revise->Message }}
+                                                                <small
+                                                                    class="pull-right">{{ $revise->DateAdded }}</small>
+                                                            </h4>
+                                                        </div>
                                                     @endforeach
-                                                </div>              
+                                                </div>
                                             </div>
-                                            @endif
-                                            @if($DigiOrders->Status == 4 && !empty($DigiOrders->DesignerID))
+                                        @endif
+                                        @if ($DigiOrders->Status == 4 && !empty($DigiOrders->DesignerID))
                                             <div class="col-md-12">
-                                                {!! Form::open(['url' => 'admin/digi-approve-designer/'.$DigiOrders->OrderID]) !!}
-                                                <button class="btn btn-primary btn-block" type="submit">Approve to Designer</button>
+                                                {!! Form::open(['url' => 'admin/digi-approve-designer/' . $DigiOrders->OrderID]) !!}
+                                                <button class="btn btn-primary btn-block" type="submit">Approve to
+                                                    Designer</button>
                                                 {!! Form::close() !!}
                                             </div>
-                                            @elseif($DigiOrders->Status == 2)
+                                        @elseif($DigiOrders->Status == 2)
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Designer Message</label>
@@ -301,23 +311,29 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <label>Enter Your Price</label>
-                                                {!! Form::open(['url' => 'admin/digi-send-quote/'.$DigiOrders->OrderID]) !!}
-                                                <input type="text" placeholder="Enter Quote" class="form-control" name="CustomerPrice"><br>
-                                                <button class="btn btn-info btn-block" type="submit">Send Quote to Customer</button>
+                                                {!! Form::open(['url' => 'admin/digi-send-quote/' . $DigiOrders->OrderID]) !!}
+                                                <input type="text" placeholder="Enter Quote" class="form-control"
+                                                    name="CustomerPrice"><br>
+                                                <button class="btn btn-info btn-block" type="submit">Send Quote to
+                                                    Customer</button>
                                                 {!! Form::close() !!}
                                             </div>
-                                            @elseif($DigiOrders->Status == 6)
-                                            {!! Form::open(['url' => 'admin/digi-send-order/'.$DigiOrders->OrderID]) !!}
+                                        @elseif($DigiOrders->Status == 6)
+                                            {!! Form::open(['url' => 'admin/digi-send-order/' . $DigiOrders->OrderID]) !!}
                                             <?php
                                             foreach ($DesignFiles as $fls) {
                                                 $extArr = explode('.', $fls->File);
                                                 $ext = end($extArr);
                                                 ?>
-                                                <div class="col-md-6" style="margin-bottom:6px;">
-                                                    <input name="FileForCustomer[]" value="{{ $fls->DR_File_ID }}" checked type="checkbox"> &nbsp; &nbsp; &nbsp;
-                                                    <a href="{{asset('uploads/orders/digi').'/'.$fls->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->DesignName.'.'.$ext }}</a>
-                                                </div>
-                                                <?php
+                                            <div class="col-md-6" style="margin-bottom:6px;">
+                                                <input name="FileForCustomer[]" value="{{ $fls->DR_File_ID }}"
+                                                    checked type="checkbox"> &nbsp; &nbsp; &nbsp;
+                                                <a href="{{ asset('uploads/orders/digi') . '/' . $fls->File }}"
+                                                    class="btn btn-success btn-flat" download=""><i
+                                                        class="fa fa-download"></i>
+                                                    {{ $DigiOrders->DesignName . '.' . $ext }}</a>
+                                            </div>
+                                            <?php
                                             }
                                             ?>
                                             <div class="col-md-12">
@@ -325,360 +341,403 @@
                                                     <label>Send Message to Customer</label>
                                                     <textarea placeholder="Enter Message For Customer" class="form-control" name="MessageForCustomer" rows="5"></textarea>
                                                 </div>
-                                                <button class="btn btn-primary btn-block" type="submit">Send Order To Customer</button>
+                                                <button class="btn btn-primary btn-block" type="submit">Send Order To
+                                                    Customer</button>
                                             </div>
                                             {!! Form::close() !!}
-                                            @endif
-                                        </div>
-
-
-
+                                        @endif
                                     </div>
-                                    <!-- /.box-body -->
+
+
+
                                 </div>
-                                <!-- /.box -->
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
 
-                                <div class="box box-info">
-                                    <div class="box-header">
-                                        <h3 class="box-title">ART Work</h3>
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-
-                                            <div class="box-body">
-
-                                                <div class="form-group">
-                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary ArtWork</label>
-
-                                                    <img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File1) }}" width="200" />
-
-                                                </div>
-                                            </div>
-
-                                        </div>  <!--Col Close-->
-
-
-
-                                        <div class="col-md-6">
-
-
-                                            <div class="box-body">
-
-
-                                                <div class="form-group">
-                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary ArtWork 2</label>
-
-                                                    <img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File2) }}" width="200" />
-
-                                                </div>
-
-                                            </div>
-
-
-
-                                        </div>    <!--Col Close-->
-
-
-                                    </div>  <!--Row Close-->
-
-
-
-
-                                    <div class="row"> 
-
-                                        <div class="col-md-6">
-
-                                            <div class="box-body">
-                                                <div class="form-group">
-                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary ArtWork 3</label>
-
-                                                    <img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File3) }}" width="200" />
-
-                                                </div>
-                                            </div>
-
-                                        </div>    <!--End Col -->
-
-
-
-
-                                        <div class="col-md-6">
-
-                                            <div class="box-body">
-
-
-                                                <div class="form-group">
-                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary ArtWork 4</label>
-
-                                                    <img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File4) }}" width="200" />
-
-                                                </div>
-
-                                            </div>
-
-
-                                        </div>  <!--End Col -->
-
-                                    </div>
-
-                                    <!-- /.box-body -->
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title">ART Work</h3>
                                 </div>
-                                <!-- /.box -->
 
-                            </div>  
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><strong>Change Order Type</strong></h3>
-                                    </div>
-                                     @include('includes/front_alerts')
-                                    <div class="box-body m-l-250">
-                                     
-                                    
-                                    <label for="Status" style="margin-left: 10px"><strong>Change Type:</strong></label>
+                                <div class="row">
+                                    @if ($DigiOrders->File1 != '')
+                                        <div class="col-md-6">
+
+                                            <div class="box-body">
+
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary
+                                                        ArtWork</label>
+
+                                                    <img src="{{ asset('uploads/orders/digi/' . $DigiOrders->File1) }}"
+                                                        width="200" />
+
+                                                </div>
+                                            </div>
+
+                                        </div> <!--Col Close-->
+                                    @endif
+
+
+                                    @if ($DigiOrders->File2 != '')
+                                        <div class="col-md-6">
+
+
+                                            <div class="box-body">
+
+
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary
+                                                        ArtWork 2</label>
+
+                                                    <img src="{{ asset('uploads/orders/digi/' . $DigiOrders->File2) }}"
+                                                        width="200" />
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div> <!--Col Close-->
+                                    @endif
+
+                                </div> <!--Row Close-->
+
+
+
+
+                                <div class="row">
+
+                                    @if ($DigiOrders->File3 != '')
+                                        <div class="col-md-6">
+
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary
+                                                        ArtWork
+                                                        3</label>
+
+                                                    <img src="{{ asset('uploads/orders/digi/' . $DigiOrders->File3) }}"
+                                                        width="200" />
+
+                                                </div>
+                                            </div>
+
+                                        </div> <!--End Col -->
+                                    @endif
+                                    @if ($DigiOrders->File4 != '')
+                                        <div class="col-md-6">
+
+                                            <div class="box-body">
+
+
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label"> Primary
+                                                        ArtWork
+                                                        4</label>
+
+                                                    <img src="{{ asset('uploads/orders/digi/' . $DigiOrders->File4) }}"
+                                                        width="200" />
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div> <!--End Col -->
+                                    @endif
+                                </div>
+
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title"><strong>Change Order Type</strong></h3>
+                                </div>
+                                @include('includes/front_alerts')
+                                <div class="box-body m-l-250">
+
+
+                                    <label for="Status" style="margin-left: 10px"><strong>Change
+                                            Type:</strong></label>
                                     <div class="form-group">
-                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                                 <div class="form-group">
-                                    {!! Form::open(['url' => 'admin/digi-status-change/'.$DigiOrders->OrderID]) !!}
-                                                    
-                                                     {!! Form::select('Status', ['-1' => 'Select Order Type', '0' => 'New Order', '3' => 'Free Order', '1' => 'Revision'], null, ['class' => 'form-control']) !!}
-                                                       <!-- <select class="form-control" id="Status" name="Status">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                {!! Form::open(['url' => 'admin/digi-status-change/' . $DigiOrders->OrderID]) !!}
+
+                                                {!! Form::select(
+                                                    'Status',
+                                                    ['-1' => 'Select Order Type', '0' => 'New Order', '3' => 'Free Order', '1' => 'Revision'],
+                                                    null,
+                                                    ['class' => 'form-control'],
+                                                ) !!}
+                                                <!-- <select class="form-control" id="Status" name="Status">
                                                             <option value="-1">Select</option>
                                                             <option value="0">New Order</option>
                                                             <option value="3">Free Order</option>
                                                             <option value="1">Revision</option>
                                                         </select> -->
-                                                   </div>
-
-                                                 </div> 
-                                        
-                                               <div class="col-md-6 col-sm-6 col-xs-12">  
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-block btn-primary">Update</button>
-                                                </div>
                                             </div>
 
-                                     {!! Form::close() !!}
-
-
-
-
                                         </div>
-                                    
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                    class="btn btn-block btn-primary">Update</button>
+                                            </div>
+                                        </div>
+
+                                        {!! Form::close() !!}
+
+
+
+
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
 
 
 
-                            @if(!$RivisionHistory->IsEmpty())
+                        @if (!$RivisionHistory->IsEmpty())
                             <div class="col-md-6">
                                 <div class="box box-primary">
                                     <div class="box-header">
                                         <h3 class="box-title">Revision History </h3>
                                     </div>
                                     <div class="box-body m-l-250">
-                                        @foreach($RivisionHistory as $history)
-                                        <div class="form-group">
-                                            <label>{{ $history->From == 3 ? 'Customer' : 'Admin' }}:</label>
-                                            <p><?= $history->Message ?><small class="pull-right">{{$history->DateAdded}}</small></p>
-                                        </div>
+                                        @foreach ($RivisionHistory as $history)
+                                            <div class="form-group">
+                                                <label>{{ $history->From == 3 ? 'Customer' : 'Admin' }}:</label>
+                                                <p><?= $history->Message ?><small
+                                                        class="pull-right">{{ $history->DateAdded }}</small></p>
+                                            </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                            @endif
+                        @endif
 
-                            
-                              @if(!$RivisionHistory->IsEmpty())
+
+                        @if (!$RivisionHistory->IsEmpty())
                             <div class="col-md-6">
                                 <div class="box box-primary">
                                     <div class="box-header">
                                         <h3 class="box-title">Revision History </h3>
                                     </div>
                                     <div class="box-body m-l-250">
-                                         <?php  $RevCount = 1; ?>
+                                        <?php $RevCount = 1; ?>
 
-                                        @foreach($revision_history as $history)
-                                        <div class="form-group" style="margin-bottom: 20px">
-                                            <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
-                                            <label>Designer Message</label> 
-                                            <p><?= $history['DesignerMessage'] ?><small class="pull-right">{{ $history['DateAdded'] }}</small><br>
-                                                 <label>Files:</label><br>
-                                            <?php
+                                        @foreach ($revision_history as $history)
+                                            <div class="form-group" style="margin-bottom: 20px">
+                                                <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
+                                                <label>Designer Message</label>
+                                                <p><?= $history['DesignerMessage'] ?><small
+                                                        class="pull-right">{{ $history['DateAdded'] }}</small><br>
+                                                    <label>Files:</label><br>
+                                                    <?php
                                                     if(!empty($history['Files'])) {
                                                         foreach($history['Files'] as $mfile) {   
                                                     ?>
 
-                                                    <div class="col-md-6" style="margin-top: 5px">
-                                                        <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
-                                                    </div>
- -                                                        
-                                                    <?php 
+                                                <div class="col-md-6" style="margin-top: 5px">
+                                                    <a href="{{ asset('uploads/orders/digi') . '/' . $mfile->File }}"
+                                                        class="btn btn-success btn-flat" download=""><i
+                                                            class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                </div>
+                                                -
+                                                <?php 
                                                 }
                                                     }
                                                     ?>
-                                                        <?php $RevCount++; ?>   
-                                                    <div class="clearfix"></div>
-                                            </p>
-                                        </div>
+                                                <?php $RevCount++; ?>
+                                                <div class="clearfix"></div>
+                                                </p>
+                                            </div>
                                         @endforeach
                                     </div><br>
                                 </div>
                             </div>
-                            @endif
+                        @endif
 
 
-                            <!-- /.col (left) -->
-                            @if($DigiOrders->OrderType == 0 || $DigiOrders->OrderType == 2 || $DigiOrders->OrderType == 3)
-                            @if($DigiOrders->Status != 8)
-                            @if($DigiOrders->Status != 7)
-                            @if($DigiOrders->Status != 4)
-                            @if($DigiOrders->Status != 6)
-                            {!! Form::open(['url' => 'admin/digi-assign-designer/'.$DigiOrders->OrderID]) !!}
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><strong>Assigment</strong></h3>
-                                        @include('admin/includes/front_alerts')
-                                    </div>
-                                    <div class="box-body">
-                                        <!-- Date -->
-                                        <div class="form-group">
-                                            <label>Designer:</label>
+                        <!-- /.col (left) -->
+                        @if ($DigiOrders->OrderType == 0 || $DigiOrders->OrderType == 2 || $DigiOrders->OrderType == 3)
+                            @if ($DigiOrders->Status != 8)
+                                @if ($DigiOrders->Status != 7)
+                                    @if ($DigiOrders->Status != 4)
+                                        @if ($DigiOrders->Status != 6)
+                                            {!! Form::open(['url' => 'admin/digi-assign-designer/' . $DigiOrders->OrderID]) !!}
+                                            <div class="col-md-6">
+                                                <div class="box box-primary">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"><strong>Assigment</strong></h3>
+                                                        @include('admin/includes/front_alerts')
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <!-- Date -->
+                                                        <div class="form-group">
+                                                            <label>Designer:</label>
 
 
-                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
+                                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
 
-                                            <!-- /.input group -->
+                                                            <!-- /.input group -->
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Message For Designer:</label>
+                                                            {!! Form::textarea('MessageForDesigner', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Enter your message here',
+                                                            ]) !!}
+                                                        </div>
+                                                        <!-- /.col-->
+                                                    </div>
+
+                                                    <!-- /.input group -->
+                                                </div>
+                                                <!-- /.form group -->
+
+                                                <!-- Date and time range -->
+                                                <div class="form-group">
+
+                                                    <button type="submit"
+                                                        class="btn btn-block btn-primary">ASSIGN</button>
+                                                </div>
+                                                <!-- /.form group -->
+
+                                            </div>
+                                            {!! Form::close() !!}
+                                        @else
+                                            {!! Form::open(['url' => 'admin/digi_order_revision/' . $DigiOrders->OrderID]) !!}
+                                            <div class="col-md-6">
+                                                <div class="box box-primary">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title">Revise Order </h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        @include('admin/includes/front_alerts')
+                                                        <div class="form-group">
+                                                            <label>Message For Designer:</label>
+                                                            {!! Form::textarea('MessageForDesigner', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Enter your message here',
+                                                            ]) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit"
+                                                                class="btn btn-block btn-warning">Revise</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            {!! Form::close() !!}
+                                        @endif
+                                    @else
+                                        @if (!empty($DigiOrders->DesignerID))
+                                            <div class="col-md-6">
+                                                <div class="box box-primary">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"><strong>Assigment</strong></h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <h2>Assigned to <a
+                                                                href="{{ url('admin/designers/details/' . $DigiOrders->DesignerID) }}">{{ $DigiOrders->DesignerName }}</a>
+                                                        </h2>
+                                                        {!! Form::open(['url' => 'admin/digi-assign-designer/' . $DigiOrders->OrderID]) !!}
+                                                        <div class="form-group">
+                                                            <label>Designer:</label>
+                                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Message For Designer:</label>
+                                                            {!! Form::textarea('MessageForDesigner', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Enter your message here',
+                                                            ]) !!}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit"
+                                                                class="btn btn-block btn-primary">APPROVE TO ANOTHER
+                                                                DESIGNER</button>
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            {!! Form::open(['url' => 'admin/digi-assign-designer/' . $DigiOrders->OrderID]) !!}
+                                            <div class="col-md-6">
+                                                <div class="box box-primary">
+                                                    <div class="box-header">
+                                                        <h3 class="box-title"><strong>Assigment </strong></h3>
+                                                        @include('admin/includes/front_alerts')
+                                                    </div>
+                                                    <div class="box-body">
+                                                        <!-- Date -->
+                                                        <div class="form-group">
+                                                            <label>Designer:</label>
+                                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label>Message For Designer:</label>
+                                                            {!! Form::textarea('MessageForDesigner', null, [
+                                                                'class' => 'form-control',
+                                                                'placeholder' => 'Enter your message here',
+                                                            ]) !!}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit"
+                                                        class="btn btn-block btn-primary">ASSIGN</button>
+                                                </div>
+                                                <!-- /.form group -->
+
+                                            </div>
+                                            {!! Form::close() !!}
+                                        @endif
+                                    @endif
+                                @else
+                                    <div class="col-md-6">
+                                        <div class="box box-primary">
+                                            <div class="box-header">
+                                                <h3 class="box-title">Status </h3>
+                                            </div>
+                                            <div class="box-body">
+                                                <h2>Order Sent To Customer</h2>
+                                                <h3>Confirmation is Pending</h3>
+                                            </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label>Message For Designer:</label>
-                                            {!! Form::textarea('MessageForDesigner', null, ['class' => 'form-control', 'placeholder' => 'Enter your message here']) !!}
-                                        </div>
-                                        <!-- /.col-->
                                     </div>
-
-                                    <!-- /.input group -->
-                                </div>
-                                <!-- /.form group -->
-
-                                <!-- Date and time range -->
-                                <div class="form-group">
-
-                                    <button type="submit" class="btn btn-block btn-primary">ASSIGN</button>
-                                </div>
-                                <!-- /.form group -->
-
-                            </div>
-                            {!! Form::close() !!}
+                                @endif
                             @else
-                            {!! Form::open(['url' => 'admin/digi_order_revision/'.$DigiOrders->OrderID]) !!}
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Revise Order </h3>
-                                    </div>
-                                    <div class="box-body">
-                                        @include('admin/includes/front_alerts')
-                                        <div class="form-group">
-                                            <label>Message For Designer:</label>
-                                            {!! Form::textarea('MessageForDesigner', null, ['class' => 'form-control', 'placeholder' => 'Enter your message here']) !!}
+                                <div class="col-md-6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Status </h3>
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-warning">Revise</button>
+                                        <div class="box-body">
+                                            <h2>Order Completed By <a
+                                                    href="{{ url('admin/designers/details/' . $DigiOrders->DesignerID) }}">{{ $DigiOrders->DesignerName }}</a>
+                                            </h2>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            {!! Form::close() !!}
                             @endif
-                            @else
-                            @if(!empty($DigiOrders->DesignerID))
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><strong>Assigment</strong></h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <h2>Assigned to <a href="{{ url('admin/designers/details/'.$DigiOrders->DesignerID) }}">{{ $DigiOrders->DesignerName }}</a></h2>
-                                        {!! Form::open(['url' => 'admin/digi-assign-designer/'.$DigiOrders->OrderID]) !!}
-                                        <div class="form-group">
-                                            <label>Designer:</label>
-                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Message For Designer:</label>
-                                            {!! Form::textarea('MessageForDesigner', null, ['class' => 'form-control', 'placeholder' => 'Enter your message here']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-primary">APPROVE TO ANOTHER DESIGNER</button>
-                                        </div>
-                                        {!! Form::close() !!}
-                                    </div>
-                                </div>
-                            </div>
-                            @else
-                            {!! Form::open(['url' => 'admin/digi-assign-designer/'.$DigiOrders->OrderID]) !!}
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title"><strong>Assigment </strong></h3>
-                                        @include('admin/includes/front_alerts')
-                                    </div>
-                                    <div class="box-body">
-                                        <!-- Date -->
-                                        <div class="form-group">
-                                            <label>Designer:</label>
-                                            {!! Form::select('DesignerID', $Designers, $DigiOrders->OrderID, ['class' => 'form-control']) !!}
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Message For Designer:</label>
-                                            {!! Form::textarea('MessageForDesigner', null, ['class' => 'form-control', 'placeholder' => 'Enter your message here']) !!}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-block btn-primary">ASSIGN</button>
-                                </div>
-                                <!-- /.form group -->
-
-                            </div>
-                            {!! Form::close() !!}
-                            @endif
-                            @endif
-                            @else
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Status </h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <h2>Order Sent To Customer</h2>
-                                        <h3>Confirmation is Pending</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @else
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Status </h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <h2>Order Completed By <a href="{{ url('admin/designers/details/'.$DigiOrders->DesignerID) }}">{{ $DigiOrders->DesignerName }}</a></h2>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            @elseif($DigiOrders->OrderType == 1 && $DigiOrders->Status != 10)
+                        @elseif($DigiOrders->OrderType == 1 && $DigiOrders->Status != 10)
                             <div class="col-md-6">
                                 <div class="box box-primary">
                                     <div class="box-header">
@@ -689,187 +748,197 @@
                                     </div>
                                 </div>
                             </div>
-                            @elseif($DigiOrders->Status == 10)
-                            @if($DigiOrders->OrderType == 1 || $DigiOrders->OrderType == 9)
-                            {!! Form::open(['url' => 'admin/digi_order_revision/'.$DigiOrders->OrderID]) !!}
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Revise Order </h3>
-                                    </div>
-                                    <div class="box-body">
-                                        @include('admin/includes/front_alerts')
-                                        <div class="form-group">
-                                            <label>Message For Designer:</label>
-                                            {!! Form::textarea('MessageForDesigner', null, ['class' => 'form-control', 'placeholder' => 'Enter your message here']) !!}
+                        @elseif($DigiOrders->Status == 10)
+                            @if ($DigiOrders->OrderType == 1 || $DigiOrders->OrderType == 9)
+                                {!! Form::open(['url' => 'admin/digi_order_revision/' . $DigiOrders->OrderID]) !!}
+                                <div class="col-md-6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Revise Order </h3>
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-warning">Revise</button>
+                                        <div class="box-body">
+                                            @include('admin/includes/front_alerts')
+                                            <div class="form-group">
+                                                <label>Message For Designer:</label>
+                                                {!! Form::textarea('MessageForDesigner', null, [
+                                                    'class' => 'form-control',
+                                                    'placeholder' => 'Enter your message here',
+                                                ]) !!}
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                    class="btn btn-block btn-warning">Revise</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {!! Form::close() !!}
+                                {!! Form::close() !!}
                             @elseif($DigiOrders->OrderType == 4)
-                            {!! Form::open(['url' => 'admin/digi_quote_revision/'.$DigiOrders->OrderID]) !!}
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Revise Quote </h3>
+                                {!! Form::open(['url' => 'admin/digi_quote_revision/' . $DigiOrders->OrderID]) !!}
+                                <div class="col-md-6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Revise Quote </h3>
+                                        </div>
+                                        <div class="box-body">
+                                            @include('admin/includes/front_alerts')
+                                            <div class="form-group">
+                                                <label>Quote Price:</label>
+                                                {!! Form::text('Price', null, ['class' => 'form-control', 'placeholder' => 'Enter Quote Price here']) !!}
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Message For Customer:</label>
+                                                {!! Form::textarea('MessageForCustomer', null, [
+                                                    'class' => 'form-control',
+                                                    'placeholder' => 'Enter Your Message here',
+                                                ]) !!}
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                    class="btn btn-block btn-warning">Revise</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="box-body">
-                                        @include('admin/includes/front_alerts')
-                                        <div class="form-group">
-                                            <label>Quote Price:</label>
-                                            {!! Form::text('Price', null, ['class' => 'form-control', 'placeholder' => 'Enter Quote Price here']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Message For Customer:</label>
-                                            {!! Form::textarea('MessageForCustomer', null, ['class' => 'form-control', 'placeholder' => 'Enter Your Message here']) !!}
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-warning">Revise</button>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            {!! Form::close() !!}
+                                {!! Form::close() !!}
                             @endif
-                            @endif
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
-
-                        <!-- iCheck -->
-
-                        <!-- /.row -->
-
-                    </section>
-                    <!-- /.content -->
-
-
-                    <div class="modal fade" id="modal-default">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">ASSIGN</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>DONE</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                            <!-- /.modal-content -->
-                        </div>
-                        <!-- /.modal-dialog -->
+                        @endif
+                        <!-- /.box-body -->
                     </div>
+                    <!-- /.box -->
+
+                    <!-- iCheck -->
+
+                    <!-- /.row -->
+
+                </section>
+                <!-- /.content -->
 
 
-
-                    <!-- /.content -->
+                <div class="modal fade" id="modal-default">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">ASSIGN</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>DONE</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default pull-left"
+                                    data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
                 </div>
-            </div>
-            <!-- /.content-wrapper -->
-            @include('admin/includes/footer')
 
+
+
+                <!-- /.content -->
+            </div>
         </div>
-        <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-        <!--<script src="{{ asset('assets/admin/plugins/chartjs/Chart.min.js') }}"></script>-->
-        <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.min.js') }}"></script>
-        <script>
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
-        datasets: [{
-                label: '',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(37, 115, 212, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(37,115,212,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '',
-                data: [3, 2, 5, 3, 19, 12],
-                backgroundColor: [
-                    'rgba(31, 152, 63, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(31,152,63,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '',
-                data: [13, 21, 26, 15, 29, 12],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+        <!-- /.content-wrapper -->
+        @include('admin/includes/footer')
+
+    </div>
+    <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <!--<script src="{{ asset('assets/admin/plugins/chartjs/Chart.min.js') }}"></script>-->
+    <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/Chart.min.js') }}"></script>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
+                datasets: [{
+                        label: '',
+                        data: [12, 19, 3, 5, 2, 3],
+                        backgroundColor: [
+                            'rgba(37, 115, 212, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(37,115,212,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: '',
+                        data: [3, 2, 5, 3, 19, 12],
+                        backgroundColor: [
+                            'rgba(31, 152, 63, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(31,152,63,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    },
+                    {
+                        label: '',
+                        data: [13, 21, 26, 15, 29, 12],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
                     }
-                }]
-        }
-    }
-});
-        </script>
-    </body>
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
 </html>

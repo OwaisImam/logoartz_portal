@@ -756,13 +756,12 @@ if(!empty($DigiOrders)){
                                     <div class="box-body">
 
                                         <div class='row'>
+                                            @if($DigiOrders->File1 != "")
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="txtarea1" class="col-sm-12 control-label">Artwork 1</label>
                                                    
                                                      <?php
-                                          
-                                                 
                                                if ($DigiOrders->File1 != "") {
                                                       
                                                         $File =  explode(".", $DigiOrders->File1);
@@ -779,6 +778,8 @@ if(!empty($DigiOrders)){
                                                   
                                                 </div>
                                             </div>
+                                            @endif
+                                             @if($DigiOrders->File2 != "")
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="txtarea1" class="col-sm-12 control-label">Artwork 2</label>
@@ -801,10 +802,12 @@ if(!empty($DigiOrders)){
                                                         <?php  } }  ?> 
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
 
                                         <hr style="border-color:#000;">
                                         <div class="row">
+                                             @if($DigiOrders->File3 != "")
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="txtarea1" class="col-sm-12 control-label">Artwork 3</label>
@@ -827,6 +830,8 @@ if(!empty($DigiOrders)){
                                                         <?php  } }  ?>  
                                                 </div>
                                             </div>
+                                            @endif
+                                             @if($DigiOrders->File4 != "")
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="txtarea1" class="col-sm-12 control-label">Artwork 4</label>
@@ -849,6 +854,7 @@ if(!empty($DigiOrders)){
                                                         <?php  } }  ?> 
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
 
 
