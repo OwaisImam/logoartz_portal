@@ -202,25 +202,6 @@ if(!empty($OrderStatus)){
           </div>
           </div>
           
-          
-
-
-  
-            
-         <h4 style="color: #ec914d">Auto Alert Email</h4>
-            <div class="my-details">
-                <div class="left">
-                    <h3>Logo Artz Server Machine</h3>
-                    <p>Email: <a class="mailto" href="mailto:technical-team@logoartz.com">technical-team@logoartz.com</a></p>
-                </div>
-                
-               <p>Develop by: <a class="mailto" href="">boostanz.com</a></p>
-                <div class="clear"></div>
-            </div>
-            
-  
-
-
         </div>
     </body>
 </html>

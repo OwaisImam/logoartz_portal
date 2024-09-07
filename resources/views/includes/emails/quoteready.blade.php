@@ -98,15 +98,7 @@
             <p class="blue-text">Please let us known, if you like to convert into order</p>
 
             <a class="activate-link" href="http://logoartz.com/login">login</a>
-            <div class="my-details">
-                <div class="left">
-                    <h3>Team Logo Artz</h3>
-                    <p>Email: <a class="mailto" href="mailto:info@logoartz.com">info@logoartz.com</a></p>
-                </div>
-
-                <div class="clear"></div>
-        
-            </div>
+           
                <!--<p style="text-align: center; font-size: 16px">Developed by: <a target="_blank" class="mailto" href="http://boostanz.com">Boostanz Technologies</a></p>-->
         </div>
     </body>

@@ -519,7 +519,7 @@ select.form-control {
     color: black;
 }
 
-input[type="radio"],
+/* input[type="radio"],
 .checkbox input[type="radio"],
 .checkbox input[type="checkbox"],
 input[type="checkbox"] {
@@ -527,7 +527,7 @@ input[type="checkbox"] {
     margin-left: 0;
     margin-top: 3px;
     position: absolute;
-}
+} */
 
 .checkbox label::before {
     border: 1px solid #dcdcdc;
@@ -3112,7 +3112,7 @@ Testimonials
 
 .testimonial-block .testi-header::after {
     color: #ff5008;
-    content: "â€?";
+    content: "ï¿½?";
     font-family: poppins;
     font-size: 44px;
     position: absolute;

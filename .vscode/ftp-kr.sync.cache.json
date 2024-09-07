@@ -1,0 +1,1492 @@
+{
+  "ftp://ftp.logoartz.com@hussain@logoartz.com": {
+    "login.logoartz.com": {
+      ".env": {
+        "type": "-",
+        "size": 770,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".ftpquota": {
+        "type": "-",
+        "size": 18,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".gitignore": {
+        "type": "-",
+        "size": 17,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess": {
+        "type": "-",
+        "size": 3007,
+        "lmtime": 0,
+        "modified": true
+      },
+      ".htaccess.lock-25e86aee39aea-19c84ad8b-15000": {
+        "type": "-",
+        "size": 44,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess.lock-388fa5018407-19c84ad8b-15000": {
+        "type": "-",
+        "size": 44,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess.phpupgrader.19b885be": {
+        "type": "-",
+        "size": 2817,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess.phpupgrader.27200a00": {
+        "type": "-",
+        "size": 2529,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess.phpupgrader.5401abd4": {
+        "type": "-",
+        "size": 2809,
+        "lmtime": 0,
+        "modified": false
+      },
+      ".htaccess.phpupgrader.initial": {
+        "type": "-",
+        "size": 2529,
+        "lmtime": 0,
+        "modified": false
+      },
+      "app": {
+        "Console": {},
+        "Countries.php": {
+          "type": "-",
+          "size": 282,
+          "lmtime": 0,
+          "modified": false
+        },
+        "Currencies.php": {
+          "type": "-",
+          "size": 285,
+          "lmtime": 0,
+          "modified": false
+        },
+        "Customers.php": {
+          "type": "-",
+          "size": 283,
+          "lmtime": 0,
+          "modified": false
+        },
+        "Designers.php": {
+          "type": "-",
+          "size": 283,
+          "lmtime": 0,
+          "modified": false
+        },
+        "DigiOrders.php": {
+          "type": "-",
+          "size": 303,
+          "lmtime": 1724787176221,
+          "modified": false
+        },
+        "DigiRevFiles.php": {
+          "type": "-",
+          "size": 292,
+          "lmtime": 0,
+          "modified": false
+        },
+        "Exceptions": {},
+        "Http": {
+          "Controllers": {
+            "Admin": {
+              "Summary.php": {
+                "type": "-",
+                "size": 163534,
+                "lmtime": 1724854852346,
+                "modified": false
+              }
+            }
+          },
+          "Helper.php": {
+            "type": "-",
+            "size": 667,
+            "lmtime": 1724856112947,
+            "modified": false
+          },
+          "Kernel.php": {
+            "type": "-",
+            "size": 2164,
+            "lmtime": 0,
+            "modified": false
+          },
+          "Middleware": {}
+        },
+        "Models": {},
+        "Providers": {},
+        "SalesPerson.php": {
+          "type": "-",
+          "size": 290,
+          "lmtime": 0,
+          "modified": false
+        },
+        "VectorRevFiles.php": {
+          "type": "-",
+          "size": 296,
+          "lmtime": 0,
+          "modified": false
+        },
+        "digitizing_orders.php": {
+          "type": "-",
+          "size": 303,
+          "lmtime": 1724787135490,
+          "modified": false
+        },
+        "invoice.php": {
+          "type": "-",
+          "size": 269,
+          "lmtime": 0,
+          "modified": false
+        },
+        "vector_order.php": {
+          "type": "-",
+          "size": 292,
+          "lmtime": 0,
+          "modified": false
+        }
+      },
+      "artisan": {
+        "type": "-",
+        "size": 1686,
+        "lmtime": 0,
+        "modified": false
+      },
+      "bootstrap": {},
+      "composer.json": {
+        "type": "-",
+        "size": 1506,
+        "lmtime": 0,
+        "modified": false
+      },
+      "composer.lock": {
+        "type": "-",
+        "size": 172276,
+        "lmtime": 0,
+        "modified": false
+      },
+      "config": {},
+      "database": {},
+      "error_log": {
+        "type": "-",
+        "size": 7754,
+        "lmtime": 0,
+        "modified": false
+      },
+      "index.php": {
+        "type": "-",
+        "size": 1817,
+        "lmtime": 0,
+        "modified": false
+      },
+      "package.json": {
+        "type": "-",
+        "size": 1125,
+        "lmtime": 0,
+        "modified": false
+      },
+      "public": {
+        "assets": {
+          "web": {
+            "images": {
+              "06.png": {
+                "type": "-",
+                "size": 95674,
+                "lmtime": 0,
+                "modified": false
+              },
+              "14.jpg": {
+                "type": "-",
+                "size": 143667,
+                "lmtime": 0,
+                "modified": false
+              },
+              "17.jpg": {
+                "type": "-",
+                "size": 47468,
+                "lmtime": 0,
+                "modified": false
+              },
+              "18 (1).jpg": {
+                "type": "-",
+                "size": 142078,
+                "lmtime": 0,
+                "modified": false
+              },
+              "404-2.gif": {
+                "type": "-",
+                "size": 13513,
+                "lmtime": 0,
+                "modified": false
+              },
+              "404.gif": {
+                "type": "-",
+                "size": 28089,
+                "lmtime": 0,
+                "modified": false
+              },
+              "BannersPSD.psd": {
+                "type": "-",
+                "size": 4051969,
+                "lmtime": 0,
+                "modified": false
+              },
+              "DgigBanners.psd": {
+                "type": "-",
+                "size": 21347552,
+                "lmtime": 0,
+                "modified": false
+              },
+              "DigiBanner.png": {
+                "type": "-",
+                "size": 260106,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Digitizing.jpg": {
+                "type": "-",
+                "size": 290327,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Member-Image.png": {
+                "type": "-",
+                "size": 21017,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Member-Image1.png": {
+                "type": "-",
+                "size": 18563,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Member-Image2.png": {
+                "type": "-",
+                "size": 19059,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Member-Image3.png": {
+                "type": "-",
+                "size": 18243,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Signature.png": {
+                "type": "-",
+                "size": 6802,
+                "lmtime": 0,
+                "modified": false
+              },
+              "VectorBanner.psd": {
+                "type": "-",
+                "size": 10244810,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Wd.png": {
+                "type": "-",
+                "size": 5790,
+                "lmtime": 0,
+                "modified": false
+              },
+              "aboutbg.png": {
+                "type": "-",
+                "size": 589265,
+                "lmtime": 0,
+                "modified": false
+              },
+              "atom.png": {
+                "type": "-",
+                "size": 2731,
+                "lmtime": 0,
+                "modified": false
+              },
+              "banner-1.jpg": {
+                "type": "-",
+                "size": 73562,
+                "lmtime": 0,
+                "modified": false
+              },
+              "banner-2.png": {
+                "type": "-",
+                "size": 128904,
+                "lmtime": 0,
+                "modified": false
+              },
+              "banner-3.png": {
+                "type": "-",
+                "size": 51796,
+                "lmtime": 0,
+                "modified": false
+              },
+              "banner1.png": {
+                "type": "-",
+                "size": 297881,
+                "lmtime": 0,
+                "modified": false
+              },
+              "banner2.png": {
+                "type": "-",
+                "size": 251396,
+                "lmtime": 0,
+                "modified": false
+              },
+              "blog-1.png": {
+                "type": "-",
+                "size": 138144,
+                "lmtime": 0,
+                "modified": false
+              },
+              "blog-2.png": {
+                "type": "-",
+                "size": 144972,
+                "lmtime": 0,
+                "modified": false
+              },
+              "blog-3.png": {
+                "type": "-",
+                "size": 143506,
+                "lmtime": 0,
+                "modified": false
+              },
+              "border-2.png": {
+                "type": "-",
+                "size": 27127,
+                "lmtime": 0,
+                "modified": false
+              },
+              "border.png": {
+                "type": "-",
+                "size": 23989,
+                "lmtime": 0,
+                "modified": false
+              },
+              "borderNew.png": {
+                "type": "-",
+                "size": 9738,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action-2.png": {
+                "type": "-",
+                "size": 49365,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action-3.png": {
+                "type": "-",
+                "size": 340661,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action-4.png": {
+                "type": "-",
+                "size": 49956,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action-5.png": {
+                "type": "-",
+                "size": 60656,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action-6.png": {
+                "type": "-",
+                "size": 39122,
+                "lmtime": 0,
+                "modified": false
+              },
+              "cal-to-action.png": {
+                "type": "-",
+                "size": 224155,
+                "lmtime": 0,
+                "modified": false
+              },
+              "computer.png": {
+                "type": "-",
+                "size": 2912,
+                "lmtime": 0,
+                "modified": false
+              },
+              "customer_dashboard": {},
+              "dd_cap.jpg": {
+                "type": "-",
+                "size": 490844,
+                "lmtime": 0,
+                "modified": false
+              },
+              "dd_ch.jpg": {
+                "type": "-",
+                "size": 342781,
+                "lmtime": 0,
+                "modified": false
+              },
+              "dd_jack.jpg": {
+                "type": "-",
+                "size": 394197,
+                "lmtime": 0,
+                "modified": false
+              },
+              "ddsfsdsdffsdfsd.PNG": {
+                "type": "-",
+                "size": 5807,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner.jpg": {
+                "type": "-",
+                "size": 602581,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner1.jpg": {
+                "type": "-",
+                "size": 893303,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner2.jpg": {
+                "type": "-",
+                "size": 865342,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner3.jpg": {
+                "type": "-",
+                "size": 645999,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner4.jpg": {
+                "type": "-",
+                "size": 702994,
+                "lmtime": 0,
+                "modified": false
+              },
+              "digi_banner5.jpg": {
+                "type": "-",
+                "size": 852909,
+                "lmtime": 0,
+                "modified": false
+              },
+              "download.png": {
+                "type": "-",
+                "size": 3215,
+                "lmtime": 0,
+                "modified": false
+              },
+              "draw.png": {
+                "type": "-",
+                "size": 2476,
+                "lmtime": 0,
+                "modified": false
+              },
+              "drawing.png": {
+                "type": "-",
+                "size": 2520,
+                "lmtime": 0,
+                "modified": false
+              },
+              "favicon.png": {
+                "type": "-",
+                "size": 19994,
+                "lmtime": 1643868628000,
+                "modified": false
+              },
+              "footer-1.jpg": {
+                "type": "-",
+                "size": 5592,
+                "lmtime": 0,
+                "modified": false
+              },
+              "footer-2.jpg": {
+                "type": "-",
+                "size": 4291,
+                "lmtime": 0,
+                "modified": false
+              },
+              "footer-3.jpg": {
+                "type": "-",
+                "size": 4719,
+                "lmtime": 0,
+                "modified": false
+              },
+              "footer-4.jpg": {
+                "type": "-",
+                "size": 5598,
+                "lmtime": 0,
+                "modified": false
+              },
+              "footer-5.jpg": {
+                "type": "-",
+                "size": 4215,
+                "lmtime": 0,
+                "modified": false
+              },
+              "footer-6.jpg": {
+                "type": "-",
+                "size": 4611,
+                "lmtime": 0,
+                "modified": false
+              },
+              "images.jpg": {
+                "type": "-",
+                "size": 6521,
+                "lmtime": 0,
+                "modified": false
+              },
+              "learning.png": {
+                "type": "-",
+                "size": 2543,
+                "lmtime": 0,
+                "modified": false
+              },
+              "line.png": {
+                "type": "-",
+                "size": 21150,
+                "lmtime": 0,
+                "modified": false
+              },
+              "logo-old.png": {
+                "type": "-",
+                "size": 5121,
+                "lmtime": 0,
+                "modified": false
+              },
+              "logo.gif": {
+                "type": "-",
+                "size": 32257,
+                "lmtime": 0,
+                "modified": false
+              },
+              "logo.png": {
+                "type": "-",
+                "size": 53443,
+                "lmtime": 0,
+                "modified": false
+              },
+              "logo1.png": {
+                "type": "-",
+                "size": 19994,
+                "lmtime": 1643868628000,
+                "modified": false
+              },
+              "message.png": {
+                "type": "-",
+                "size": 2964,
+                "lmtime": 0,
+                "modified": false
+              },
+              "pencil.png": {
+                "type": "-",
+                "size": 3901,
+                "lmtime": 0,
+                "modified": false
+              },
+              "portfolio": {},
+              "search-bg.jpg": {
+                "type": "-",
+                "size": 81193,
+                "lmtime": 0,
+                "modified": false
+              },
+              "security.png": {
+                "type": "-",
+                "size": 3466,
+                "lmtime": 0,
+                "modified": false
+              },
+              "select-arrow.png": {
+                "type": "-",
+                "size": 223,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-1.png": {
+                "type": "-",
+                "size": 3811,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-2.png": {
+                "type": "-",
+                "size": 3608,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-3.png": {
+                "type": "-",
+                "size": 2811,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-3d-printer.png": {
+                "type": "-",
+                "size": 5078,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-4.png": {
+                "type": "-",
+                "size": 2791,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-5.png": {
+                "type": "-",
+                "size": 2630,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-6.png": {
+                "type": "-",
+                "size": 3033,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-devices.png": {
+                "type": "-",
+                "size": 3984,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-1.jpg": {
+                "type": "-",
+                "size": 34600,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-1.png": {
+                "type": "-",
+                "size": 58493,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-2.jpg": {
+                "type": "-",
+                "size": 33082,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-2.png": {
+                "type": "-",
+                "size": 53352,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-3.jpg": {
+                "type": "-",
+                "size": 22272,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-3.png": {
+                "type": "-",
+                "size": 79351,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-4.jpg": {
+                "type": "-",
+                "size": 35815,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-4.png": {
+                "type": "-",
+                "size": 79570,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-5.jpg": {
+                "type": "-",
+                "size": 45550,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-5.png": {
+                "type": "-",
+                "size": 45910,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-6.jpg": {
+                "type": "-",
+                "size": 21741,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-image-6.png": {
+                "type": "-",
+                "size": 97211,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-layers.png": {
+                "type": "-",
+                "size": 5507,
+                "lmtime": 0,
+                "modified": false
+              },
+              "service-search.png": {
+                "type": "-",
+                "size": 5911,
+                "lmtime": 0,
+                "modified": false
+              },
+              "shield.png": {
+                "type": "-",
+                "size": 5332,
+                "lmtime": 0,
+                "modified": false
+              },
+              "single-portfolio-1.jpg": {
+                "type": "-",
+                "size": 70369,
+                "lmtime": 0,
+                "modified": false
+              },
+              "single-portfolio-2.jpg": {
+                "type": "-",
+                "size": 34582,
+                "lmtime": 0,
+                "modified": false
+              },
+              "single-service-2.jpg": {
+                "type": "-",
+                "size": 516623,
+                "lmtime": 0,
+                "modified": false
+              },
+              "single-service.jpg": {
+                "type": "-",
+                "size": 182920,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p1.jpg": {
+                "type": "-",
+                "size": 304099,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p2.jpg": {
+                "type": "-",
+                "size": 50570,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p3.jpg": {
+                "type": "-",
+                "size": 705779,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p4.jpg": {
+                "type": "-",
+                "size": 216263,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p5.jpg": {
+                "type": "-",
+                "size": 236457,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p6.jpg": {
+                "type": "-",
+                "size": 468801,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p7.jpg": {
+                "type": "-",
+                "size": 314583,
+                "lmtime": 0,
+                "modified": false
+              },
+              "six_p8.jpg": {
+                "type": "-",
+                "size": 363206,
+                "lmtime": 0,
+                "modified": false
+              },
+              "smm.jpg": {
+                "type": "-",
+                "size": 9606,
+                "lmtime": 0,
+                "modified": false
+              },
+              "smm.png": {
+                "type": "-",
+                "size": 9121,
+                "lmtime": 0,
+                "modified": false
+              },
+              "team-1.jpg": {
+                "type": "-",
+                "size": 28950,
+                "lmtime": 0,
+                "modified": false
+              },
+              "team-2.jpg": {
+                "type": "-",
+                "size": 35207,
+                "lmtime": 0,
+                "modified": false
+              },
+              "team-3.jpg": {
+                "type": "-",
+                "size": 21125,
+                "lmtime": 0,
+                "modified": false
+              },
+              "team-4.jpg": {
+                "type": "-",
+                "size": 34740,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-1.jpg": {
+                "type": "-",
+                "size": 7034,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-2.jpg": {
+                "type": "-",
+                "size": 6787,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-3.jpg": {
+                "type": "-",
+                "size": 7465,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-businessman.png": {
+                "type": "-",
+                "size": 5884,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-disc-jockey.png": {
+                "type": "-",
+                "size": 5841,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-journalist.png": {
+                "type": "-",
+                "size": 6137,
+                "lmtime": 0,
+                "modified": false
+              },
+              "testimonial-maid.png": {
+                "type": "-",
+                "size": 5782,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vectar.png": {
+                "type": "-",
+                "size": 8911,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vectorBn.jpg": {
+                "type": "-",
+                "size": 148413,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vectorBn.psd": {
+                "type": "-",
+                "size": 19771863,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vector_detail_banner.jpg": {
+                "type": "-",
+                "size": 377125,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vector_detail_banner1.jpg": {
+                "type": "-",
+                "size": 402951,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vector_detail_banner2.jpg": {
+                "type": "-",
+                "size": 736098,
+                "lmtime": 0,
+                "modified": false
+              },
+              "vector_detail_banner3.jpg": {
+                "type": "-",
+                "size": 706719,
+                "lmtime": 0,
+                "modified": false
+              },
+              "video.jpg": {
+                "type": "-",
+                "size": 266696,
+                "lmtime": 0,
+                "modified": false
+              },
+              "wd.svg": {
+                "type": "-",
+                "size": 10356,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-1.jpg": {
+                "type": "-",
+                "size": 12068,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-10.jpg": {
+                "type": "-",
+                "size": 36194,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-11.jpg": {
+                "type": "-",
+                "size": 35491,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-12.jpg": {
+                "type": "-",
+                "size": 28799,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-13.jpg": {
+                "type": "-",
+                "size": 28184,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-14.jpg": {
+                "type": "-",
+                "size": 35321,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-15.jpg": {
+                "type": "-",
+                "size": 17838,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-2.jpg": {
+                "type": "-",
+                "size": 9965,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-3.jpg": {
+                "type": "-",
+                "size": 6782,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-4.jpg": {
+                "type": "-",
+                "size": 13157,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-7.jpg": {
+                "type": "-",
+                "size": 15208,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-8.jpg": {
+                "type": "-",
+                "size": 22197,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-9.jpg": {
+                "type": "-",
+                "size": 50905,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work-bg.jpg": {
+                "type": "-",
+                "size": 327537,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work5.jpg": {
+                "type": "-",
+                "size": 10478,
+                "lmtime": 0,
+                "modified": false
+              },
+              "work6.jpg": {
+                "type": "-",
+                "size": 21277,
+                "lmtime": 0,
+                "modified": false
+              }
+            }
+          }
+        }
+      },
+      "resources": {
+        "views": {
+          "about.blade.php": {
+            "type": "-",
+            "size": 10334,
+            "lmtime": 0,
+            "modified": false
+          },
+          "accounts.blade.php": {
+            "type": "-",
+            "size": 8825,
+            "lmtime": 0,
+            "modified": false
+          },
+          "admin": {
+            "configuration.blade.php": {
+              "type": "-",
+              "size": 13293,
+              "lmtime": 0,
+              "modified": false
+            },
+            "customers": {},
+            "dashboard.blade.php": {
+              "type": "-",
+              "size": 27753,
+              "lmtime": 0,
+              "modified": false
+            },
+            "designers": {},
+            "err403.blade.php": {
+              "type": "-",
+              "size": 3839,
+              "lmtime": 0,
+              "modified": false
+            },
+            "includes": {},
+            "login.blade.php": {
+              "type": "-",
+              "size": 2829,
+              "lmtime": 1724785696073,
+              "modified": false
+            },
+            "profile.blade.php": {
+              "type": "-",
+              "size": 9875,
+              "lmtime": 0,
+              "modified": false
+            },
+            "quotations": {},
+            "salesperson": {},
+            "summary": {
+              "CustomerSummary.blade.php": {
+                "type": "-",
+                "size": 24428,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EditOrder.blade.php": {
+                "type": "-",
+                "size": 28699,
+                "lmtime": 0,
+                "modified": false
+              },
+              "EditOrderVec.blade.php": {
+                "type": "-",
+                "size": 28084,
+                "lmtime": 0,
+                "modified": false
+              },
+              "ExtraTime.blade.php": {
+                "type": "-",
+                "size": 26682,
+                "lmtime": 0,
+                "modified": false
+              },
+              "NewOrders.blade.php": {
+                "type": "-",
+                "size": 13921,
+                "lmtime": 1724856234202,
+                "modified": false
+              },
+              "NewQuotes.blade.php": {
+                "type": "-",
+                "size": 26698,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Order Tyoe Change Codeeeeeeeeeeeeeeeeeee.php": {
+                "type": "-",
+                "size": 2673,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OrderDetail.blade.php": {
+                "type": "-",
+                "size": 87457,
+                "lmtime": 1724856239488,
+                "modified": false
+              },
+              "OrderDetail.blade.php.bak": {
+                "type": "-",
+                "size": 15793,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OrderDetail.html": {
+                "type": "-",
+                "size": 29369,
+                "lmtime": 0,
+                "modified": false
+              },
+              "OrderDetail_BackUp.blade.php": {
+                "type": "-",
+                "size": 73329,
+                "lmtime": 0,
+                "modified": false
+              },
+              "QuteRev.blade.php": {
+                "type": "-",
+                "size": 26690,
+                "lmtime": 0,
+                "modified": false
+              },
+              "RevOrders.blade.php": {
+                "type": "-",
+                "size": 26068,
+                "lmtime": 0,
+                "modified": false
+              },
+              "SearchDetail.blade.php": {
+                "type": "-",
+                "size": 12768,
+                "lmtime": 0,
+                "modified": false
+              },
+              "VecOrderDetail.blade.php": {
+                "type": "-",
+                "size": 73567,
+                "lmtime": 1724856152746,
+                "modified": false
+              },
+              "VectorOrders.blade.php": {
+                "type": "-",
+                "size": 14267,
+                "lmtime": 1724855347339,
+                "modified": false
+              },
+              "accounts": {},
+              "backup": {},
+              "customers": {},
+              "designers": {},
+              "history": {},
+              "index.blade.php": {
+                "type": "-",
+                "size": 21103,
+                "lmtime": 0,
+                "modified": false
+              },
+              "sales": {}
+            }
+          },
+          "contact.blade.php": {
+            "type": "-",
+            "size": 14337,
+            "lmtime": 0,
+            "modified": false
+          },
+          "customer_das.blade.php": {
+            "type": "-",
+            "size": 16564,
+            "lmtime": 0,
+            "modified": false
+          },
+          "customer_das.blade.php.bak": {
+            "type": "-",
+            "size": 10137,
+            "lmtime": 0,
+            "modified": false
+          },
+          "customerupdate.blade.php": {
+            "type": "-",
+            "size": 16344,
+            "lmtime": 0,
+            "modified": false
+          },
+          "designer": {},
+          "digi.blade.php": {
+            "type": "-",
+            "size": 10376,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digi_acc_sum.blade.php": {
+            "type": "-",
+            "size": 9153,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digi_approvals.blade.php": {
+            "type": "-",
+            "size": 9219,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digi_order_details.blade.php": {
+            "type": "-",
+            "size": 36088,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digisum.php": {
+            "type": "-",
+            "size": 1626,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digisumm.blade.php": {
+            "type": "-",
+            "size": 8892,
+            "lmtime": 0,
+            "modified": false
+          },
+          "digitizing_order.blade.php": {
+            "type": "-",
+            "size": 29082,
+            "lmtime": 1725555454174,
+            "modified": false
+          },
+          "digitizing_quote.blade.php": {
+            "type": "-",
+            "size": 26824,
+            "lmtime": 0,
+            "modified": false
+          },
+          "finance": {
+            "accounts_summary.blade.php": {
+              "type": "-",
+              "size": 10826,
+              "lmtime": 1725555454854,
+              "modified": false
+            },
+            "editPricesDigi.blade.php": {
+              "type": "-",
+              "size": 17077,
+              "lmtime": 0,
+              "modified": false
+            },
+            "editPricesVec.blade.php": {
+              "type": "-",
+              "size": 17178,
+              "lmtime": 0,
+              "modified": false
+            },
+            "invoices_list.blade.php": {
+              "type": "-",
+              "size": 8493,
+              "lmtime": 0,
+              "modified": false
+            }
+          },
+          "forgotpwd.blade.php": {
+            "type": "-",
+            "size": 6288,
+            "lmtime": 0,
+            "modified": false
+          },
+          "home.blade.php": {
+            "type": "-",
+            "size": 50231,
+            "lmtime": 0,
+            "modified": false
+          },
+          "includes": {},
+          "index.html": {
+            "type": "-",
+            "size": 49119,
+            "lmtime": 0,
+            "modified": false
+          },
+          "invbldview.blade.php": {
+            "type": "-",
+            "size": 10221,
+            "lmtime": 0,
+            "modified": false
+          },
+          "login.blade.php": {
+            "type": "-",
+            "size": 7199,
+            "lmtime": 0,
+            "modified": false
+          },
+          "mail.blade.php": {
+            "type": "-",
+            "size": 201,
+            "lmtime": 0,
+            "modified": false
+          },
+          "pdfinvbldview.blade.php": {
+            "type": "-",
+            "size": 6297,
+            "lmtime": 0,
+            "modified": false
+          },
+          "pdfview.blade.php": {
+            "type": "-",
+            "size": 487,
+            "lmtime": 0,
+            "modified": false
+          },
+          "portfolio.blade.php": {
+            "type": "-",
+            "size": 23149,
+            "lmtime": 0,
+            "modified": false
+          },
+          "register.blade.php": {
+            "type": "-",
+            "size": 16252,
+            "lmtime": 0,
+            "modified": false
+          },
+          "reset-pwd.blade.php": {
+            "type": "-",
+            "size": 6715,
+            "lmtime": 0,
+            "modified": false
+          },
+          "salesperson": {},
+          "send_design_mail.blade.php": {
+            "type": "-",
+            "size": 221,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vec_acc_sum.blade.php": {
+            "type": "-",
+            "size": 9090,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vecsumm.blade.php": {
+            "type": "-",
+            "size": 8725,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector.blade.php": {
+            "type": "-",
+            "size": 11956,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector_approvals.blade.php": {
+            "type": "-",
+            "size": 9203,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector_detail.blade.php": {
+            "type": "-",
+            "size": 13364,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector_order.blade.php": {
+            "type": "-",
+            "size": 21812,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector_order_details.blade.php": {
+            "type": "-",
+            "size": 35808,
+            "lmtime": 0,
+            "modified": false
+          },
+          "vector_quote.blade.php": {
+            "type": "-",
+            "size": 24113,
+            "lmtime": 0,
+            "modified": false
+          },
+          "welcome.blade.php": {
+            "type": "-",
+            "size": 2831,
+            "lmtime": 0,
+            "modified": false
+          }
+        }
+      },
+      "routes": {},
+      "storage": {
+        "logs": {
+          ".gitignore": {
+            "type": "-",
+            "size": 14,
+            "lmtime": 0,
+            "modified": false
+          },
+          "laravel.log": {
+            "type": "-",
+            "size": 1866776,
+            "lmtime": 1724787192167,
+            "modified": true
+          },
+          "oldlaravel.log": {
+            "type": "-",
+            "size": 22481558,
+            "lmtime": 0,
+            "modified": false
+          },
+          "oldtolaravel.log": {
+            "type": "-",
+            "size": 21123,
+            "lmtime": 0,
+            "modified": false
+          }
+        }
+      },
+      "tests": {},
+      "vendor": {},
+      "webpack.mix.js": {
+        "type": "-",
+        "size": 558,
+        "lmtime": 0,
+        "modified": false
+      }
+    }
+  },
+  "$version": 1
+}

@@ -143,7 +143,7 @@
                                               <tr class="newclass<?php echo $OrderData->Status ?> new<?php echo $OrderData->IsRead ?> font<?php echo $OrderData->IsRead ?> <?php if($OrderData->OrderStatus == 2 && $OrderData->Status != 7){ echo "backcolor2"; } ?>"> 
 
 
-                                                  <td>{{ $OrderData->OrderID }}</td>
+                                                  <td>{{ App\Http\Helper::getPrefix('digitizing', $OrderData->OrderType ) . '-'. $OrderData->OrderID }}</td>
                                                   <td>{{ $OrderData->PONumber }}</td>
                                                   <td>{{ $OrderData->DesignName }}</td>
                                                   <td><a href="{{ url('admin/customers/sortdetails/'.$OrderData->CusId) }}"> {{ $OrderData->CustomerName }}</a> </td>

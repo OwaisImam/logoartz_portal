@@ -467,7 +467,6 @@ if(!empty($DigiOrders)){
               <!--  Order 1st Release Detail Only -->
                       @if($RivisionHistory->IsEmpty())
                         @if($revision_history != null)
-
                         <div class="col-md-6">
                                 <div class="box box-primary">
                                     <div class="box-header">
@@ -565,7 +564,6 @@ if(!empty($DigiOrders)){
                         @endif
           
           
-
 
   @if(!$RivisionHistory->IsEmpty())
           
@@ -667,7 +665,7 @@ if(!empty($DigiOrders)){
                                     </div><br>
                                 </div>
                             </div>
-                            @endif   
+                      @endif   
 
         
 

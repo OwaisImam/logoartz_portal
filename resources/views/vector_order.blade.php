@@ -182,23 +182,27 @@ label{
 
                            
 
-                            <div class="col-md-3"> 
+                            <div class="col-md-2"> 
                                 <div class="form-group">
-                                    <label for="Hight">Hight</label>
-                                    {{ Form::text('Height', null, ['placeholder' => 'Height', 'class' => 'form-control']) }}
-
+                                 <label for="Width">Height</label>
+                                  {{ Form::text('Height', null, ['placeholder' => 'Height', 'id' => 'height', 'class' => 'form-control']) }}
                                 </div>
+                         </div>
+                         <div class="col-md-2"> 
+                            <div class="form-group">
+                             <label for="proportion">Is Proportion?</label>
+                             <input type="checkbox" name="proportion" id="proportion" class="checkbox">
                             </div>
-                            
-                             <div class="col-md-3"> 
-                                <div class="form-group">
-                                    <label for="Width">Width</label>
+                     </div>
 
-                                    {{ Form::text('Width', null, ['placeholder' => 'Width', 'class' => 'form-control']) }}
+                        <div class="col-md-2"> 
+                            <div class="form-group">
+                                <label for="Width">Width</label>
 
-
-                                </div>
+                                {{ Form::text('Width', null, ['placeholder' => 'Width', 'id' => 'width', 'class' => 'form-control']) }}
+                        
                             </div>
+                         </div>
 
 
                             <div class="col-md-3"> 
@@ -452,6 +456,54 @@ label{
     <script type="text/javascript" src="{{ asset('assets/web/js/smooth-scroll.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/web/js/owl.carousel.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/web/js/custom.js') }}"></script>
+    <script>
+        const aspectRatio = 16 / 9; // Default aspect ratio, change as needed
+        function calculateProportion($changedInput, $otherInput, calculate) {
+            // const value = parseFloat($changedInput.val());
+            // if (!isNaN(value)) {
+            //     const calculatedValue = Math.round(calculate(value));
+            //     $otherInput.val(calculatedValue);
+            // }
+            if ($changedInput.val()) {
+                $otherInput.val('');
+            }
+
+        }
+
+        $(document).ready(function() {
+
+            $('#width').on('keyup', function() {
+                if ($('#proportion').is(':checked')) {
+                    calculateProportion(
+                        $(this),
+                        $('#height'),
+                        width => width / aspectRatio
+                    );
+                }
+            });
+
+            $('#height').on('keyup', function() {
+                if ($('#proportion').is(':checked')) {
+                    calculateProportion(
+                        $(this),
+                        $('#width'),
+                        height => height * aspectRatio
+                    );
+                }
+
+            });
+
+            $('#proportion').on('change', function() {
+                if ($(this).is(':checked')) {
+                    calculateProportion(
+                        $('#height'),
+                        $('#width'),
+                        height => height * aspectRatio
+                    );
+                }
+            });
+        });
+    </script>
 </body>
 
 

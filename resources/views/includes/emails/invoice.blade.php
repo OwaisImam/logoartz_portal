@@ -96,23 +96,6 @@
             <p class="blue-text">{{ $Message }}</p> <br>
             <a class="activate-link" href="{{ $payUrl }}">Please Click Here to make your payment </a>
             
-            
-            
-             <div class="my-details">
-                  <h3>Thank you!</h3>
-                <div >
-                     <img style="float: left;" src="{{ asset('assets/web/img/logo-v1.png') }}" /><br><br>
-                     <h3 style="text-align: center;">LogoArtz Finance Department</h3>
-                    <p>Email: <a class="mailto" href="mailto:technical-team@logoartz.com">technical-team@logoartz.com</a></p>
-                     <p>Phone: 917-310-3789</p>
-                </div>
-
-                <div class="clear"></div>
-           
-
-
-           </div>
-           
             <!--<p style="text-align: center; font-size: 16px">Developed by: <a target="_blank" class="mailto" href="http://boostanz.com">Boostanz Technologies</a></p>-->
            
         </div>

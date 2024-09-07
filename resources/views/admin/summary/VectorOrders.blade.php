@@ -136,21 +136,16 @@
                                                     <th></th>
                                                 </tr>
                                    </thead>
-            
-
 
   <?php  
                    if(count($VectorOrders) > 0) {
+                    
                       foreach ($VectorOrders as $OrderData) {
                    ?>
 
                                             <tr class="newclass<?php echo $OrderData->Status ?> new<?php echo $OrderData->IsRead ?> font<?php echo $OrderData->IsRead ?> <?php if($OrderData->OrderStatus == 2 && $OrderData->Status != 7 && $OrderData->IsRead == 4){ echo "backcolorwithfont2"; }elseif($OrderData->OrderStatus == 2 && $OrderData->Status != 7){ echo "backcolor2"; }   ?>"> 
-                                                
-                                                
-                                          
-                                                   
-                                                   
-                                                  <td>{{ $OrderData->VectorOrderID }}</td>
+                           
+                                                  <td>{{ App\Http\Helper::getPrefix('vector', $OrderData->OrderType ) .'-'. $OrderData->VectorOrderID }}</td>
                                                   <td>{{ $OrderData->PONumber }}</td>
                                                   <td>{{ $OrderData->DesignName }}</td>
                                                   <td><a href="{{ url('admin/customers/sortdetails/'.$OrderData->CusId) }}">{{ $OrderData->CustomerName }}</a></td>

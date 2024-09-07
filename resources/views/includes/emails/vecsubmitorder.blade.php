@@ -241,18 +241,6 @@
           </div>
           </div>
             
-            
-    <?php if($OrderStatus == 0){  ?>        
-                
-         <h4 style="color: #ec914d">Thank you for choosing us!!</h4>
-            <div class="my-details">
-                <div class="left">
-                    <h3>Team LogoArtz</h3>
-                    <p>Email: <a class="mailto" href="mailto:technical-team@logoartz.com">info@logoartz.com</a></p>
-                </div>
-                <div class="clear"></div>
-    <?php }?>
-  
             </div>
         </div>
     </body>

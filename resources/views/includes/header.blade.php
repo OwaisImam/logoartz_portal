@@ -122,7 +122,7 @@
 
 
                     <li class="dropdown">
-                        <a href="{{ url('/digitizing_portfolio') }}">Digitizing <?= $totaldigis != 0 ? '<span class="label label-success l-50">'.$totaldigis.'</span>' : '' ?></a>
+                        <a href="{{ url('/digi-order') }}">Digitizing <?= $totaldigis != 0 ? '<span class="label label-success l-50">'.$totaldigis.'</span>' : '' ?></a>
                         <?php
                         if (\Session::has('CustomerLogin')) {
                             ?>
@@ -177,77 +177,14 @@
                     </li>
 
 
-<?php
-                        if (\Session::has('CustomerLogin')) {
-                            ?>
-                        <li class="dropdown">
-                        <a href="#">History</a>
-                        
-                         <ul class="dropdown-menu">
-                                <li class="dropdown left">
-                                    <a href="{{url('/dorderrecords')}}">Digitizing Order History</a> 
-                                </li>
-
-                                  <li class="dropdown left">
-                                    <a href="{{url('/dquoterecords')}}">Digitizing Quote History</a> 
-                                </li>
-
-                                <li class="dropdown left">
-                                    <a href="{{url('/vorderrecords')}}">Vector Order History</a>
-                                  </li>
-
-                                <li class="dropdown left">
-                                    <a href="{{url('/vquoterecords')}}">Vector Quote History</a>
-                                  </li>
-                            </ul> 
-                            <?php
-                        }
-                        ?>
-                    </li>
-
-
-
-
-
 
                    <?php
                         if (\Session::has('CustomerLogin')) {
                             ?>
                          
                            <li class="dropdown">
-                        <a href="#">Accounts</a>
-
-                               <ul class="dropdown-menu">
-                               <!--    <li class="dropdown left">
-                                    <a href="{{ url('/accounts_summary')}}">Accounts Summary</a>
-                                  </li> -->
-                                <li class="dropdown left">
-                                    <a href="{{ url('/digiaccounts') }}">Digitizing</a> 
-                                </li>
-
-                                <li class="dropdown left">
-                                    <a href="{{ url('/vectoraccounts')}}">Vector</a> 
-
-                              <!--   <li class="dropdown left">
-                                    <a href="#">Invoices</a> 
-                                </li>
-
-                                <li class="dropdown left">
-                                    <a href="#">Payment History</a>
-                                  </li> -->
-
-                                  <li class="dropdown left">
-                                    <a href="{{ url('/invoices')}}">Invoices</a>
-                                  </li>
-                            </ul> 
-
-                            
-
-
+                                <a href="{{ url('accounts_summary') }}">Invoices</a>
                             </li>
-
-
-                         
                             <?php
                         } else {
 

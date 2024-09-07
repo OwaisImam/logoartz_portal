@@ -112,7 +112,7 @@
 <section id="single-services" class="space one">
     <div class="container">
         <center><h2>Accounts Summary</h2></center>
-                 {{ Form::open(['method'=>'post', 'url'=>'/accounts_summary', 'files'=>'true', 'novalidate'=>'novalidate']) }}
+                 {{ Form::open(['method'=>'get', 'url'=>'/accounts_summary', 'files'=>'true', 'novalidate'=>'novalidate']) }}
 
                    @include('includes/front_alerts')
         <section style="padding-bottom: 50px;">
@@ -159,9 +159,6 @@
                 
             <section class="content">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <center>
-
-                    </center>
                     <thead>
                       <tr>
                         <th>Order# </th>

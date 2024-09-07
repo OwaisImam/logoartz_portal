@@ -95,14 +95,7 @@
             <p class="blue-text">Dear {{ $FirstName }},</p>
             <p class="blue-text">Thank you for registration in <b>Logo Artz</b>, all we need to confirm your email by clicking here, before you can start enjoying the best and most seamless designing experience ever!</p>
             <a class="activate-link" href="{{ $ActivationCode }}">Click here to verify your email</a>
-            <div class="my-details">
-                <div class="left">
-                    <h3>Team LogoArtz</h3>
-                    <p>Email: <a class="mailto" href="mailto:info@logoartz.com">info@logoartz.com</a></p>
-                </div>
-
-                <div class="clear"></div>
-            </div>
+            
         </div>
     </body>
 </html>

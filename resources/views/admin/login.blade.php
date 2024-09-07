@@ -19,7 +19,7 @@
            
             <div class="login-box-body" style="background: -webkit-linear-gradient(top, #ffff, #6bd6ff73)">
                 <br>   
-                 <div class="login-logo"> <a href="{{ url('/admin/login') }}"><img src="{{ asset('logovec.png') }}" width="200px" /></a> </div><br>
+                 <div class="login-logo"> <a href="{{ url('/admin/login') }}"><img src="{{ asset('assets/web/img/logo-v1.png') }}" width="200px" /></a> </div><br>
                 <h3 class="login-box-msg" style="color: white"><b> Administrator Login</b> </h3>
                 @include('admin/includes/front_alerts')
                 <form action="{{ url('/admin/login') }}" method="post">

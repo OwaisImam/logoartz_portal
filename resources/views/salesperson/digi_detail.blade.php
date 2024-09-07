@@ -430,6 +430,208 @@
                             </div>  
                       
 
+                            @if($RivisionHistory->IsEmpty())
+                            @if($revision_history != null)
+                            <div class="col-md-6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Order Release History</h3>
+                                        </div>
+                                        <div class="box-body m-l-250">
+                                             
+    
+                                            @foreach($revision_history as $history)
+                                            <div class="form-group" style="margin-bottom: 20px">
+                                              
+                                                <label>Designer Message</label> 
+                                                <p><?= $history['DesignerMessage'] ?><small class="pull-right">{{ $history['DateAdded'] }}</small><br>
+                                                     <label>Order Files:</label><br>
+                                            
+    
+                                                <?php
+                                                  $counta = 0;
+                                                  $countb = 0;
+                                                  $countc = 0;
+                                                        if(!empty($history['Files'])) {
+                                                            foreach($history['Files'] as $mfile) {   
+                                                        ?>
+    
+                                                        <div class="col-md-12">
+                        
+                                                  <div class="form-group">
+                                                        
+                                                     @if($mfile->Category == 'a')
+                                                         <?php if($counta < 1) { ?>
+                                                       <label>Files A</label><br>
+                                                   <?php } ?>                                                     
+                                                   <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>   
+                                                 <?php $counta++;  ?>
+                                                     <div class="clearfix"></div>
+                                                   @endif
+    
+    
+    
+    
+                                                    @if($mfile->Category == 'b')
+                                                       <?php if($countb < 1) { ?>
+                                                       <label>Files B</label><br>
+                                                   <?php } ?>
+                                                       <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>   
+                                                    <?php $countb++;  ?>
+                                                     <div class="clearfix"></div>
+                                                   @endif
+    
+                                                    @if($mfile->Category == 'c')
+                                                       <?php if($countc < 1) { ?>
+                                                       <label>Files C</label><br>
+                                                   <?php } ?>
+                                                       <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>   
+                                                    <?php $countc++;  ?>
+                                                     <div class="clearfix"></div>
+                                                   @endif
+    
+                                               </div>
+                                           </div>
+    
+    
+                                                   @if($mfile->Category == '')
+                                                       <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                       </div>      
+                                                   @endif
+                                                                                                          
+                                                        <?php 
+                                                    }
+                                                        }else{  ?> 
+    
+    
+                                                            <h3 class="box-title">No File</h3>
+                                                       <?php   }
+                                                        ?>
+                                                             
+                                                        <div class="clearfix"></div>
+                                                </p>
+                                            </div>
+                                            @endforeach
+                                        </div><br>
+                                    </div>
+                                </div>
+    
+    
+    
+                             @endif
+                            @endif
+              
+              
+    
+      @if(!$RivisionHistory->IsEmpty())
+              
+                                <div class="col-md-6">
+                                    <div class="box box-primary">
+                                        <div class="box-header">
+                                            <h3 class="box-title">Revision History </h3>
+                                        </div>
+                                        <div class="box-body m-l-250">
+                                             <?php  $RevCount = 0; 
+                                                $Rev_heading = 'Order History';
+                                             ?>
+    
+                                            @foreach($revision_history as $history)
+                                            <div class="form-group" style="margin-bottom: 20px">
+                                                <?php  
+                                                    if($RevCount == 0){
+                                                ?>
+                                                <h4><strong>Order First Response</strong></h4><br>
+                                            <?php }else{ ?>
+    
+                                                <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
+                                            <?php } ?>
+                                                <label>Designer Message</label> 
+                                                <p><?= $history['DesignerMessage'] ?><small class="pull-right">{{ $history['DateAdded'] }}</small><br>
+                                                     <label>Files:</label><br>
+                                                <?php
+                                                    $counta = 0;
+                                                    $countb = 0;
+                                                    $countc = 0;
+                                                    $quotecount= 0;
+                                                        if(!empty($history['Files'])) {
+                                                            foreach($history['Files'] as $mfile) {   
+                                                        ?>
+    
+    
+                                                        <div class="col-md-12">
+                        
+                                                  <div class="form-group">
+                                                        
+                                                     @if($mfile->Category == 'a')
+                                                         <?php if($counta < 1) { ?>
+                                                       <label>Files A</label><br>
+                                                   <?php } ?>
+                                                     <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>      
+                                                      <?php $counta++;  ?>
+    
+                                                   @endif
+    
+    
+                                                    @if($mfile->Category == 'b')
+                                                       <?php if($countb < 1) { ?>
+                                                       <label>Files B</label><br>
+                                                   <?php } ?>
+                                                     <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>      
+                                                     <?php $countb++;  ?>
+                                                     <div class="clearfix"></div>
+                                                   @endif
+    
+                                                    @if($mfile->Category == 'c')
+                                                     <?php if($countc < 1) { ?>
+                                                       <label>Files C</label><br>
+                                                    <?php } ?>
+                                                     
+                                                     <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>      
+                                                     <?php $countc++;  ?>
+                                                     <div class="clearfix"></div>
+                                                   @endif
+    
+    
+                                                   @if($mfile->Category == '')
+    
+                                                       <div class="col-md-6" style="margin-top: 5px">
+                                                            <a href="{{asset('uploads/orders/digi').'/'.$mfile->File}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $mfile->File }}</a>
+                                                        </div>      
+                                                   @endif
+    
+    
+    
+                                               </div>
+                                           </div>
+    
+                                                                                                        
+                                                        <?php 
+                                                    }
+                                                        }
+                                                        ?>
+                                                            <?php $RevCount++; ?>   
+                                                        <div class="clearfix"></div>
+                                                </p>
+                                            </div>
+                                            @endforeach
+                                        </div><br>
+                                    </div>
+                                </div>
+                          @endif   
+                          
 
                             @if(!$RivisionHistory->IsEmpty())
                             <div class="col-md-6">

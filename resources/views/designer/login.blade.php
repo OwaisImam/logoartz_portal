@@ -16,7 +16,7 @@
     </head>
     <body class="hold-transition login-page">
         <div class="login-box">
-            <div class="login-logo"> <a href="{{ url('/designer/login') }}"><img src="{{ asset('assets/admin/images/header-logo-v2.png') }} /></a> </div>
+            <div class="login-logo"> <a href="{{ url('/designer/login') }}"><img src="{{ asset('assets/admin/images/header-logo-v2.png') }}" /></a> </div>
             <div class="login-box-body">
                 <h3 class="login-box-msg">Designer Login</h3>
                 @include('admin/includes/front_alerts')

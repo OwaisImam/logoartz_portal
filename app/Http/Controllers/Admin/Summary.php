@@ -1087,8 +1087,6 @@ public function jd(){
 
         return view('admin.summary.VectorOrders', $this->data);
 
-
-
     }
 
     public function vec_OrderDetail($VectorOrderID) {
@@ -1201,6 +1199,9 @@ public function jd(){
         if ($this->data['VectorOrders']->IsRead == 0) {
             \DB::table('vector_order')->where('VectorOrderID', $VectorOrderID)->update(['IsRead' => 3]);
         }
+
+        $this->data['OrderTypes'] = Config('order_types');
+
         return view('admin.summary.VecOrderDetail', $this->data);
     }
 
@@ -1299,6 +1300,8 @@ public function jd(){
         if ($this->data['DigiOrders']->IsRead == 0) {
             \DB::table('digitizing_orders')->where('OrderID', $OrderID)->update(['IsRead' => 3]);
         }
+        $this->data['OrderTypes'] = Config('order_types');
+
         return view('admin.summary.OrderDetail', $this->data);
     }
 
@@ -2719,11 +2722,17 @@ die;
            $OrderType = $query->OrderType;
            $designName = $query->DesignName;   
            
-           
-              
+           if(Input::get('OrderType') != '') {
+                $query->OrderType = Input::get('OrderType');
+                $query->save();
+           }
               
           // Email ALert For Customer
           if($OrderType != ""){
+            $ccMail = null;
+            if(Input::get('CCOrder') != ''){
+                $ccMail = Input::get('CCOrder');
+            }
 
                if($OrderType == 1){
                     // Order Revision Email
@@ -2735,10 +2744,12 @@ die;
                           "OrderType" => 'vector revision',
                           "designName" => $designName
                           ]
-                            , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                            , function($message) use ($mailFrom, $ccMail) {
+                            $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                            if($ccMail != null) {
+                                $message->cc($ccMail);
+                            }
                        });
-                       
 
                } elseif ($OrderType == 9) {
                     // Free Order Revision Email 
@@ -2750,9 +2761,12 @@ die;
                           "OrderType" => 'vector revision',
                           "designName" => $designName
                           ]
-                            , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Logo Artz -Free Order Revision Ready');
-                       });
+                            , function($message) use ($mailFrom, $ccMail) {
+                        $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Logo Artz -Free Order Revision Ready');
+                        if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
+                    });
                    //     
 
 
@@ -2767,9 +2781,13 @@ die;
                           "OrderType" => 'vector order',
                           "designName" => $designName
                           ]
-                            , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Ready');
-                       });
+                            , function($message) use ($mailFrom, $ccMail) {
+                        $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Ready');
+                      
+                        if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
+                    });
 
               } else{
 
@@ -2781,9 +2799,12 @@ die;
                           "OrderType" => 'vector order',
                           "designName" => $designName
                           ]
-                            , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
-                    });
+                            , function($message) use ($mailFrom, $ccMail) {
+                        $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                        if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
+                     });
               } 
 
 
@@ -2892,12 +2913,23 @@ die;
           $OrderType = $query->OrderType;
           $this->data['mail'] = $query->Email;
           
-    
+
+          if(Input::get('OrderType') != '') {
+            $query->OrderType = Input::get('OrderType');
+            $query->save();
+        }
+
           // Email ALert For Customer
           if(isset($OrderType)){
 
+            $ccMail = null;
+
                if($OrderType == 1){
                     // Order Revision Email
+
+                    if(Input::get('CCOrder') != ''){
+                        $ccMail = Input::get('CCOrder');
+                    }
 
                       $mailFrom = 'technical-team@logoartz.com';
                       \Mail::send('includes.emails.orderready', [
@@ -2905,21 +2937,14 @@ die;
                       "OrderType" => 'digitizing revision',
                       "designName" => $designName
                       ]
-                        , function($message) use ($mailFrom) {
-                       $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                        , function($message) use ($mailFrom, $ccMail) {
+                       $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                       if($ccMail != null) {
+                        $message->cc($ccMail);
+                    }
                       });
 
-                      $mailFrom = 'technical-team@logoartz.com';
-                        \Mail::send('includes.emails.orderready', [
-                        "CustomerName" => $CustomerName,
-                        "OrderType" => 'digitizing order',
-                        "designName" => $designName
-                        ]
-                            , function($message) use ($mailFrom) {
-                            $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
-                        });
-
-                      
+                    
                     if(\Mail::failures()) {
 
                           $mailFrom = 'technical-team@logoartz.com';
@@ -2928,8 +2953,11 @@ die;
                           "OrderType" => 'digitizing revision',
                           "designName" => $designName
                           ]
-                            , function($message) use ($mailFrom) {
-                           $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                            , function($message) use ($mailFrom, $ccMail) {
+                           $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Revision Complete');
+                           if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
                           });
 
 
@@ -2946,22 +2974,13 @@ die;
                       "OrderType" => 'digitizing revision',
                       "designName" => $designName
                       ]
-                        , function($message) use ($mailFrom) {
-                       $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Revision Ready');
+                        , function($message) use ($mailFrom, $ccMail) {
+                       $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Revision Ready');
+                       if($ccMail != null) {
+                        $message->cc($ccMail);
+                    }
                       });              
                       
-                        // Email for Admin
-                $mailFrom = 'technical-team@logoartz.com';
-                \Mail::send('includes.emails.freeorderready', [
-                "CustomerName" => $CustomerName,
-                "OrderType" => 'digitizing order',
-                 "designName" => $designName
-                ]
-                    , function($message) use ($mailFrom) {
-                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Revision Ready');
-                 });
-                 
-
                     if(\Mail::failures()) {
 
                            $mailFrom = 'technical-team@logoartz.com';
@@ -2970,8 +2989,11 @@ die;
                       "OrderType" => 'digitizing revision',
                       "designName" => $designName
                       ]
-                        , function($message) use ($mailFrom) {
-                       $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Revision Ready');
+                        , function($message) use ($mailFrom, $ccMail) {
+                       $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Revision Ready');
+                       if($ccMail != null) {
+                        $message->cc($ccMail);
+                    }
                       });
 
 
@@ -2990,21 +3012,13 @@ die;
                       "OrderType" => 'digitizing order',
                       "designName" => $designName
                       ]
-                        , function($message) use ($mailFrom) {
-                       $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Ready');
+                        , function($message) use ($mailFrom, $ccMail) {
+                       $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Ready');
+                       if($ccMail != null) {
+                        $message->cc($ccMail);
+                    }
                       }); 
 
-
-                        // Email for Admin
-                $mailFrom = 'technical-team@logoartz.com';
-                \Mail::send('includes.emails.freeorderready', [
-                "CustomerName" => $CustomerName,
-                "OrderType" => 'digitizing order',
-                 "designName" => $designName
-                ]
-                    , function($message) use ($mailFrom) {
-                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Free Order Ready');
-                 });
 
                       if(\Mail::failures()) {
 
@@ -3014,8 +3028,11 @@ die;
                            "OrderType" => 'digitizing order',
                             "designName" => $designName
                            ]
-                        , function($message) use ($mailFrom) {
-                       $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Ready');
+                        , function($message) use ($mailFrom, $ccMail) {
+                       $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Free Order Ready');
+                       if($ccMail != null) {
+                        $message->cc($ccMail);
+                    }
                       });  
 
                         }
@@ -3029,21 +3046,14 @@ die;
                   "OrderType" => 'digitizing order',
                    "designName" => $designName
                   ]
-                    , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                    , function($message) use ($mailFrom, $ccMail) {
+                        $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                        if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
                  });
                  
 
-                   // Email for Admin
-                $mailFrom = 'technical-team@logoartz.com';
-                \Mail::send('includes.emails.orderready', [
-                "CustomerName" => $CustomerName,
-                "OrderType" => 'digitizing order',
-                 "designName" => $designName
-                ]
-                    , function($message) use ($mailFrom) {
-                    $message->to('info@logoartz.com')->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
-                 });
 
                   if(\Mail::failures()) {
 
@@ -3053,8 +3063,11 @@ die;
                   "OrderType" => 'digitizing order',
                    "designName" => $designName
                   ]
-                    , function($message) use ($mailFrom) {
-                        $message->to($this->data['mail'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                    , function($message) use ($mailFrom, $ccMail) {
+                        $message->to([$this->data['mail'], 'info@logoartz.com'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Complete');
+                        if($ccMail != null) {
+                            $message->cc($ccMail);
+                        }
                  });
 
                  }

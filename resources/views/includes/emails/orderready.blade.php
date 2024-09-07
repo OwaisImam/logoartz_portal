@@ -105,15 +105,6 @@
 
             <p class="blue-text"><b>Please Note: </b>We have done our best with your order. Please check proof & take a sample sew-out or print before productions, as Logo Artz will not be responsible for embroidered or printed items.</p> <br>
 
-
-            <div class="my-details">
-                <div class="left">
-                    <h3>Logo Artz Team</h3>
-                    <p>Email: <a class="mailto" href="mailto:info@logoartz.com">info@logoartz.com</a></p>
-                </div>
-
-                <div class="clear"></div>
-            </div>
              <!--<p style="text-align: center; font-size: 16px">Developed by: <a target="_blank" class="mailto" href="http://boostanz.com">Boostanz Technologies</a></p>-->
         </div>
     </body>

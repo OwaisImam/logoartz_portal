@@ -54,16 +54,26 @@
                   <?php    ?>
                   <!-- SELECT2 EXAMPLE -->
                   <div class="box box-default">
-                     <div class="box-header with-border">
-                        <h3 class="" style="text-align: center;">Vector {{ $type }} Detail</h3>
+                     <div class="box-header with-border" style="display: flex; justify-content: space-between; align-items: center;">
+                        <!-- Date aligned to the left -->
+                        <div style="display: inline-block;">
+                            <label style="margin-right: 5px;">Upload On:</label>
+                            <p style="display: inline; margin: 0;"><?php echo date('d-m-Y', strtotime($VectorOrders->DateAdded)); ?></p>
+                        </div>
+                        <!-- Heading aligned to the center -->
+                        <h3 style="margin: 0; text-align: center; flex-grow: 1;">Digitizing {{ $type }} Detail</h3>
+                
+                        <!-- Tools aligned to the right -->
                         <div class="box-tools pull-right">
                            <button type="button" class="btn btn-sm btn-default" onclick="location.href='{{ url('/admin/edit-order-vec/'.$VectorOrders->VectorOrderID) }}'">Edit {{ $type }}
                            </button>
-                           <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default">Delete {{ $type }}
-                           </button>
+                            <!-- 
+                            <button type="button" class="btn btn-sm btn-default" value="Print" onclick="window.print()">Print {{ $type }}</button>  
+                            -->
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-default">Delete {{ $type }}</button>
                         </div>
-                     </div>
-                     <!-- /.box-header -->
+                    </div>
+                     <!-- /.box-header` -->
                      <div class="box-body"  style="font-size: 18px">
                         <div class="row">
                            <div class="col-md-6">
@@ -77,7 +87,7 @@
                                              <label>Order #</label>
                                           </td>
                                           <td>
-                                             {{ $VectorOrders->VectorOrderID }}
+                                            {{  App\Http\Helper::getPrefix('vector', $VectorOrders->OrderType ) .'-'. $VectorOrders->VectorOrderID }}
                                           </td>
                                        </tr>
                                        <tr>
@@ -170,24 +180,23 @@
                                              {{ $VectorOrders->ReqSeparation }}
                                           </td>
                                        </tr>
-                                       <tr>
-                                          <td>
-                                             <label>Upload On</label>
-                                          </td>
-                                          <td>
-                                             <?php echo date('d-m-Y', strtotime($VectorOrders->DateAdded)); ?>
-                                          </td>
-                                       </tr>
+                                     
                                     </table>
                                  </div>
                               </div>
                            </div>
                         </div>
                         <div class="row">
-                           <div class="col-md-12" style="font-size: 20px">
+                           <div class="col-md-6" style="font-size: 20px">
                               <div class="form-group">
                                  <label>Current Status</label>
                                  <p><span style="font-size: 18px" class="label label-warning"> {{   $OrderStatuses[$VectorOrders->Status] }}</span></p>
+                              </div>
+                           </div>
+                           <div class="col-md-6" style="font-size: 20px">
+                              <div class="form-group">
+                                 <label>Order Type</label>
+                                 <p><span style="font-size: 18px" class="label label-warning"> {{   $OrderTypes[$VectorOrders->OrderType] }}</span></p>
                               </div>
                            </div>
                         </div>
@@ -272,7 +281,9 @@
                                  <div class="col-md-12">
                                     <div class="form-group">
                                      <label>Additional Instructions</label>
-                                       <div>{{ $VectorOrders->MoreInstructions }} </div>
+                                       <div style="inline-size: 100%;
+                                       overflow: hidden;
+                                       overflow-wrap: break-word !important">{{ $VectorOrders->MoreInstructions }} </div>
                                     </div>
                                  </div>
                                  
@@ -480,7 +491,7 @@
                                           <div class="col-md-12">
                                              @include('admin/includes/front_alerts')
                                           </div>
-                                          <div class="col-md-5">
+                                          <div class="col-md-4">
                                                <?php
                                                        $qtyfordefault = '';
                                                        if($VectorOrders->OrderType != 1 && $VectorOrders->OrderType != 4 && $VectorOrders->OrderType != 9){
@@ -489,17 +500,13 @@
                                              <label>Quantity:</label>
                                              <input type="number" placeholder="Enter Quantity" value="{{$qtyfordefault}}" class="form-control" name="qty" oninput="setPricebyQty(this);" id="qty" <?php if($VectorOrders->OrderType == 0){ echo "required"; } ?>>
                                           </div>
-                                       </div>
-                                       <br>
-                                       <div class="row">
-                                          <div class="col-md-5">
+                                          <div class="col-md-4">
                                              <label>Price $</label>
                                              <input type="text" placeholder="Enter Price" oninput="set_final(this);" id="price" class="form-control" name="OrderPrice" <?php if($VectorOrders->OrderType == 0){ echo "required"; } ?> >
                                              <br>
                                           </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-5">
+
+                                          <div class="col-md-4">
                                              <label>Discount $</label>
                                              <input type="text" placeholder="Enter Discount" id="disc" oninput="cal_price(this);" class="form-control" name="Discount">
                                              <br>
@@ -518,25 +525,41 @@
                                  <div class="col-md-12">
                                     <h4 class="box-title" style="text-align: "><strong>Staff Account:</strong></h4>
                                     <div class="form-group">
+                                       <div class="row">
                                        <?php  
                                           if($VectorOrders->SalesPersonID > 0)
                                           {
                                            ?>
-                                       <label>Sales Rep Commission:</label>
-                                       <div class="row">
                                           <div class="col-md-5">
+                                          <label>Sales Rep Commission:</label>
                                              <input type="text" placeholder="Enter Price" class="form-control" name="salesorp"> 
                                           </div>
-                                       </div>
                                        <?php } ?>
-                                       <br>
-                                       <label>Designer Price:</label>
-                                       <div class="row">
                                           <div class="col-md-5">
+                                             <label>Designer Price:</label>
                                              <input type="text" placeholder="Enter Price" class="form-control" name="designorp">
                                           </div>
                                        </div>
-                                       <br>
+                                       <div class="row">
+                                          <div class="col-md-12">
+                                             <label for="Filesattach" rows="2"><b>CC This order to </b></label>
+                                             <input type="email" name="CCOrder" value="" placeholder="CC This order to" class="form-control">
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-12">
+                                             <label for="Filesattach" rows="2"><b>Change Order Type </b>
+                                                <span class="mandatory">(Leave blank if you do not want to change)</span>
+                                             </label>
+                                             
+                                             <select class="form-control" name="OrderType">
+                                                <option value="">Select Option</option>
+                                                @foreach($OrderTypes as $key=>$type)
+                                                <option value="{{$key}}">{{$type}}</option>
+                                                @endforeach
+                                             </select>
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
                                  <div class="col-md-5">

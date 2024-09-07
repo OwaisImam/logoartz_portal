@@ -917,16 +917,17 @@ $this->data['statuses'] = [
             $user = DB::table('customers')
                     ->whereRaw(("Username = '" . Input::get('Username') . "'"))->first();
 
-                if($user->Status == 0){
-                       return redirect()->back()->withErrors("your account has been blocked, please contact at info@logoartz.com");
-                       exit();
-                }
+               
 
             // $user = DB::table('customers')
             //         ->whereRaw(("Username = '" . Input::get('Username') . "'"))
             //         ->where('Status', 1)
             //         ->first();
             if (!empty($user)) {
+                if($user->Status == 0){
+                    return redirect()->back()->withErrors("your account has been blocked, please contact at info@logoartz.com");
+                    exit();
+                }
                 if (Hash::check(Input::get('Password'), $user->Password)) {
                     if ($user->IsActivated == 0) {
                         return redirect()->back()->withErrors("Account is not activated, please check your emial and activate your account");

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\WebsiteQuotationController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
@@ -83,9 +82,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
     // Accounts
-    Route::get('/invoices', 'Web\Accounts@getallinvoices');
+    Route::get('/cus_invoices', 'Web\Accounts@getallinvoices');
     Route::get('/accounts_summary', 'Web\Accounts@cus_accounts_summary');
-    Route::post('/accounts_summary', 'Web\Accounts@get_accounts_record');
 
 
 
