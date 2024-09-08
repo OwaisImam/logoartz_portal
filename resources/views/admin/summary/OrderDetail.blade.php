@@ -344,7 +344,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                     <div class="row" style="font-size: 18px">
                         <div class="col-md-6">
-
                             <div class="box box-danger">
                                 <div class="box-header">
                                     <h3 class="box-title" style="text-align: "><strong>Additional Detail</strong></h3>
@@ -352,9 +351,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                                 <div class="box-body">
                                     <!-- Date dd/mm/yyyy -->
-
                                     <div class="row">
-
 
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -363,15 +360,12 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <h4>{{ $DigiOrders->CustomerName }} </h4>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Status</label>
                                                 <div><span class="label label-warning">
                                                         {{ $OrderStatuses[$DigiOrders->Status] }}</span></div>
-
 
                                             </div>
                                         </div>
@@ -382,32 +376,11 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                         <h4>{{ $DigiOrders->DesignerName }}</h4>
                                                     </span></div>
 
-
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- /.form group
-                                        -->
-
-                                    <!-- Date mm/dd/yyyy -->
 
                                     <div class="row">
-                                        <!--             <div class="col-md-3">
-                                                            <div class="form-group">
-                                                            <label>Designer PRICE</label>
-                                                            <div> <h4><span class="label label-success">${{ $DigiOrders->DesignerPrice }}</span> </h4></div>
-                                                            
-                                                            </div>
-                                                             </div>
-                                                             <div class="col-md-3">
-                                                             <div class="form-group pull-right">
-                                                            <label>Admin PRICE</label>
-                                                            <div> <h4><span class="label label-success">${{ $DigiOrders->CustomerPrice }}</span> </h4></div>
-                                                            
-                                                            </div>
-                                                         </div>-->
-                                        <!-- /.form group -->
-
 
                                         <!-- phone mask -->
                                         @if ($DigiOrders->OrderType == 4)
@@ -465,10 +438,8 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                                 </tr>
                                                             </thead>
 
-
                                                             @foreach ($Revision as $revise)
                                                                 <tr class="">
-
 
                                                                     <td> {{ $revise['CustomerMessage'] }}</td>
                                                                     <td>
@@ -490,7 +461,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                                                                 </tr>
                                                             @endforeach
-
 
                                                         </table>
                                                     </div>
@@ -767,7 +737,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                         Account:</strong></h4>
                                                 <div class="form-group">
                                                     <div class="row">
-
                                                         <?php  
 
                                                     if($DigiOrders->SalesPersonID > 0)
@@ -778,15 +747,13 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                             <input type="text" placeholder="Enter Price"
                                                                 class="form-control" name="salesorp">
                                                         </div>
-                                                    </div>
                                                     <?php } ?>
                                                     <div class="col-md-5">
                                                         <label>Designer Price:</label>
                                                         <input type="text" placeholder="Enter Price"
                                                             class="form-control" name="designorp">
                                                     </div>
-                                                </div><br>
-                                            </div>
+                                                </div>
 
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -794,22 +761,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                         </b></label>
                                                     <input type="email" name="CCOrder" value=""
                                                         placeholder="CC This order to" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="Filesattach" rows="2"><b>Change Order Type </b>
-                                                        <span class="mandatory">(Leave blank if you do not want to
-                                                            change)</span>
-                                                    </label>
-
-                                                    <select class="form-control" name="OrderType">
-                                                        <option value="">Select Option</option>
-                                                        @foreach ($OrderTypes as $key => $type)
-                                                            <option value="{{ $key }}">{{ $type }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
                                                 </div>
                                             </div>
                                     </div>
@@ -858,7 +809,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                                        <a download="{{ $DigiOrders->File1 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File1) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File1) }}" width="100%" /></a>
+                                                        <a download="{{ $DigiOrders->File1 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File1) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File1) }}" width="80" height="60" /></a>
                                                         <?php  }else{  ?>   
                                                     
                                                          <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File1}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File1 }}</a>
@@ -883,7 +834,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                                        <a download="{{ $DigiOrders->File2 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File2) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File2) }}" width="100%" /></a>
+                                                        <a download="{{ $DigiOrders->File2 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File2) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File2) }}" width="80" height="60" /></a>
                                                         <?php  }else{  ?>   
                                                     
                                                          <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File2}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File2 }}</a>
@@ -911,7 +862,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                                        <a download="{{ $DigiOrders->File3 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File3) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File3) }}" width="100%" /></a>
+                                                        <a download="{{ $DigiOrders->File3 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File3) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File3) }}" width="80" height="60" /></a>
                                                         <?php  }else{  ?>   
                                                     
                                                          <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File3}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File3 }}</a>
@@ -926,19 +877,18 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <label for="txtarea1" class="col-sm-12 control-label">Artwork 4</label>
                                                  
                                                      <?php
-                                          
                                                  
-                                               if ($DigiOrders->File4 != "") {
-                                                      
-                                                        $File =  explode(".", $DigiOrders->File4);
-                                                        $ext = end($File);
-                                                         if (in_array($ext, $allowed_ext)) {
-                                                        
-                                                ?>
-                                        <a download="{{ $DigiOrders->File4 }}"
-                                            href="{{ asset('uploads/orders/digi/' . $DigiOrders->File4) }}"><img
-                                                src="{{ asset('uploads/orders/digi/' . $DigiOrders->File4) }}"
-                                                width="100%" /></a>
+                                                    if ($DigiOrders->File4 != "") {
+                                                            
+                                                                $File =  explode(".", $DigiOrders->File4);
+                                                                $ext = end($File);
+                                                                if (in_array($ext, $allowed_ext)) {
+                                                                
+                                                        ?>
+                                                <a download="{{ $DigiOrders->File4 }}"
+                                                    href="{{ asset('uploads/orders/digi/' . $DigiOrders->File4) }}"><img
+                                                        src="{{ asset('uploads/orders/digi/' . $DigiOrders->File4) }}"
+                                                        width="80" height="60" /></a>
                                         <?php  }else{  ?>
 
                                         <a href="{{ asset('uploads/orders/digi') . '/' . $DigiOrders->File4 }}"
@@ -946,25 +896,12 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                 class="fa fa-download"></i> {{ $DigiOrders->File4 }}</a>
 
                                         <?php  } }  ?>
-                                    </div>
                                 </div>
                             </div>
-                                                        <a download="{{ $DigiOrders->File4 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File4) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File4) }}" width="100%" /></a>
-                                                        <?php  }else{  ?>   
-                                                    
-                                                         <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File4}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File4 }}</a>
-                                         
-                                                        <?php  } }  ?> 
-                                                </div>
-                                            </div>
                                             @endif
                                         </div>
 
-
                         </div>
-
-
-
 
                         <!-- /.box -->
 
@@ -1080,8 +1017,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                 @endif
             @endif
-
-
 
 
 

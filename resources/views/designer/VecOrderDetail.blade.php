@@ -303,7 +303,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <a download="{{ $VectorOrders->File1 }}"
                                                         href="{{ asset('uploads/orders/vector/' . $VectorOrders->File1) }}"><img
                                                             src="{{ asset('uploads/orders/vector/' . $VectorOrders->File1) }}"
-                                                            width="100%" /></a>
+                                                            width="80" height="60" /></a>
                                                     <?php  }else{  ?>
 
                                                     <a style="margin-left: 10px; margin-top: 10px"
@@ -331,7 +331,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <a download="{{ $VectorOrders->File2 }}"
                                                         href="{{ asset('uploads/orders/vector/' . $VectorOrders->File2) }}"><img
                                                             src="{{ asset('uploads/orders/vector/' . $VectorOrders->File2) }}"
-                                                            width="100%" /></a>
+                                                            width="80" height="60" /></a>
                                                     <?php  }else{  ?>
 
                                                     <a style="margin-left: 10px; margin-top: 10px"
@@ -363,7 +363,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <a download="{{ $VectorOrders->File3 }}"
                                                         href="{{ asset('uploads/orders/vector/' . $VectorOrders->File3) }}"><img
                                                             src="{{ asset('uploads/orders/vector/' . $VectorOrders->File3) }}"
-                                                            width="100%" /></a>
+                                                            width="80" height="60"/></a>
                                                     <?php  }else{  ?>
 
                                                     <a style="margin-left: 10px; margin-top: 10px"
@@ -391,7 +391,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <a download="{{ $VectorOrders->File4 }}"
                                                         href="{{ asset('uploads/orders/vector/' . $VectorOrders->File4) }}"><img
                                                             src="{{ asset('uploads/orders/vector/' . $VectorOrders->File4) }}"
-                                                            width="100%" /></a>
+                                                            width="80" height="60" /></a>
                                                     <?php  }else{  ?>
 
                                                     <a style="margin-left: 10px; margin-top: 10px"

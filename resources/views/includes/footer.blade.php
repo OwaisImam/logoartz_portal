@@ -8,11 +8,10 @@
                 </span>
                 <p>LogoArtz provides best logo design, digitizing, raster to vector services in market, with best prices and discounts.</p>
                 <ul class="social two">
-                    <li><a href="#"><i class="fa fa-facebook"></i> </a> </li>
-                    <li><a href="#"><i class="fa fa-twitter"></i> </a> </li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i> </a> </li>
-                    <li><a href="#"><i class="fa fa-tumblr"></i> </a> </li>
-                    <li><a href="#"><i class="icofont icofont-social-yelp"></i> </a> </li>
+                    <li><a href="https://www.facebook.com/pg/LogoArtz1"><i class="fa fa-facebook"></i> </a> </li>
+                    <li><a href="https://www.instagram.com/logoartzofficial/"><i class="fa fa-instagram"></i> </a> </li>
+                    <li><a href="http://www.pinterest.com/logoartzofficial"><i class="fa fa-pinterest"></i> </a> </li>
+                    <li><a href="http://www.linkedin.com/in/logo-artz"><i class="fa fa-linkedin"></i> </a> </li>
                 </ul>
             </div>
             <div class="col-sm-3 footer-block">

@@ -11,8 +11,7 @@ use DB;
 use PDF;
 use File;
 use Carbon\Carbon;
-
-
+use Illuminate\Http\Request;
 
 class Summary extends AdminController {
 
@@ -1205,7 +1204,8 @@ public function jd(){
         return view('admin.summary.VecOrderDetail', $this->data);
     }
 
-    public function OrderDetail($OrderID) {
+    public function OrderDetail(Request $request, $OrderID) {
+
 
         $this->data['DigiOrders'] = \App\DigiOrders::select('digitizing_orders.OrderID', 'customers.SalesPersonID','CustomerName', 'ReqFormat', 'Fabric', 'FabricColor', 'DesignerName', 'ColorBlending', 'BackgroundFill', 'PictureEmbroidery', 'Placement', 'digitizing_orders.DateAdded', 'AssignStatus', 'CC', 'File1', 'File2', 'File3', 'File4', 'MoreInstructions', 'NoOfColors', 'DesignName', 'PONumber', 'OtherFormat', 'digitizing_orders.Status', 'OrderType', 'digitizing_orders.DesignerID', 'DesignerPrice', 'CustomerPrice', 'Price', 'customers.priceplane', 'MessageForAdmin', 'QuotePrice', 'IsRead', 'Scale', 'Height', 'Width', 'CustomerPrice', 'customers.CsNote')
                 ->leftjoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID') 
@@ -1302,7 +1302,25 @@ public function jd(){
         }
         $this->data['OrderTypes'] = Config('order_types');
 
+        if($request->ajax()) {
+            return (['message' => 'Data fetched successfully', 'data' => $this->data]);
+        }
+
         return view('admin.summary.OrderDetail', $this->data);
+    }
+
+
+    public function update_order_type(Request $request, $OrderID)
+    {
+        $orderData = \App\DigiOrders::where('OrderID', $OrderID)->first();
+        if($orderData) {
+            $orderData->OrderType = $request->OrderType;
+            $orderData->save();
+            
+            return redirect()->back()->with('success', 'Order type updated successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Something went wrong');
     }
 
     public function AssignSubmit($OrderID) {

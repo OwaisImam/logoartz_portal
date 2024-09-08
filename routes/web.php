@@ -366,6 +366,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/digi/orders/{StatusID}', 'Admin\Summary@digi_orders');
     Route::get('/Norder-details/{OrderID}', 'Admin\Summary@OrderDetail');
     Route::get('/digi/newquotes/{QuotePrice}', 'Admin\Summary@new_digi_quote');
+    Route::post('/digi/order_update/{OrderID}', 'Admin\Summary@update_order_type');
 
     Route::post('/digi-assign-designer/{OrderID}', 'Admin\Summary@AssignSubmit');
     Route::post('/digi-assign-designer-rev/{OrderID}', 'Admin\Summary@AssignSubmit_q_rev');

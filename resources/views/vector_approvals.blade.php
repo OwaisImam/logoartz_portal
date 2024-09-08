@@ -124,11 +124,9 @@
 <section id="single-services" class="space one">
     <div class="container">
         <center><h2>{{$heading}}</h2></center>
-            <Section>
                 
             <section class="content table-responsive">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <center>
                         {{ Form::select('Status', array('all' => 'All',
                                                             'pending' => 'Pending',
                                                             'quote' => 'Done Quote',
@@ -136,7 +134,6 @@
                                                             'completed' => 'Completed',
                                                             'done' => 'Done'),
                          $page, array('id' => 'status','class' => 'fonnnt')) }}
-                    </center>
                     <thead>
                       <tr>
                         <th>Order ID</th>
@@ -162,19 +159,6 @@
                         @endif
                     </tbody>
                   </table>
-            </Section>
-
-
-
-
-
-
-
-        
-
-    
-
-
     </div>
 </section>
 

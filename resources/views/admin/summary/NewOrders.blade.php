@@ -127,9 +127,7 @@
                                                     <th class="center">Status</th>
                                                     <th class="center">Date</th>
                                                     <th class="center">Action</th>
-                                                    
-                                                
-                                                    <th></th>
+                                            
                                                 </tr>
                                    </thead>
            
@@ -154,25 +152,36 @@
                                                   
                                                 <td> {{date('d-M-Y h:i:s:A', strtotime($OrderData->DateAdded))}}</td>
                                                   <td>
-                                                    <Button class="btn btn-primary" onclick="location.href='{{ url('/admin/Norder-details/'.$OrderData->OrderID) }}'"> Detail</Button>
-                                                  </td> 
 
-                                                  
+                                                    <select class="pull-right btn btn-primary" onchange="javascript:takeAction({{$OrderData->OrderID}})" id="action-{{$OrderData->OrderID}}">
+                                                        <option value="">Select Action</option>
+                                                        <option value="view" on>View</option>
+                                                        <option value="update_type">Update Type</option>
+                                                    </select>
+
+                                                    {{-- <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="Filesattach" rows="2"><b>Change Order Type </b>
+                                                                <span class="mandatory">(Leave blank if you do not want to
+                                                                    change)</span>
+                                                            </label>
+        
+                                                            <select class="form-control" name="OrderType">
+                                                                <option value="">Select Option</option>
+                                                                @foreach ($OrderTypes as $key => $type)
+                                                                    <option value="{{ $key }}">{{ $type }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div> --}}
+
+                                                
+                                                </td> 
+
                                                 </tr>
 
                                                  <?php  }} ?> 
-
-
-
-                                              
-                                                
-                                                
-                                               
-                                                
-    
-                                                
-                                                
-
                                         </table>
                                     </div>
                                     <div class="box-footer"></div>
@@ -180,15 +189,61 @@
                             </div>
                             <!-- /.col -->
                             
-
-
-
 </div>
 
-                
                     <!-- /.content -->
                 </div>
             </div>
+
+            <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="edit_modal_label" aria-hidden="true">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="edit_modal_label">Order</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modal_body">
+                            <form method="POST" id="updateForm" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="Filesattach" rows="2">Update Order Type</label>
+                                        <select class="form-control" name="OrderType">
+                                            <option value="">Select Option</option>
+                                                <option value="0">New Order</option>
+                                                <option value="1">Order Revision
+                                                </option>
+                                                <option value="2">New Quote
+                                                </option>
+                                                <option value="3">Free Order
+                                                </option>
+                                                <option value="4">Quote Revision
+                                                </option>
+                                                <option value="5">Extra Time
+                                                </option>
+                                                <option value="7">On Hold
+                                                </option>
+                                                <option value="9">Free Order Revision
+                                                </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-top: 16px">
+                                <button type="submit" class="mt-4 btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- /.content-wrapper -->
             @include('admin/includes/footer')
 
@@ -218,87 +273,44 @@
             $('#status').change(function(){
                 location.href=$(this).val();
              });
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
-        datasets: [{
-                label: '',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(37, 115, 212, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(37,115,212,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '',
-                data: [3, 2, 5, 3, 19, 12],
-                backgroundColor: [
-                    'rgba(31, 152, 63, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(31,152,63,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '',
-                data: [13, 21, 26, 15, 29, 12],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-        }
-    }
-});
 
+             function takeAction(id) {
+                var value = $('#action-' + id + '').val();
+                if (value == 'update_type') {
+                    // $('#modal_body').html(data.html);
+                    // $('#edit_modal_label').html(data.title);
+                    url = "{{ url('/admin/Norder-details/:id') }}";
+                    url = url.replace(':id', id);
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        beforeSend: function () {
+                            // setting a timeout
+                        },
+                        success: function (data) {
+                            $('#edit_modal_label').html("Edit Order -"+data.data.DigiOrders.OrderID);
+                          var actionURL ="{{ url('admin/digi/order_update/:id') }}";
+                          actionURL = actionURL.replace(':id', data.data.DigiOrders.OrderID);
+                          $('#updateForm').attr('action', actionURL);
+
+                          $('#edit_modal').modal('show');
+
+                        },
+                        error: function (xhr) { // if error occured
+                            alert("Error occured.please try again");
+                        },
+                        complete: function () {
+                        },
+                    });
+
+                } else if (value == 'view') {
+                    url = "{{ url('/admin/Norder-details/:id') }}";
+                    url = url.replace(':id', id);
+                    return window.location.href = url;
+                } else {
+                    alert("Error occured.please try again");
+                }
+            }
         </script>
     </body>
 </html>
