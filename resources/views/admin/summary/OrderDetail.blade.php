@@ -844,14 +844,13 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                         <div class="box-body">
 
-                            <div class='row'>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="txtarea1" class="col-sm-12 control-label">Artwork 1</label>
-
-                                        <?php
-                                          
-                                                 
+                                        <div class='row'>
+                                            @if($DigiOrders->File1 != "")
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label">Artwork 1</label>
+                                                   
+                                                     <?php
                                                if ($DigiOrders->File1 != "") {
                                                       
                                                         $File =  explode(".", $DigiOrders->File1);
@@ -859,25 +858,22 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                        <a download="{{ $DigiOrders->File1 }}"
-                                            href="{{ asset('uploads/orders/digi/' . $DigiOrders->File1) }}"><img
-                                                src="{{ asset('uploads/orders/digi/' . $DigiOrders->File1) }}"
-                                                width="100%" /></a>
-                                        <?php  }else{  ?>
-
-                                        <a href="{{ asset('uploads/orders/digi') . '/' . $DigiOrders->File1 }}"
-                                            class="btn btn-success btn-flat" download=""><i
-                                                class="fa fa-download"></i> {{ $DigiOrders->File1 }}</a>
-
-                                        <?php  } }  ?>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="txtarea1" class="col-sm-12 control-label">Artwork 2</label>
-
-                                        <?php
+                                                        <a download="{{ $DigiOrders->File1 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File1) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File1) }}" width="100%" /></a>
+                                                        <?php  }else{  ?>   
+                                                    
+                                                         <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File1}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File1 }}</a>
+                                         
+                                                        <?php  } }  ?>   
+                                                  
+                                                </div>
+                                            </div>
+                                            @endif
+                                             @if($DigiOrders->File2 != "")
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label">Artwork 2</label>
+                                                    
+                                                     <?php
                                           
                                                  
                                                if ($DigiOrders->File2 != "") {
@@ -887,28 +883,25 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                        <a download="{{ $DigiOrders->File2 }}"
-                                            href="{{ asset('uploads/orders/digi/' . $DigiOrders->File2) }}"><img
-                                                src="{{ asset('uploads/orders/digi/' . $DigiOrders->File2) }}"
-                                                width="100%" /></a>
-                                        <?php  }else{  ?>
+                                                        <a download="{{ $DigiOrders->File2 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File2) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File2) }}" width="100%" /></a>
+                                                        <?php  }else{  ?>   
+                                                    
+                                                         <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File2}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File2 }}</a>
+                                         
+                                                        <?php  } }  ?> 
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
 
-                                        <a href="{{ asset('uploads/orders/digi') . '/' . $DigiOrders->File2 }}"
-                                            class="btn btn-success btn-flat" download=""><i
-                                                class="fa fa-download"></i> {{ $DigiOrders->File2 }}</a>
-
-                                        <?php  } }  ?>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <hr style="border-color:#000;">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="txtarea1" class="col-sm-12 control-label">Artwork 3</label>
-
-                                        <?php
+                                        <hr style="border-color:#000;">
+                                        <div class="row">
+                                             @if($DigiOrders->File3 != "")
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label">Artwork 3</label>
+                                                  
+                                                     <?php
                                           
                                                  
                                                if ($DigiOrders->File3 != "") {
@@ -918,24 +911,21 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                          if (in_array($ext, $allowed_ext)) {
                                                         
                                                 ?>
-                                        <a download="{{ $DigiOrders->File3 }}"
-                                            href="{{ asset('uploads/orders/digi/' . $DigiOrders->File3) }}"><img
-                                                src="{{ asset('uploads/orders/digi/' . $DigiOrders->File3) }}"
-                                                width="100%" /></a>
-                                        <?php  }else{  ?>
-
-                                        <a href="{{ asset('uploads/orders/digi') . '/' . $DigiOrders->File3 }}"
-                                            class="btn btn-success btn-flat" download=""><i
-                                                class="fa fa-download"></i> {{ $DigiOrders->File3 }}</a>
-
-                                        <?php  } }  ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="txtarea1" class="col-sm-12 control-label">Artwork 4</label>
-
-                                        <?php
+                                                        <a download="{{ $DigiOrders->File3 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File3) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File3) }}" width="100%" /></a>
+                                                        <?php  }else{  ?>   
+                                                    
+                                                         <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File3}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File3 }}</a>
+                                         
+                                                        <?php  } }  ?>  
+                                                </div>
+                                            </div>
+                                            @endif
+                                             @if($DigiOrders->File4 != "")
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="txtarea1" class="col-sm-12 control-label">Artwork 4</label>
+                                                 
+                                                     <?php
                                           
                                                  
                                                if ($DigiOrders->File4 != "") {
@@ -959,6 +949,16 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                     </div>
                                 </div>
                             </div>
+                                                        <a download="{{ $DigiOrders->File4 }}" href="{{  asset('uploads/orders/digi/'.$DigiOrders->File4) }}"><img src="{{ asset('uploads/orders/digi/'.$DigiOrders->File4) }}" width="100%" /></a>
+                                                        <?php  }else{  ?>   
+                                                    
+                                                         <a href="{{asset('uploads/orders/digi').'/'.$DigiOrders->File4}}" class="btn btn-success btn-flat" download=""><i class="fa fa-download"></i> {{ $DigiOrders->File4 }}</a>
+                                         
+                                                        <?php  } }  ?> 
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </div>
 
 
                         </div>
@@ -1047,8 +1047,8 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <div class="clearfix"></div>
                                                 @endif
 
-                                            </div>
-                                        </div>
+                                           </div>
+                                       </div>
 
 
                                         @if ($mfile->Category == '')
