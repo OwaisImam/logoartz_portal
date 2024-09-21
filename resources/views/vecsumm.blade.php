@@ -143,7 +143,7 @@
                         @if(!empty($allrecords))
                             @foreach($allrecords as $order)
                             <tr class="{{$order->IsRead == 2 ? 'new' : ''}}">
-                                  <td>{{$order->VectorOrderID}}</td>
+                                  <td>{{ App\Http\Helper::getPrefix('vector', $order->OrderType ) . '-'. $order->VectorOrderID }}</td>
                                   <td>{{$order->DesignName}}</td>
                                   <td>{{$types[$order->OrderType]}}</td>
                                   <td>{{$statuses[$order->Status]}}</td>

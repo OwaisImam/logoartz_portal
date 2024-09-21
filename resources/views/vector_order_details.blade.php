@@ -126,7 +126,7 @@ if(!empty($order)){
                                              <label>Order #</label>
                                           </td>
                                           <td>
-                                             {{ $order->VectorOrderID }}
+                                            {{ App\Http\Helper::getPrefix('vector', $order->OrderType ) . '-'. $order->VectorOrderID }}
                                           </td>
                                        </tr>
                                        <tr>

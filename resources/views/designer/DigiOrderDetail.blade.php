@@ -490,6 +490,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                         </div>
                         <!-- iCheck -->
 
+                        
                         <!--  Order 1st Release Detail Only -->
                         @if ($RivisionHistory->IsEmpty())
                             @if ($revision_history != null)
@@ -604,7 +605,25 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                         @endif
 
 
-
+                        @if (!$RivisionHistory->IsEmpty())
+                        <div class="col-md-6">
+                            <div class="box box-primary">
+                                <div class="box-header">
+                                    <h3 class="box-title">Order History </h3>
+                                </div>
+                                <div class="box-body m-l-250">
+                                    @foreach ($RivisionHistory as $history)
+                                        <div class="form-group">
+                                            <label>{{ $history->From == 3 ? 'Customer' : 'Admin' }}:</label>
+                                            <p><?= $history->Message ?><small
+                                                    class="pull-right">{{ $history->DateAdded }}</small></p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    
 
                         @if (!$RivisionHistory->IsEmpty())
 

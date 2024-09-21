@@ -143,7 +143,7 @@
                         @if(!empty($allrecords))
                             @foreach($allrecords as $order)
                             <tr class="{{$order->IsRead == 2 ? 'new' : ''}}">
-                                 <td>{{$order->OrderID}}</td>
+                                 <td>{{ App\Http\Helper::getPrefix('digitizing', $order->OrderType ) . '-'. $order->OrderID }}</td>
                                   <td>{{$order->DesignName}}</td>
                                   <td>{{$types[$order->OrderType]}}</td>
                                   <td>{{$statuses[$order->Status]}}</td>

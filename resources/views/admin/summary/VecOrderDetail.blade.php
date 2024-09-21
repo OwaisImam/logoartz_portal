@@ -81,7 +81,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                         <label>Order #</label>
                                                     </td>
                                                     <td>
-                                                        {{ $VectorOrders->VectorOrderID }}
+                                                        {{ App\Http\Helper::getPrefix('vector', $VectorOrders->OrderType ) . '-'. $VectorOrders->VectorOrderID }}
                                                     </td>
                                                 </tr>
                                                 <tr>

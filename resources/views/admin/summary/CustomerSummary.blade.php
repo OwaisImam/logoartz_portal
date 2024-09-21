@@ -273,7 +273,7 @@
                                               <tr class="newclass<?php echo $OrderData->Status ?> new<?php echo $OrderData->IsRead ?> font<?php echo $OrderData->IsRead ?> <?php if($OrderData->OrderStatus == 2 && $OrderData->Status != 7){ echo "backcolor2"; } ?>"> 
 
 
-                                                  <td>{{ $OrderData->OrderID }}</td>
+                                                  <td>{{ App\Http\Helper::getPrefix('digitizing', $OrderData->OrderType ) . '-'. $OrderData->OrderID }}</td>
                                                   <td>{{ $OrderData->DesignName }}</td>
                                                   <td>{{ $OrderTypes[$OrderData->OrderType] }}</td>
                                                   <td>{{ $OrderData->DesignerName }}</td>
@@ -432,7 +432,7 @@
                                           
                                                    
                                                    
-                                                  <td>{{ $OrderData->VectorOrderID }}</td>
+                                                  <td>{{ App\Http\Helper::getPrefix('vector', $OrderData->OrderType ) . '-'. $OrderData->VectorOrderID }}</td>
                                                   <td>{{ $OrderData->DesignName }}</td>
                                                  <td>{{ $OrderTypes[$OrderData->OrderType] }}</td>
                                                   <td>{{ $OrderData->DesignerName }}</td>
