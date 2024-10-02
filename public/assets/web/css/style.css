@@ -155,9 +155,6 @@ button style
     background-color: transparent;
 }
 
-.btn:hover {
-    color: #fff;
-}
 
 .btn i {
     margin-right: 15px;
