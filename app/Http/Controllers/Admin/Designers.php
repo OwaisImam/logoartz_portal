@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use DB;
+use Symfony\Component\VarDumper\Cloner\Data;
 
 class Designers extends AdminController {
 
@@ -16,7 +17,6 @@ class Designers extends AdminController {
     public function index() {
 
         $this->data['recordsTotal'] = \App\Designers::count();
-
         return view('admin.designers.index', $this->data);
     }
 

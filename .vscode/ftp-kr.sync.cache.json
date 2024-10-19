@@ -1,5 +1,5 @@
 {
-  "ftp://hussain@logoartz.com@ftp.logoartz.com": {
+  "ftp://ftp.logoartz.com@hussain@logoartz.com": {
     "login.logoartz.com": {
       ".env": {
         "type": "-",
@@ -61,6 +61,7 @@
         "lmtime": 0,
         "modified": false
       },
+      ".well-known": {},
       "app": {},
       "artisan": {
         "type": "-",
@@ -102,104 +103,7 @@
         "modified": false
       },
       "public": {},
-      "resources": {
-        "views": {
-          "designer": {
-            "DigiOrderDetail.blade.php": {
-              "type": "-",
-              "size": 79712,
-              "lmtime": 1726918822085.588,
-              "modified": false
-            },
-            "DigiOrderDetail.blade.php.bak": {
-              "type": "-",
-              "size": 15579,
-              "lmtime": 0,
-              "modified": false
-            },
-            "DigiOrders.blade.php": {
-              "type": "-",
-              "size": 16318,
-              "lmtime": 0,
-              "modified": false
-            },
-            "DigiOrders.blade.php.bak": {
-              "type": "-",
-              "size": 11123,
-              "lmtime": 0,
-              "modified": false
-            },
-            "DigiQuotes.blade.php": {
-              "type": "-",
-              "size": 15746,
-              "lmtime": 0,
-              "modified": false
-            },
-            "VecOrderDetail.blade.php": {
-              "type": "-",
-              "size": 76794,
-              "lmtime": 0,
-              "modified": false
-            },
-            "VectorOrders.blade.php": {
-              "type": "-",
-              "size": 16109,
-              "lmtime": 0,
-              "modified": false
-            },
-            "VectorQuotes.blade.php": {
-              "type": "-",
-              "size": 15848,
-              "lmtime": 0,
-              "modified": false
-            },
-            "configuration.blade.php": {
-              "type": "-",
-              "size": 13293,
-              "lmtime": 0,
-              "modified": false
-            },
-            "dashboard.blade.php": {
-              "type": "-",
-              "size": 15349,
-              "lmtime": 0,
-              "modified": false
-            },
-            "dashboard.blade.php.bak": {
-              "type": "-",
-              "size": 9895,
-              "lmtime": 0,
-              "modified": false
-            },
-            "err403.blade.php": {
-              "type": "-",
-              "size": 3839,
-              "lmtime": 0,
-              "modified": false
-            },
-            "includes": {},
-            "login.blade.php": {
-              "type": "-",
-              "size": 2543,
-              "lmtime": 0,
-              "modified": false
-            },
-            "orderhistory.blade.php": {
-              "type": "-",
-              "size": 18027,
-              "lmtime": 0,
-              "modified": false
-            },
-            "profile.blade.php": {
-              "type": "-",
-              "size": 9534,
-              "lmtime": 0,
-              "modified": false
-            },
-            "summary": {}
-          }
-        }
-      },
+      "resources": {},
       "routes": {},
       "storage": {},
       "tests": {},

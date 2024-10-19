@@ -574,7 +574,7 @@ if(!empty($order)){
                 </div>
                 <aside class="col-sm-3">
                     <div class="widget twitter">
-                        <h4>Instruction</h4>
+                        <h4>Admin Message</h4>
                         <div class="tweet-block">
                             @if(!$revision->isEmpty())
                                 @foreach($revision as $revise)

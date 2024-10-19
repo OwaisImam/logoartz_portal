@@ -1,248 +1,186 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Logo Artz</title>
-        <link rel="stylesheet" href="{{ asset('assets/admin/bootstrap/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/AdminLTE.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/admin/dist/css/skins/_all-skins.min.css') }}">
-       
-        
-        
-        <style>
-            body{
-                font-family: Arial, Helvetica, sans-serif;
-                font-size:12px;
-                background: #f5f5f5;
-                color: #3d3e3e;
-                width: 100%;
-                height:100%;
-            }
-            .container {
-                width: 50%;
-                background: #fff;
-                margin:0 auto;
-                padding:25px;
-            }
-            .border {
-                border: 1px solid #f5f5f5;
-                height: 0px;
-                width: 100%;
-                border-top: 0;
-                margin: 20px 0;
-            }
-            .blue-text {
-                font-size: 18px;
-            }
-            a.activate-link {
-                background: #ec914d;
-                display: block;
-                padding:10px 0;
-                width: 100%;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                font-size: 18px;
-            }
-            .my-details {
-                background: #f5f5f5;
-                padding: 20px 20px 0 20px;
-                margin-top: 20px;
-            }
-            a.mailto {
-                color: #ec914d;
-                text-decoration: none;
-            }
-            .my-details h3 {
-                font-size: 18px;
-            }
-            .my-details p {
-                font-size: 16px;
-            }
-            .my-details img {
-                width: 150px;
-                float: right;
-            }
-            .left {
-                width: 50%;
-                float: left;
-            }
-            .right {
-                width: 50%;
-                float: right;
-            }
-            .clear {
-                clear: both;
-            }
-                .ed{
-                 background: #ede4de61;
-            
-            }
-            
-    
-        
-@media (max-width: 960px) {
-                .container {
-                    width: 90%;
-                    background: #fff;
-                    padding:25px;
-                }
-                .my-details {
-                    padding: 10px 0px 0 10px;
-                }
-                .my-details h3 {
-                    font-size: 16px;
-                }
-                .my-details p {
-                    font-size: 14px;
-                }
-            }
-        </style>
-    </head>
+<title></title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700);
 
-    <body>
-        <div class="container">
-                    <img src="{{ asset('assets/web/img/logo-v1.png') }}" />
-            <!--<img src="{{ asset('assets/web/img/logo-v1.png') }}" />-->
-            <div class="border"></div>
-            
-            <?php if($OrderStatus == 0) { ?>
-            <p class="blue-text">Dear {{ $CustomerName }},</p>
+    * {
+        box-sizing: border-box !important;
+    }
 
-            
-            <p class="blue-text">Your {{ $OrderType }} has been Submitted.</p> <br>
-            <?php  }else{ ?>
-              <p class="blue-text">Dear admin,</p>
-            
-             <?php if(isset($Trial) && $Trial == 1) { ?>
-               <p class="blue-text">Free Trial New Customer Registration</p> <br>
-            <?php }else{ ?>
-            <p class="blue-text"> {{ $CustomerName }} Place a {{ $OrderType }}.</p> <br>
-         
-            
-            <?php } 
-            
-                        } ?>
-            
-            
-            <div class="row">
-        
-        
-         <?php if($OrderStatus == 1) { ?>
-            <div class="box ed"  style="border-style: solid; border-color: black; border-width: 1px; padding: 10px" >
-            <div class="box-header">
-               <h3 style="text-align: center">Customer Detail</h3>
+    * div {
+        display: block;
+    }
+</style>
+<div class="email-template" style="background-color: #ECBF68;display: block;padding-top: 80px;padding-bottom: 80px;">
+    <div class="email-container"
+        style="max-width: 600px;width: 100%;margin: 0 auto;display: block;border-radius: 8px;background-color: #FBF2E6;overflow: hidden;">
+        <div class="email-header" style="display: block;padding: 60px 10px 0px 10px;text-align: center;"><img
+                alt="" src="https://login.logoartz.com/assets/web/img/logo-v1.png"
+                style="display: block;margin: 0 auto;padding: 0 0 25px 0;" />
+            <h4
+                style="font-family: 'Roboto', sans-serif;font-size: 24px;font-weight: 500;line-height: 28px;letter-spacing: 0em;text-align: center;margin: 0;display: block;">
+                Your order has been confirmed!</h4>
+        </div>
+
+        <div class="email-content" style="width: 90%;margin: 0 auto;">
+
+
+            <div class="ul" style="margin-top: 60px;">
+                <div class="email-order-details" style="">
+                    <div
+                        style="font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; border-radius: 8px; margin-bottom: 15px;">
+
+                        @if ($OrderStatus == 0)
+                            <p>Dear {{ $CustomerName }},</p>
+                            <p>Your {{ $OrderType }} has been Submitted.</p>
+                        @else
+                            <p>Dear admin,</p>
+                            @if (isset($Trial) && $Trial == 1)
+                                <p>Free Trial New Customer Registration</p>
+                            @else
+                                <p>{{ $CustomerName }} Place a {{ $OrderType }}.</p>
+                            @endif
+                        @endif
+                    </div>
+
+                    @if ($OrderStatus == 1)
+                        <div
+                            style="padding: 5px 25px; border-radius: 8px; background-color: #E7D098; width: 100%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px;">
+                            <div class="box-header">
+                                <h3 style="text-align: center">Customer Details</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <ul style="list-style-type: none; padding: 0; margin: 0;">
+                                    <li
+                                        style="padding: 5px 25px; background-color: #FBF2E6; width: 100%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                        Name: <span style="font-weight: 600; color: #333;">{{ $CustomerName }}</span>
+                                    </li>
+                                    <li
+                                        style="padding: 5px 25px; background-color: #FBF2E6; width: 100%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                        Email: <span style="font-weight: 600; color: #333;">{{ $CusEmail }}</span>
+                                    </li>
+                                    <li
+                                        style="padding: 5px 25px; background-color: #FBF2E6; width: 100%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                        Phone: <span style="font-weight: 600; color: #333;">{{ $CusPhone }}</span>
+                                    </li>
+                                    <li
+                                        style="padding: 5px 25px; background-color: #FBF2E6; width: 100%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                        Company: <span style="font-weight: 600; color: #333;">{{ $CusCompany }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    @endif
+
+                    <ul style="list-style-type: none; padding: 0; margin: 0;">
+
+                        @if ($DesignName != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Design Name: <span style="font-weight: 600; color: #333;">{{ $DesignName }}</span>
+                            </li>
+                        @endif
+                        @if ($RequriedFormat != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Required Format: <span
+                                    style="font-weight: 600; color: #333;">{{ $RequriedFormat }}</span>
+                            </li>
+                        @endif
+                       
+                        @if ($Vecuse != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Vector Will Be Use For: <span style="font-weight: 600; color: #333;">{{ $Vecuse }}</span>
+                            </li>
+                        @endif
+                        @if ($Width != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Width: <span style="font-weight: 600; color: #333;">{{ $Width }}</span>
+                            </li>
+                        @endif
+                        @if ($Height != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Height: <span style="font-weight: 600; color: #333;">{{ $Height }}</span>
+                            </li>
+                        @endif
+                        @if ($Scale != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Scale: <span style="font-weight: 600; color: #333;">{{ $Scale }}</span>
+                            </li>
+                        @endif
+                        @if ($NumClr != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Number of Colors: <span
+                                    style="font-weight: 600; color: #333;">{{ $NumClr }}</span>
+                            </li>
+                        @endif
+                        @if ($Reqclr != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Required Color: <span style="font-weight: 600; color: #333;">{{ $Reqclr }}</span>
+                            </li>
+                        @endif
+                        @if ($ADDITIONALINSTRUCTIONS != null)
+                            <li
+                                style="padding: 5px 25px; background-color: #E7D098; width: 90%; margin: 0 auto; font-family: 'Roboto', sans-serif; font-weight: 600; color: #333; margin-bottom: 15px; border-radius: 8px;">
+                                Additional Instructions: <span
+                                    style="font-weight: 600; color: #333;">{{ $ADDITIONALINSTRUCTIONS }}</span>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                 
-                </tr>
-                </thead>
-                <tbody>
-              
-            
-                <tr style="border-style: solid; border-color: white; border-width: 2px; padding: 10px">
-                  <td><b>Name:</b></td>
-                  <td >{{ $CustomerName }}</td>
-                </tr>
-                <tr>
-                  <td><b>Email:</b></td>
-                  <td>{{ $CusEmail }}</td>
-                </tr>
-                <tr>
-                  <td><b>Phone:</b></td>
-                  <td>{{ $CusPhone }}</td>
-                </tr>
-                <tr>
-                  <td><b>Company:</b></td>
-                  <td>{{ $CusCompany }}</td>
-                </tr>
-               
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>    
-          
-          <?php } ?>
-          
-          
-                
-                
-                
-                
-                
-                
-                
-                
-                
-           <div class="box ed"  style="margin-top: 5px; border-style: solid; border-color: black; border-width: 1px; padding: 10px" >
-            <div class="box-header">
-               <h3 style="text-align: center">Order Detail</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th></th>
-                  <th></th>
-                 
-                </tr>
-                </thead>
-                <tbody>
-              
-            
-                <tr style="border-style: solid; border-color: white; border-width: 2px; padding: 10px">
-                  <td><b>Design Name:</b></td>
-                  <td >{{ $DesignName }}</td>
-                </tr>
-                <tr>
-                  <td><b>Requried Format:</b></td>
-                  <td>{{ $RequriedFormat }}</td>
-                </tr>
-                <tr>
-                  <td><b>Vector will be use for:</b></td>
-                  <td>{{ $Vecuse }}</td>
-                </tr>
-                <tr>
-                  <td><b>Width:</b></td>
-                  <td>{{ $Width }}</td>
-                </tr>
-                <tr>
-                  <td><b>Height:</b></td>
-                  <td>{{ $Height }}</td>
-                </tr>
-                <tr>
-                  <td><b>Scale:</b></td>
-                  <td>{{ $Scale }}</td>
-                </tr>
-                  <tr>
-                  <td><b>Required color:</b></td>
-                  <td>{{ $Reqclr }}</td>
-                </tr>
-                 <tr>
-                  <td><b>Number Of Colors:</b></td>
-                  <td>{{ $NumClr }}</td>
-                </tr>
-                 <tr>
-                  <td><b>Additional Instructions:</b></td>
-                  <td>{{ $ADDITIONALINSTRUCTIONS }}</td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          </div>
-            
+
+            <p
+                style="color: #00000; margin: 0 0 30px 0;font-family: 'Roboto', sans-serif;font-size: 18px;font-weight: 500;line-height: 32px;letter-spacing: 0em;text-align: center;display: block;">
+                Thank you for your business</p>
+
+            <div class="footer-images" style="text-align: center; margin-bottom: 20px;"><img alt="Custom Patches"
+                    src="https://login.logoartz.com/assets/admin/images/email_images/Custom.png"
+                    style="width: 70px; margin-right: 15px;" /> <img alt="Hang Tags"
+                    src="https://login.logoartz.com/assets/admin/images/email_images/Hang-Tag.png"
+                    style="width: 70px; margin-right: 15px; max-height:100px" /> <img alt="Digitizing"
+                    src="https://login.logoartz.com/assets/admin/images/email_images/Digitizing.png"
+                    style="width: 70px; margin-right: 15px;" /> <img alt="Woven Clothing Labels"
+                    src="https://login.logoartz.com/assets/admin/images/email_images/Woven.png"
+                    style="width: 70px; margin-right: 15px;" /> <img alt="Vector"
+                    src="https://login.logoartz.com/assets/admin/images/email_images/Vector.png" style="width: 70px;" />
             </div>
         </div>
-    </body>
-</html>
+
+        <div class="email-footer" style="background-color: #FBF2E6;padding: 30px 10px 40px 10px;">
+            <div class="email-footer-logo"><img alt=""
+                    src="https://login.logoartz.com/assets/web/img/logo-v1.png"
+                    style="width: 200px;display: block;margin: 0 auto 0 auto;" /></div>
+
+            <div style="display: block;text-align: center;">
+                <p class="email-footer-copy"
+                    style="display: inline-block;margin: 0 auto;padding: 15px 0 20px 0;font-family: 'Roboto', sans-serif;font-size: 16px;font-weight: 500;line-height: 23px;letter-spacing: 0em;text-align: center;">
+                    &copy; Copyright {{ date('Y') }} | All rights reserved</p>
+            </div>
+
+            <p class="footer-links"
+                style="margin: 0;display: block;font-family: 'Roboto', sans-serif;font-size: 13px;font-weight: 500;line-height: 19px;letter-spacing: 0em;text-align: center;text-decoration: none;color: #A4A4A4;">
+                <a href="https://www.guardpass.com/terms"
+                    style="font-family: 'Roboto', sans-serif;font-size: 13px;font-weight: 500;line-height: 19px;letter-spacing: 0em;text-align: center;text-decoration: none;color: #A4A4A4;display: inline-block;">Terms
+                    of service</a> <span style="margin: 0 2px;">|</span> <a href="https://www.guardpass.com/privacy"
+                    style="font-family: 'Roboto', sans-serif;font-size: 13px;font-weight: 500;line-height: 19px;letter-spacing: 0em;text-align: center;text-decoration: none;color: #A4A4A4;display: inline-block;">Privacy
+                    policy</a></p>
+
+            <p style="margin: 0;display: block;text-align: center;padding: 25px 0 0 0;"><a href=""
+                    style="font-family: 'Roboto', sans-serif;font-size: 16px;font-weight: 500;line-height: 21px;letter-spacing: 0em;text-align: center;color: #242429;text-decoration: underline;">Unsubscribe</a>
+            </p>
+        </div>
+    </div>
+</div>
 

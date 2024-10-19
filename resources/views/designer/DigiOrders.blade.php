@@ -116,7 +116,7 @@
                                                 @if(!empty($orders))
                                                     @foreach ($orders as $order)
                                                     <tr class="<?= $order->IsRead == 1 ? 'new' : ($order->Status == 8 || $order->Status == 7 || $order->Status == 6 ? 'completed' : '') ?> <?php if($order->OrderStatus == 2 && $order->Status != 7){ echo "backcolor2"; } ?>">
-                                                        <td>{{ $order->OrderID }}</td>
+                                                        <td>{{ App\Http\Helper::getPrefix('digitizing', $order->OrderType ) . '-'. $order->OrderID }}</td>
                                                         <td>{{ $order->PONumber }}</td>
                                                         <td>{{ $order->DesignName }}</td>
                                                         <td>{{ $order->CustomerName }}</td>

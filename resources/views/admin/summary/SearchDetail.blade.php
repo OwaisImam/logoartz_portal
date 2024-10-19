@@ -119,12 +119,10 @@
                    ?>
 
                                      <tr> 
-
-
-                                                  <td>{{ $OrderData['OrderID'] }}</td>
+                                                  <td>{{ App\Http\Helper::getPrefix($OrderData['Type'], $OrderData['OrderType'] ) . '-'. $OrderData['OrderID']   }}</td>
                                                   <td>{{ $OrderData['PONumber'] }}</td>
-                                                  <td>{{ $OrderData['DesignName'] }}</td>
-                                                  <td>{{ $OrderData['CustomerName'] }}</td>
+                                                  <td><a href="{{ $OrderData['OrderDetailLink'] }}">{{ $OrderData['DesignName'] }}</a></td>
+                                                  <td><a href="{{ url('admin/customers/sortdetails/'.$OrderData['CusId']) }}"> {{ $OrderData['CustomerName'] }}</a> </td>
                                                   <td>{{ $OrderTypes[$OrderData['OrderType']] }}</td>
                                                   <?php  if($OrderData['Status'] != null){ ?>
                                                   <td>{{ $OrderStatuses[$OrderData['Status']] }}</td>

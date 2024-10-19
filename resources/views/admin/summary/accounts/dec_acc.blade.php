@@ -114,6 +114,18 @@
                             </div>
 
                             <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label for="RequriedClr">Order #</label>
+                                {!! Form::text('OrderNum', null, ['class' => "form-control", 'placeholder' => "Order Number"]) !!}
+                            </div>
+
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label for="RequriedClr">Design Name</label>
+                                {!! Form::text('design_name', null, ['class' => "form-control", 'placeholder' => "Design Name"]) !!}
+                            </div>
+
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
                             
                                 <label for="Cetagory">Designers:</label>
                                  <select name="desname" class="form-control" required>
@@ -161,8 +173,6 @@
                                                     <th>Price</th> 
                                                     <!-- <th>Action</th> -->
                                                     
-                                                
-                                                    <th></th>
                                                 </tr>
                                    </thead>
 
@@ -237,17 +247,6 @@
                                                  <?php  }} ?> 
 
 
-
-
-
-
-                                                         
-
-
-
-
-    
-
                                         </table>
                                     </div>
                                     <div class="box-footer"></div>
@@ -268,112 +267,68 @@
             @include('admin/includes/footer')
 
         </div>
-               <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <!-- Bootstrap 3.3.6 -->
         <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+        <!-- DataTables -->
+        <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+        <!-- SlimScroll -->
         <script src="{{ asset('assets/admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-        <!--<script src="{{ asset('assets/admin/plugins/chartjs/Chart.min.js') }}"></script>-->
+        <!-- FastClick -->
+        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
+        <!-- AdminLTE App -->
         <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.min.js') }}"></script>
-         <script>
-    window.setInterval('refresh()', 60000);     // CALL A FUNCTION EVERY 10000 MILLISECONDS OR 10 SECONDS.
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
+        
+<script>
+     $(document).ready(function() {
+    $('#status').change(function(){
+        location.href=$(this).val();
+        });
 
-    // REFRESH OR RELOAD PAGE.
-    function refresh() {
-        window.location.reload();
-    }
-</script>
-        
-        
-        <script>
-            $('#status').change(function(){
-                location.href=$(this).val();
-             });
-var ctx = document.getElementById("myChart").getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov"],
-        datasets: [{
-                label: '',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(37, 115, 212, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(37,115,212,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
+        var data_list = $('#dataList').dataTable({
+            "processing": false,
+            "serverSide": false,
+            "pageLength": 50,
+            "order": [[1, 'desc']],
+            "oLanguage": {
+                "sSearch": "",
+                "sProcessing": "<img src='{{ asset('assets/admin') }}/images/loading-spinner-grey.gif'>"
             },
-            {
-                label: '',
-                data: [3, 2, 5, 3, 19, 12],
-                backgroundColor: [
-                    'rgba(31, 152, 63, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(31,152,63,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: '',
-                data: [13, 21, 26, 15, 29, 12],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                    ticks: {
-                        beginAtZero: true
+            "fnDrawCallback": function () {
+                checkAll = $('input.all');
+                checkboxes = $('input.check');
+
+                $('input[type="checkbox"], input[type="radio"]').iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue'
+                });
+                checkAll.on('ifChecked ifUnchecked', function (event) {
+                    if (event.type == 'ifChecked') {
+                        checkboxes.iCheck('check');
+                    } else {
+                        checkboxes.iCheck('uncheck');
                     }
-                }]
-        }
-    }
-});
+                });
 
-        </script>
+                checkboxes.on('ifChanged', function (event) {
+                    if (checkboxes.filter(':checked').length == checkboxes.length) {
+                        checkAll.prop('checked', 'checked');
+                    } else {
+                        checkAll.removeProp('checked');
+                    }
+                    checkAll.iCheck('update');
+                });
+
+            }
+        });
+
+        $('#dataList_filter input').attr('placeholder', 'Search...');
+    });
+
+</script>
     </body>
 </html>

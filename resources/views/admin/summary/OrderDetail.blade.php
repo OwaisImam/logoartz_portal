@@ -927,8 +927,9 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                         <label>Designer Message</label>
                                         <p><?= $history['DesignerMessage'] ?><small
                                                 class="pull-right">{{ $history['DateAdded'] }}</small><br>
+                                            @if(count($history['Files']) > 0)
                                             <label>Order Files:</label><br>
-
+                                            @endif
 
                                             <?php
                                               $counta = 0;

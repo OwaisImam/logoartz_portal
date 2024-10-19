@@ -988,12 +988,11 @@ class Order extends DesignerController {
 
     
 
-            $order = \DB::table('vector_order')->where('VectorOrderID', $vectorid)->first();
-            // $type = 0;
-            // if ($order->OrderType == 3 || $order->OrderType == 9) {
-            //     $type = 3;
-            // }
-            \DB::table('vector_order')->where('VectorOrderID', $vectorid)->update(['AssignStatus' => '0', 'Status' => '6', 'IsRead' => '0']);
+            if (Input::hasFile('Filea') || Input::hasFile('Fileb') || Input::hasFile('Filec')) {
+                \DB::table('vector_order')->where('VectorOrderID', $vectorid)->update(['Status' => '6']);
+            }
+
+            \DB::table('vector_order')->where('VectorOrderID', $vectorid)->update(['AssignStatus' => '0', 'IsRead' => '0']);
 
             return back()->with('success', 'File Sent Successfully.');
         }
@@ -1116,6 +1115,7 @@ class Order extends DesignerController {
                 'DesignerMessage' => \Input::get('DesignerMessage'),
                 'DateAdded' => new \DateTime()
             ];
+
             \DB::table('digi_result')->insert($data);
 
             $InsertID = \DB::getPdo()->lastInsertId();
@@ -1186,12 +1186,11 @@ class Order extends DesignerController {
 
             }
 
-            $order = \DB::table('digitizing_orders')->where('OrderID', $orderid)->first();
-            // $type = 0;
-            // if ($order->OrderType == 3 || $order->OrderType == 9) {
-            //     $type = 3;
-            // }
-            \DB::table('digitizing_orders')->where('OrderID', $orderid)->update(['AssignStatus' => '0', 'Status' => '6', 'IsRead' => '0']);
+            if (Input::hasFile('Filea') || Input::hasFile('Fileb') || Input::hasFile('Filec')) {
+                \DB::table('digitizing_orders')->where('OrderID', $orderid)->update(['Status' => '6']);
+            }
+
+            \DB::table('digitizing_orders')->where('OrderID', $orderid)->update(['AssignStatus' => '0', 'IsRead' => '0']);
 
             return back()->with('success', 'File Sent Successfully.');
         }

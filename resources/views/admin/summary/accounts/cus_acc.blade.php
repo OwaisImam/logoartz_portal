@@ -112,6 +112,17 @@
                             </div>
 
                             <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label for="RequriedClr">Order #</label>
+                                {!! Form::text('OrderNum', null, ['class' => "form-control", 'placeholder' => "Order Number"]) !!}
+                            </div>
+
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <label for="RequriedClr">Design Name</label>
+                                {!! Form::text('design_name', null, ['class' => "form-control", 'placeholder' => "Design Name"]) !!}
+                            </div>
+
+                            <div class="col-md-3 col-sm-6 col-xs-12">
                             
                                 <label for="Cetagory">Customers:</label>
                                  <select name="cusname" class="form-control" required>
@@ -162,8 +173,6 @@
                                                     <th>Date</th>
                                                     <th>Price</th> 
                                                     <th>Action</th>
-                                                
-                                                    <th></th>
                                                 </tr>
                                    </thead>
 
@@ -187,9 +196,6 @@
                                                   <td>{{ $OrderData->DateAdded }}</td>
                                                   <td ><strong class="label label-danger" style="font-size: 15px">${{$OrderData->Price}}</strong></td>
                                                   <td><Button type="button" class="btn btn-primary" type="button" onclick="location.href='{{ url('/admin/digi_prices/'.$OrderData->OrderID) }}'"> Update Price</Button></td>
-                                              
-
-                                               
                                                   
                                                 </tr>
 
@@ -215,10 +221,6 @@
                                                   <td>{{ $OrderData->DateAdded }}</td>
                                                   <td ><strong class="label label-danger" style="font-size: 15px">${{$OrderData->Price}}</strong></td>
                                                    <td> <Button type="button" class="btn btn-primary" onclick="location.href='{{ url('admin/vector_prices/'.$OrderData->VectorOrderID) }}'"> Update Price</Button></td>
-                                              
-                                              
-
-                                               
                                                   
                                                 </tr>
 
@@ -252,30 +254,75 @@
             @include('admin/includes/footer')
 
         </div>
-               <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+
+        <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <!-- Bootstrap 3.3.6 -->
         <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+        <!-- DataTables -->
+        <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+        <!-- SlimScroll -->
         <script src="{{ asset('assets/admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-        <!--<script src="{{ asset('assets/admin/plugins/chartjs/Chart.min.js') }}"></script>-->
+        <!-- FastClick -->
+        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
+        <!-- AdminLTE App -->
         <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.min.js') }}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
 
-        <script>
+<script>
+    $(document).ready(function() {
+        $('.invoice-btn').click(function() {
+            if($('.orderids').is(':checked')) {
+                $('#invoice-form').submit();
+            } else {
+                alert("please select order");
+            }
+        });
 
-$(document).ready(function() {
-    $('.invoice-btn').click(function() {
-        if($('.orderids').is(':checked')) {
-            $('#invoice-form').submit();
-        } else {
-            alert("please select order");
-        }
+        var checkAll;
+        var checkboxes;
+
+        var data_list = $('#dataList').dataTable({
+            "processing": false,
+            "serverSide": false,
+            "pageLength": 50,
+            "order": [[1, 'desc']],
+            "oLanguage": {
+                "sSearch": "",
+                "sProcessing": "<img src='{{ asset('assets/admin') }}/images/loading-spinner-grey.gif'>"
+            },
+            "fnDrawCallback": function () {
+                checkAll = $('input.all');
+                checkboxes = $('input.check');
+
+                $('input[type="checkbox"], input[type="radio"]').iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue'
+                });
+                checkAll.on('ifChecked ifUnchecked', function (event) {
+                    if (event.type == 'ifChecked') {
+                        checkboxes.iCheck('check');
+                    } else {
+                        checkboxes.iCheck('uncheck');
+                    }
+                });
+
+                checkboxes.on('ifChanged', function (event) {
+                    if (checkboxes.filter(':checked').length == checkboxes.length) {
+                        checkAll.prop('checked', 'checked');
+                    } else {
+                        checkAll.removeProp('checked');
+                    }
+                    checkAll.iCheck('update');
+                });
+
+            }
+        });
+
+        $('#dataList_filter input').attr('placeholder', 'Search...');
     });
-});
-
         </script>
 
     </body>

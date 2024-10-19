@@ -92,7 +92,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label>Design Code </label>
-                                        <p>{{ $DigiOrders->OrderID }} </p>
+                                        <p>{{ App\Http\Helper::getPrefix('digitizing', $DigiOrders->OrderType ) . '-' .$DigiOrders->OrderID }} </p>
 
                                     </div>
                                 </div>
@@ -502,14 +502,15 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                         </div>
                                         <div class="box-body m-l-250">
 
-
                                             @foreach ($revision_history as $history)
                                                 <div class="form-group" style="margin-bottom: 20px">
 
                                                     <label>Designer Message</label>
                                                     <p><?= $history['DesignerMessage'] ?><small
                                                             class="pull-right">{{ $history['DateAdded'] }}</small><br>
-                                                        <label>Order Files:</label><br>
+                                                            @if(count($history['Files']) > 0)
+                                                            <label>Order Files:</label><br>
+                                                            @endif
 
 
                                                         <?php
@@ -645,7 +646,10 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                 <h4><strong>Order First Response</strong></h4><br>
                                                 <?php }else{ ?>
 
-                                                <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
+                                                    @if(count($history['Files']) > 0)
+                                                     <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
+                                                    @endif
+                                                
                                                 <?php } ?>
                                                 <label>Designer Message</label>
                                                 <p><?= $history['DesignerMessage'] ?><small

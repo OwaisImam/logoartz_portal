@@ -428,13 +428,17 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                             ?>
                                                     <h4><strong>Order First Response</strong></h4><br>
                                                     <?php }else{ ?>
+                                                        @if(count($history['Files']) > 0)
+                                                        <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
+                                                       @endif
 
-                                                    <h4><strong>Revision {{ $RevCount }}</strong></h4><br>
                                                     <?php } ?>
                                                     <label>Designer Massage</label>
                                                     <p><?= $history['DesignerMessage'] ?><small
                                                             class="pull-right">{{ $history['DateAdded'] }}</small><br>
-                                                        <label>Files:</label><br>
+                                                            @if(count($history['Files']) > 0)
+                                                            <label>Order Files:</label><br>
+                                                            @endif
 
                                                         <?php
                                                 $counta = 0;
@@ -550,7 +554,10 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                                     <label>Designer Message</label>
                                                     <p><?= $history['DesignerMessage'] ?><small
                                                             class="pull-right">{{ $history['DateAdded'] }}</small><br>
-                                                        <label>Order Files:</label><br>
+                                                            @if(count($history['Files']) > 0)
+                                                            <label>Order Files:</label><br>
+                                                            @endif
+                                                            
 
 
                                                         <?php

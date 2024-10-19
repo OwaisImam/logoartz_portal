@@ -138,12 +138,12 @@
                       foreach ($DigiOrders as $OrderData) {
                    ?>
 
-                                              <tr class="newclass<?php echo $OrderData->Status ?> new<?php echo $OrderData->IsRead ?> font<?php echo $OrderData->IsRead ?> <?php if($OrderData->OrderStatus == 2 && $OrderData->Status != 7){ echo "backcolor2"; } ?>"> 
+                                              <tr class="newclass<?php echo $OrderData->IsRead ?> new<?php echo $OrderData->IsRead ?> font<?php echo $OrderData->IsRead ?> <?php if($OrderData->OrderStatus == 2 && $OrderData->Status != 7){ echo "backcolor2"; } ?>"> 
 
 
                                                   <td>{{ App\Http\Helper::getPrefix('digitizing', $OrderData->OrderType ) . '-'. $OrderData->OrderID }}</td>
                                                   <td>{{ $OrderData->PONumber }}</td>
-                                                  <td>{{ $OrderData->DesignName }}</td>
+                                                  <td><a href="{{ url('/admin/Norder-details', $OrderData->OrderID) }}">{{ $OrderData->DesignName }}</a></td>
                                                   <td><a href="{{ url('admin/customers/sortdetails/'.$OrderData->CusId) }}"> {{ $OrderData->CustomerName }}</a> </td>
                                                   <td>{{ $OrderTypes[$OrderData->OrderType] }}</td>
                                                   <td>{{ $OrderData->DesignerName }}</td>
@@ -248,28 +248,25 @@
             @include('admin/includes/footer')
 
         </div>
-               <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+        <!-- Bootstrap 3.3.6 -->
         <script src="{{ asset('assets/admin/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+        <!-- DataTables -->
+        <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/plugins/iCheck/icheck.min.js') }}" type="text/javascript"></script>
+        <!-- SlimScroll -->
         <script src="{{ asset('assets/admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-        <!--<script src="{{ asset('assets/admin/plugins/chartjs/Chart.min.js') }}"></script>-->
+        <!-- FastClick -->
+        <script src="{{ asset('assets/admin/plugins/fastclick/fastclick.js') }}"></script>
+        <!-- AdminLTE App -->
         <script src="{{ asset('assets/admin/dist/js/app.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.bundle.min.js') }}"></script>
-        <script src="{{ asset('assets/admin/plugins/Chart.min.js') }}"></script>
-         <script>
-    window.setInterval('refresh()', 60000);     // CALL A FUNCTION EVERY 10000 MILLISECONDS OR 10 SECONDS.
-
-    // REFRESH OR RELOAD PAGE.
-    function refresh() {
-        window.location.reload();
-    }
-</script>
-        
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
         
         <script>
+
+
             $('#status').change(function(){
                 location.href=$(this).val();
              });

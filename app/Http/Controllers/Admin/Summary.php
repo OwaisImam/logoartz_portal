@@ -1059,6 +1059,105 @@ public function jd(){
         return view('admin.summary.NewOrders', $this->data);
     }
 
+    public function digi_orders_list(Request $request, $StatusID)
+{
+    $columns = [
+        'OrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber',
+        'digitizing_orders.Status', 'OrderType', 'digitizing_orders.IsRead',
+        'digitizing_orders.OrderStatus', 'salesperson.SalesPersonName',
+        'digitizing_orders.DateAdded', 'digitizing_orders.DateModified'
+    ];
+
+    $query = \App\DigiOrders::select(
+        'OrderID', 'customers.CustomerID as CusId', 'CustomerName', 'DesignerName',
+        'DesignName', 'PONumber', 'digitizing_orders.Status', 'OrderType',
+        'digitizing_orders.IsRead', 'digitizing_orders.OrderStatus',
+        'salesperson.SalesPersonName as salesrep', 'digitizing_orders.DateAdded',
+        'digitizing_orders.DateModified'
+    )
+    ->leftJoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
+    ->leftJoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
+    ->leftJoin('salesperson', 'salesperson.SalesPersonID', '=', 'customers.SalesPersonID');
+
+    if ($StatusID == 'all') {
+        $query->where('digitizing_orders.QuotePrice', 0);
+    } else {
+        $query->where('digitizing_orders.OrderType', $StatusID);
+    }
+
+    $totalData = $query->count();
+    $totalFiltered = $totalData;
+
+    $limit = $request->input('length');
+    $start = $request->input('start');
+    $order = $columns[$request->input('order.0.column')];
+    $dir = $request->input('order.0.dir');
+
+    if(empty($request->input('search.value')))
+    {
+        $DigiOrders = $query
+            ->offset($start)
+            ->limit($limit)
+            ->orderBy($order,$dir)
+            ->get();
+    }
+    else {
+        $search = $request->input('search.value');
+
+        $DigiOrders = $query->where(function($q) use ($search) {
+                $q->where('OrderID', 'LIKE', "%{$search}%")
+                  ->orWhere('CustomerName', 'LIKE',"%{$search}%")
+                  ->orWhere('DesignerName', 'LIKE',"%{$search}%")
+                  ->orWhere('DesignName', 'LIKE',"%{$search}%")
+                  ->orWhere('PONumber', 'LIKE',"%{$search}%");
+            })
+            ->offset($start)
+            ->limit($limit)
+            ->orderBy($order,$dir)
+            ->get();
+
+        $totalFiltered = $query->where(function($q) use ($search) {
+                $q->where('OrderID', 'LIKE', "%{$search}%")
+                  ->orWhere('CustomerName', 'LIKE',"%{$search}%")
+                  ->orWhere('DesignerName', 'LIKE',"%{$search}%")
+                  ->orWhere('DesignName', 'LIKE',"%{$search}%")
+                  ->orWhere('PONumber', 'LIKE',"%{$search}%");
+            })
+            ->count();
+    }
+
+    $data = [];
+    foreach ($DigiOrders as $order) {
+        $data[] = [
+            "OrderID" => $order->OrderID,
+            "CustomerName" => $order->CustomerName,
+            "DesignerName" => $order->DesignerName,
+            "DesignName" => $order->DesignName,
+            "PONumber" => $order->PONumber,
+            "Status" =>Config('order_statuses')[$order->Status],
+            "OrderType" => $order->OrderType,
+            "IsRead" => $order->IsRead,
+            "salesrep" => $order->salesrep,
+            "DateAdded" => $order->DateAdded,
+            "Action" => ' <select class="pull-right btn btn-primary" onchange="javascript:takeAction('.$order->OrderID.')" id="action-'.$order->OrderID.'">
+                                                        <option value="">Select Action</option>
+                                                        <option value="view" on>View</option>
+                                                        <option value="update_type">Update Type</option>
+                                                    </select>'
+            // Add any additional formatting or HTML here
+        ];
+    }
+
+    $json_data = array(
+        "draw"            => intval($request->input('draw')),
+        "recordsTotal"    => intval($totalData),
+        "recordsFiltered" => intval($totalFiltered),
+        "data"            => $data
+    );
+
+    return response()->json($json_data);
+}
+
     public function vector_orders($StatusID) {
         
         
@@ -1300,6 +1399,7 @@ public function jd(){
         if ($this->data['DigiOrders']->IsRead == 0) {
             \DB::table('digitizing_orders')->where('OrderID', $OrderID)->update(['IsRead' => 3]);
         }
+        
         $this->data['OrderTypes'] = Config('order_types');
 
         if($request->ajax()) {
@@ -2336,6 +2436,9 @@ public function jd(){
                     'DesignerName' => $digitRes->DesignerName,
                     'OrderType' => $digitRes->OrderType,
                     'Status' => $digitRes->Status,
+                    'CusId' => $digitRes->CustomerID,
+                    'Type' => 'digitizing'
+
                 ];
             }
         }
@@ -2377,6 +2480,8 @@ public function jd(){
                     'DesignerName' => $vectRes->DesignerName,
                     'OrderType' => $vectRes->OrderType,
                     'Status' => $vectRes->Status,
+                    'CusId' => $digitRes->CustomerID,
+                    'Type' => 'vector'
                 ];
             }
        }
@@ -3269,17 +3374,24 @@ die;
 
     }
 
-    public function get_all_cus_acc() {
+    public function get_all_cus_acc(Request $request) {
         $From = \Input::get('DateFrom');
         $To = \Input::get('DateTo');
         $getcusid = \Input::get('cusname');
         $this->data['CustomerID'] = $getcusid;
 
         $this->data['allcustomers'] = \DB::table('customers')->get();
+
         $this->data['DigiOrders'] = \App\DigiOrders::select('digitizing_orders.OrderID', 'CustomerName', 'DesignName', 'PONumber', 'Price', 'digitizing_orders.DateAdded', 'digitizing_orders.IsRead')
                 ->leftjoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
                 ->whereBetween(DB::Raw('date(digitizing_orders.DateAdded)'), array($From, $To))
                 ->whereIn('digitizing_orders.Status', [7, 8])
+                ->when(($request->has('OrderNum') && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('OrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('digitizing_orders.CustomerID', $getcusid)
                 ->orderby('digitizing_orders.OrderID', 'desc')
                 ->get();
@@ -3288,6 +3400,12 @@ die;
                 ->leftjoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
                 ->whereBetween(DB::Raw('date(vector_order.DateAdded)'), array($From, $To))
                 ->whereIn('vector_order.Status', [7, 8])
+                ->when(($request->has('OrderNum')  && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('VectorOrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('vector_order.CustomerID', $getcusid)
                 ->orderby('vector_order.VectorOrderID', 'desc')
                 ->get();
@@ -3713,7 +3831,7 @@ public function generate_vec_inv() {
         return view('admin.summary.accounts.dec_acc', $this->data);
     }
 
-    public function desi_acc_detail() {
+    public function desi_acc_detail(Request $request) {
 
         $From = \Input::get('DateFrom');
         $To = \Input::get('DateTo');
@@ -3726,6 +3844,12 @@ public function generate_vec_inv() {
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'vector_order.DesignerID')
                 ->whereBetween(DB::Raw('date(vector_order.DateAdded)'), array($From, $To))
                 ->where('vector_order.Status', 7)
+                ->when(($request->has('OrderNum') && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('VectorOrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('vector_order.DesignerID', $getdesid)
                 ->orderby('vector_order.VectorOrderID', 'desc')
                 ->get();
@@ -3734,6 +3858,12 @@ public function generate_vec_inv() {
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
                 ->whereBetween(DB::Raw('date(digitizing_orders.DateAdded)'), array($From, $To))
                 ->where('digitizing_orders.Status', 7)
+                ->when(($request->has('OrderNum') && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('OrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('digitizing_orders.DesignerID', $getdesid)
                 ->orderby('digitizing_orders.OrderID', 'desc')
                 ->get();
@@ -3748,7 +3878,7 @@ public function generate_vec_inv() {
         return view('admin.summary.accounts.sales_acc', $this->data);
     }
 
-    public function sales_acc_detail() {
+    public function sales_acc_detail(Request $request) {
 
         $From = \Input::get('DateFrom');
         $To = \Input::get('DateTo');
@@ -3762,6 +3892,12 @@ public function generate_vec_inv() {
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'vector_order.DesignerID')
                 ->whereBetween(DB::Raw('date(vector_order.DateAdded)'), array($From, $To))
                 ->where('vector_order.Status', 7)
+                ->when(($request->has('OrderNum') && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('VectorOrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('vector_order.SalesPersonID', $getsalesid)
                 ->orderby('vector_order.VectorOrderID', 'desc')
                 ->get();
@@ -3771,6 +3907,12 @@ public function generate_vec_inv() {
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
                 ->whereBetween(DB::Raw('date(digitizing_orders.DateAdded)'), array($From, $To))
                 ->where('digitizing_orders.Status', 7)
+                ->when(($request->has('OrderNum') && $request->OrderNum != null), function ($query) use ($request) {
+                    return $query->where('OrderID', $request->OrderNum);
+                })
+                ->when(($request->has('design_name')  && $request->design_name != null), function ($query) use ($request) {
+                    return $query->where('DesignName', $request->design_name);
+                })
                 ->where('digitizing_orders.SalesPersonID', $getsalesid)
                 ->orderby('digitizing_orders.OrderID', 'desc')
                 ->get();
