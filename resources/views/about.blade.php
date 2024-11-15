@@ -65,7 +65,7 @@
         </div>
     </section>
     <!--Services-->
-    <section id="services" class="space-top three" background="{{ asset('assets/web/images/aboutbg.png">
+    <section id="services" class="space-top three" background="{{ asset('assets/web/images/aboutbg.png')}}">
         <div class="container">
             <div class="row ">
                  <div class="col-sm-12 service-block text-center">
@@ -75,7 +75,7 @@
                             and discounts. Our team is well experienced in everything digital, and we provide the best possible results  <br>
                             with attention to detail. Best prices and fastest turnaround guaranteed! Do not hesitate a second to contact 
                                <br>us and find out about our deals. To see the quality of our raster to vector service, just apply for our free first logo. </p>
-                     <img src="{{ asset('assets/web/images/logo.gif" class="signature animate-in move-up" alt="Signature">
+                     <img src="{{ asset('assets/web/images/logo.gif') }}" class="signature animate-in move-up" alt="Signature">
                     </div>
                 
                   <div class="col-sm-12" style="margin-bottom: 30px">
@@ -102,7 +102,7 @@
                                     Vector Tracing is a photo editing technique that converts bitmap images (.bmp,.jpg,.png,e.t.c.) into vectors 
                                     <br>(.SVG or Scalable Vector Graphics) and is provided as service by photo editors using the appropriate photo 
                                     <br>editing tools such as Adobe Illustrator (A.I.) or Corel Draw. Not every photo editing tool can convert bitmap images to vectors.</p>
-                            <img src="{{ asset('assets/web/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">
+                            <img src="{{ asset('assets/web/images/cal-to-action-4.png')}}" class="animate-in move-up" alt="Call To Action">
                         </div>
                         <div class="item green space-top">
                             <h2 class="animate-in move-up">Digitizing</h2>
@@ -112,7 +112,7 @@
                                 <br>like Nike and it's 'swoosh' and a 'bitten apple' for Apple have become iconic in themselves and have become 
                                 <br>cultural icons than just ordinary logos.</p>
 
-                       <img src="{{ asset('assets/web/images/cal-to-action-4.png" class="animate-in move-up" alt="Call To Action">
+                       <img src="{{ asset('assets/web/images/cal-to-action-4.png')}}" class="animate-in move-up" alt="Call To Action">
                     </div>
                 </div>
             </div>

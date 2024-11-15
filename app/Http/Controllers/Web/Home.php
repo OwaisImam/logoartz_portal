@@ -300,8 +300,8 @@ public function free_trial() {
                   "Fbrclr" => $Cus_order->FabricColor,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom) {
-                             $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
+                    , function($message) use ($mailFrom, $Cus_order) {
+                             $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - '.App\Http\Helper::getPrefix('digitizing', $Cus_order->OrderType) .'-'. $Cus_order->OrderID.' Order Confirmation');
                         });               
 
 
@@ -324,8 +324,8 @@ public function free_trial() {
                       "Fbrclr" => $Cus_order->FabricColor,
                       "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                       ] 
-                    , function($message) use ($mailFrom) {
-                             $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
+                    , function($message) use ($mailFrom, $Cus_order) {
+                             $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - '.App\Http\Helper::getPrefix('digitizing', $Cus_order->OrderType) .'-'. $Cus_order->OrderID.' Order Confirmation');
                         });              
 
 
@@ -452,9 +452,9 @@ public function free_trial() {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $Cus_order) {
                     
-                        $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - Order Confirmation');
+                        $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->subject('Logo Artz - '.App\Http\Helper::getPrefix('digitizing', $Cus_order->OrderType) .'-'. $Cus_order->OrderID.' Order Confirmation');
             });
 
 
@@ -476,9 +476,9 @@ public function free_trial() {
                   "NumClr" => $Cus_order->NoOfColors,
                   "ADDITIONALINSTRUCTIONS" => $Cus_order->MoreInstructions
                   ] 
-                    , function($message) use ($mailFrom, $ccMail) {
+                    , function($message) use ($mailFrom, $ccMail, $Cus_order) {
                     
-                        $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->cc($ccMail)->subject('Logo Artz - Order Confirmation');
+                        $message->to(Input::get('Email'))->from($mailFrom, 'Logo Artz')->cc($ccMail)->subject('Logo Artz - '.App\Http\Helper::getPrefix('digitizing', $Cus_order->OrderType) .'-'. $Cus_order->OrderID.' Order Confirmation');
             });
 
                   }

@@ -1470,6 +1470,12 @@ public function jd(){
 
              \DB::table('digitizing_orders')->where('OrderID', $OrderID)->update($orderDetail);
            $this->data['designer_email'] = $D_data->Email;
+           $path = public_path('uploads') . '/orders/digi/';
+
+           $attachFiles[] = $path.$order->File1;
+           $attachFiles[] = $path.$order->File2;
+           $attachFiles[] = $path.$order->File3;
+           $attachFiles[] = $path.$order->File4;
 
          if($order->OrderType == 2 || $order->OrderType == 4){
             $type = "Quote";
@@ -1489,8 +1495,15 @@ public function jd(){
                   "Fbrclr" => $order->FabricColor,
                   "Adminmsg" => \Input::get('MessageForDesigner')
                   ]
-                    , function($message) use ($mailFrom) {
-                $message->to($this->data['designer_email'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Digitizing Quote');
+                    , function($message) use ($mailFrom, $attachFiles) {
+                    $message->to($this->data['designer_email'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Digitizing Quote');
+                    if (!empty($attachFiles)) {
+                        foreach ($attachFiles as $attachmentPath) {
+                            if (file_exists($attachmentPath)) {
+                                $message->attach($attachmentPath);
+                            }
+                        }
+                    }
             });
            }else{
                $type = "Order";
@@ -1511,8 +1524,15 @@ public function jd(){
                   "Fbrclr" => $order->FabricColor,
                   "Adminmsg" => \Input::get('MessageForDesigner')
                   ]
-                    , function($message) use ($mailFrom) {
+                    , function($message) use ($mailFrom, $attachFiles) {
                 $message->to($this->data['designer_email'])->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Digitizing Order');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
                
                
@@ -1571,6 +1591,13 @@ public function jd(){
            $D_data = DB::table('designers')->select('DesignerName', 'Email')->where('DesignerID', $DesignerID)->first();    
            $this->data['designer_email'] = $D_data->Email;
 
+           $path = public_path('uploads') . '/orders/digi/';
+
+           $attachFiles[] = $path.$order->File1;
+           $attachFiles[] = $path.$order->File2;
+           $attachFiles[] = $path.$order->File3;
+           $attachFiles[] = $path.$order->File4;
+
            $designerEmail = $D_data->Email;
            
              $type = "Quote";
@@ -1589,8 +1616,16 @@ public function jd(){
                   "NumClr" => $order->NoOfColors,
                   "Adminmsg" => \Input::get('MessageForDesigner')
                   ]
-                    , function($message) use ($mailFrom, $designerEmail) {
+                    , function($message) use ($mailFrom, $designerEmail, $attachFiles) {
                 $message->to($designerEmail)->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Vector Quote Revision');
+
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
 
 
@@ -1642,6 +1677,13 @@ public function jd(){
            $D_data = DB::table('designers')->select('DesignerName', 'Email')->where('DesignerID', $DesignerID)->first();  
            $designerEmail = $D_data->Email;
             
+           $path = public_path('uploads') . '/orders/digi/';
+
+           $attachFiles[] = $path.$order->File1;
+           $attachFiles[] = $path.$order->File2;
+           $attachFiles[] = $path.$order->File3;
+           $attachFiles[] = $path.$order->File4;
+
               $mailFrom = 'technical-team@logoartz.com';
                   \Mail::send('includes.emails.digi_designer', [
                   "DesignerName" => $D_data->DesignerName,
@@ -1658,8 +1700,15 @@ public function jd(){
                   "Fbrclr" => $order->FabricColor,
                   "Adminmsg" => \Input::get('MessageForDesigner')
                   ]
-                    , function($message) use ($mailFrom, $designerEmail) {
+                    , function($message) use ($mailFrom, $designerEmail, $attachFiles) {
                 $message->to($designerEmail)->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Digitizing Quote');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
 
                   if(\Mail::failures()){
@@ -1681,8 +1730,15 @@ public function jd(){
                   "Fbrclr" => $order->FabricColor,
                   "Adminmsg" => \Input::get('MessageForDesigner')
                   ]
-                    , function($message) use ($mailFrom, $designerEmail) {
+                    , function($message) use ($mailFrom, $designerEmail, $attachFiles) {
                 $message->to($designerEmail)->from($mailFrom, 'Logo Artz')->subject('Logo Artz -Assigned Digitizing Quote');
+                if (!empty($attachFiles)) {
+                    foreach ($attachFiles as $attachmentPath) {
+                        if (file_exists($attachmentPath)) {
+                            $message->attach($attachmentPath);
+                        }
+                    }
+                }
             });
 
                   }
@@ -1715,9 +1771,6 @@ public function jd(){
             return redirect()->back()->withErrors($v->errors())->withInput();
         } else {
             
-    
-        
-            
             $status = 1;
             $read = 1;
             $type = 0;
@@ -1743,6 +1796,13 @@ public function jd(){
            $this->data['designer_email'] = $D_data->Email;
            $designerEmail = $D_data->Email;
 
+
+           $path = public_path('uploads') . '/orders/digi/';
+
+           $attachFiles[] = $path.$order->File1;
+           $attachFiles[] = $path.$order->File2;
+           $attachFiles[] = $path.$order->File3;
+           $attachFiles[] = $path.$order->File4;
 
         if($order->OrderType == 2 || $order->OrderType == 4){
                 $type = "Quote";
