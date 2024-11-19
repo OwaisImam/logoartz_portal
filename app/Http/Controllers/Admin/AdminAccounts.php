@@ -377,8 +377,8 @@ class AdminAccounts extends AdminController
 
 
 
-        // return view('admin.summary.accounts.print_cus_invoice', $this->data);
-        // exit();
+        return view('admin.summary.accounts.print_cus_invoice', $this->data);
+        exit();
 
 
         $pdf = PDF::loadView('admin.summary.accounts.print_cus_invoice', $this->data)
