@@ -3529,7 +3529,7 @@ class Summary extends AdminController
         $DPrices = 0;
         $VPrices = 0;
 
-
+        $Prices=0;
 
 
         if (Input::has('DOrderIDs') || Input::has('VOrderIDs') && Input::has('CustomerID')) {
@@ -3566,8 +3566,6 @@ class Summary extends AdminController
                     ->get();
                 $VOrderData  = $this->data['VecOrders'];
             }
-
-
 
 
             if (!empty($this->data['DigiOrders'])) {

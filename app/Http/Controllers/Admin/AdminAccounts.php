@@ -29,7 +29,7 @@ class AdminAccounts extends AdminController
 
     // dd($this->data['Invoices']);
 
-    return view('admin.summary..accounts.invoices', $this->data);
+    return view('admin.summary.accounts.invoices', $this->data);
   }
 
 
@@ -377,15 +377,14 @@ class AdminAccounts extends AdminController
 
 
 
-        return view('admin.summary.accounts.print_cus_invoice', $this->data);
-        exit();
+        // return view('admin.summary.accounts.print_cus_invoice', $this->data);
+        // exit();
 
 
         $pdf = PDF::loadView('admin.summary.accounts.print_cus_invoice', $this->data)
           ->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
 
-        $pdf->stream('test.pdf');
-        // $pdf->save(public_path('') . '/invoices/' . $fileName);
+        $pdf->save(public_path('') . '/invoices/' . $fileName);
 
 
         if ($TotalPrice > 0) {

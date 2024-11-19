@@ -161,43 +161,39 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                       <tr>
-                        <th>Order# </th>
-                        <th>PO Number</th>
-                        <th>Design Name</th>
-                        <th>Cetagory</th>
-                        <th>Order Date</th>
-                        <th>Price</th>
+                        <th>Invoice#</th>
+                        <th>Customer Email</th>
+                        <th>Total Price</th>
+                        <th>Created At</th>
+                        <th>Invoice</th>
                       </tr>
                     </thead>
                     <tbody>
-                        @if(!empty($DigiOrders))
-                            @foreach($DigiOrders as $digitizing)
-                            <tr >
-                                      <td>{{ $digitizing->OrderID }}</td>
-                                      <td>{{ $digitizing->PONumber }}</td>
-                                      <td>{{ $digitizing->DesignName }}</td>
-                                      <td> Digitizing </td>
-                                      <td>{{ $OrderTypes[$digitizing->OrderType] }}</td>
-                                      <td>${{ $digitizing->Price }}</td>
-                           </td>
-                                </tr>
-                            @endforeach
-                        @endif
+                        <?php  
+             
+                   if(!empty($Invoices)) {
+                      foreach ($Invoices as $inv) {
+                   ?>
 
+                                              <tr class="newclass<?php echo $inv->Status ?>"> 
 
-                        @if(!empty($VecOrders))
-                            @foreach($VecOrders as $vector)
-                            <tr >
-                                      <td>{{ $vector->VectorOrderID }}</td>
-                                      <td>{{ $vector->PONumber }}</td>
-                                      <td>{{ $vector->DesignName }}</td>
-                                      <td> Vector </td>
-                                      <td>{{ $OrderTypes[$vector->OrderType] }}</td>
-                                      <td>${{ $vector->Price }}</td>
-                           </td>
-                                </tr>
-                            @endforeach
-                        @endif
+                                                  <td>{{ $inv->Inv_id }}</td>
+                                                  <td>{{ $inv->customer_email }}</td>
+                                                  <td ><strong class="label label-danger" style="font-size: 15px">${{$inv->total_price}}</strong></td>
+                                                  <td>{{ $inv->created_at }}</td>
+ <td>   
+          <a href="{{asset('invoices').'/'.$inv->invoice_name}}" target="_blank">View Invoice</a>
+
+                                             
+                                                </td>
+                                                  
+                                                
+
+                                               
+                                                  
+                                                </tr>
+
+                                                 <?php  }} ?> 
                     </tbody>
                   </table>
             </Section>

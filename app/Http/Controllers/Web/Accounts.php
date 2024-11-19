@@ -39,97 +39,23 @@ class Accounts extends CustomerController
     {
         $from = $request->input('from');
         $to = $request->input('to');
-        $orderType = $request->input('order_type');
         $customerID = session('CustomerID');
-
-        $this->data['CustomerID'] = $customerID;
-        $this->data['OrderTypes'] = config('order_types');
-
-        switch ($orderType) {
-            case 1:
-                // Only Digitizing Orders
-                $this->data['DigiOrders'] = \App\DigiOrders::select(
-                    'digitizing_orders.OrderID',
-                    'CustomerName',
-                    'DesignName',
-                    'PONumber',
-                    'Price',
-                    'OrderType',
-                    'digitizing_orders.DateAdded',
-                    'digitizing_orders.IsRead'
-                )
-                ->leftJoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
-                ->whereBetween(DB::raw('date(digitizing_orders.DateAdded)'), [$from, $to])
-                ->where('digitizing_orders.Status', 7)
-                ->whereNotNull('digitizing_orders.Price')
-                ->whereNotIn('digitizing_orders.OrderType', [2, 4])
-                ->where('digitizing_orders.CustomerID', $customerID)
-                ->orderByDesc('digitizing_orders.OrderID')
-                ->get();
-                break;
-
-            case 2:
-                // Only Vector Orders
-                $this->data['VecOrders'] = \App\vector_order::select(
-                    'vector_order.VectorOrderID',
-                    'CustomerName',
-                    'DesignName',
-                    'PONumber',
-                    'Price',
-                    'OrderType',
-                    'vector_order.DateAdded',
-                    'vector_order.IsRead'
-                )
-                ->leftJoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
-                ->whereBetween(DB::raw('date(vector_order.DateAdded)'), [$from, $to])
-                ->where('vector_order.Status', 7)
-                ->whereNotNull('vector_order.Price')
-                ->whereNotIn('vector_order.OrderType', [2, 4])
-                ->where('vector_order.CustomerID', $customerID)
-                ->orderByDesc('vector_order.VectorOrderID')
-                ->get();
-                break;
-
-            default:
-                // All Orders
-                $this->data['DigiOrders'] = \App\DigiOrders::select(
-                    'digitizing_orders.OrderID',
-                    'CustomerName',
-                    'DesignName',
-                    'PONumber',
-                    'Price',
-                    'OrderType',
-                    'digitizing_orders.DateAdded',
-                    'digitizing_orders.IsRead'
-                )
-                ->leftJoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
-                ->where('digitizing_orders.Status', 7)
-                ->whereNotIn('digitizing_orders.OrderType', [2, 4])
-                ->where('digitizing_orders.CustomerID', $customerID)
-                ->whereNotNull('digitizing_orders.Price')
-                ->orderByDesc('digitizing_orders.OrderID')
-                ->get();
-
-                $this->data['VecOrders'] = \App\vector_order::select(
-                    'vector_order.VectorOrderID',
-                    'CustomerName',
-                    'DesignName',
-                    'PONumber',
-                    'Price',
-                    'OrderType',
-                    'vector_order.DateAdded',
-                    'vector_order.IsRead'
-                )
-                ->leftJoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
-                ->whereBetween(DB::raw('date(vector_order.DateAdded)'), [$from, $to])
-                ->where('vector_order.Status', 7)
-                ->whereNotIn('vector_order.OrderType', [2, 4])
-                ->whereNotNull('vector_order.Price')
-                ->where('vector_order.CustomerID', $customerID)
-                ->orderByDesc('vector_order.VectorOrderID')
-                ->get();
-                break;
+        
+        // Start building the query
+        $query = \App\invoice::where('customer_id', $customerID);
+        
+        // Apply filters for date range if provided
+        if (!empty($from)) {
+            $query->whereDate('created_at', '>=', $from);
         }
+        
+        if (!empty($to)) {
+            $query->whereDate('created_at', '<=', $to);
+        }
+        
+        // Retrieve filtered results, ordered by latest first
+        $this->data['Invoices'] = $query->orderBy('id', 'DESC')->get();
+        
         return view('finance.accounts_summary', $this->data);
 
     }
