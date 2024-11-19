@@ -30,8 +30,8 @@
         }
 
         .header .invoice-title {
-            background-color: #4a5a7d;
-            color: #f6d36a;
+            background-color: #EFBD68;
+            color: #ffff;
             padding: 10px 20px;
             font-size: 20px;
             font-weight: bold;
@@ -69,8 +69,8 @@
         }
 
         .table th {
-            background-color: #4a5a7d;
-            color: white;
+            background-color: #EFBD68;
+            color: #000;
             padding: 10px;
         }
 
@@ -81,8 +81,8 @@
         }
 
         .total-row td {
-            background-color: #4a5a7d;
-            color: white;
+            background-color: #EFBD68;
+            color: #000;
             font-weight: bold;
         }
 
@@ -105,8 +105,8 @@
         }
 
         .footer-links {
-            background-color: #4a5a7d;
-            color: white;
+            background-color: #EFBD68;
+            color: #000;
             padding: 10px;
             margin-top: 20px;
         }
@@ -160,8 +160,8 @@
             </thead>
             <tbody>
 
-                @if (!empty($DigiOrders))
-                    @foreach ($DigiOrders as $key => $digi)
+                @if (!empty($digiOrders))
+                    @foreach ($digiOrders as $key => $digi)
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $digi['orId'] }}</td>
@@ -177,8 +177,8 @@
                     @endforeach
                 @endif
 
-                @if (!empty($VecOrders))
-                    @foreach ($VecOrders as $vector)
+                @if (!empty($vecOrders))
+                    @foreach ($vecOrders as $vector)
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $divectorgi['orId'] }}</td>
@@ -214,7 +214,7 @@
             </tfoot>
         </table>
 
-        <div class="amount">In words: Fifteen Dollars Only.</div>
+        <div class="amount">In words: {{ \App\Http\Helper::priceToWords($TotalPrice) }}.</div>
 
         <div class="footer">
             <a href="{{ $Pay_URL }}">
