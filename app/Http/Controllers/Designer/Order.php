@@ -864,7 +864,7 @@ class Order extends DesignerController
         $error6 = false;
         $msg6 = "";
 
-        $allowed_ext = ['jpg', 'jpeg', 'png', 'hus', 'jef', 'dsb', 'u01', 'pcs', 'gif', 'emb', 'ai', 'dst', 'pdf', 'pof', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+        $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
 
 
         $filea =  Input::file('Filea');
@@ -1056,7 +1056,7 @@ class Order extends DesignerController
             $error12 = false;
             $msg12 = "";
 
-            $allowed_ext = ['jpg', 'jpeg', 'png', 'hus', 'jef', 'dsb', 'u01', 'pcs', 'gif', 'emb', 'ai', 'dst', 'pdf', 'pof', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+            $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
 
             
             $filea =  Input::file('Filea');
