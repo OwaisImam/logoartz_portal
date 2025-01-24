@@ -412,84 +412,32 @@ class Order extends CustomerController
 
         $fileCount = 0;
 
-        $error1 = false;
-        $msg1 = "";
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+        $categories = ['FileOne' => 'a', 'FileTwo' => 'b', 'FileThree' => 'c', 'FileFour' => 'd'];
 
-        $error2 = false;
-        $msg2 = "";
+        $errorMessages = [];
+        $totalFileCount = 0;
 
-        $error3 = false;
-        $msg3 = "";
+        foreach ($categories as $inputName => $categoryCode) {
+            if (Input::hasFile($inputName)) {
+                $file = Input::file($inputName);
 
-        $error4 = false;
-        $msg4 = "";
+                $extension = strtolower($file->getClientOriginalExtension());
 
-        $errors = false;
-
-
-        $errors = false;
-
-        $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'DST', 'PDF', 'ai' , 'cdr' , 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps'];
-
-        if (Input::hasFile('FileOne')) {
-            $fl = Input::file('FileOne');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error1 = true;
-                    $msg1 = "Invalid File type";
+                // Validate file extension
+                if (!in_array($extension, $allowedExtensions)) {
+                    $errorMessages[] = "Invalid file type in category '{$inputName}' for file '{$file->getClientOriginalName()}'.";
                 } else {
-                    $fileCount++;
+                    $totalFileCount++;
                 }
+
             }
         }
 
+        if (!empty($errorMessages)) {
+            return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
 
-
-
-        if (Input::hasFile('FileTwo')) {
-            $fl = Input::file('FileTwo');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error2 = true;
-                    $msg2 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
         }
-
-
-
-        if (Input::hasFile('FileThree')) {
-            $fl = Input::file('FileThree');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error3 = true;
-                    $msg3 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
-        if (Input::hasFile('FileFour')) {
-            $fl = Input::file('FileFour');
-            if (!empty($fl)) {
-                $ext = $fl->getClientOriginalExtension();
-                if (!in_array($ext, $allowed_ext)) {
-                    $error3 = true;
-                    $msg3 = "Invalid File type";
-                } else {
-                    $fileCount++;
-                }
-            }
-        }
-
-
 
 
         $valid["DesignName"] = 'required|max:30';
@@ -537,17 +485,14 @@ class Order extends CustomerController
 
 
 
-        if ($v->fails() || $error1 || $error2 || $error3 || $error4 || $errors || $fileCount == 0) {
-            if ($error1 || $error2 || $error3 || $error4 || $errors || $fileCount == 0) {
+        if ($v->fails() || $totalFileCount == 0) {
 
-                if ($fileCount == 0) {
-                    return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', "Please upload artwork");
-                } else {
-                    return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', $msg1 . '<br>' . $msg2 . '<br>' . $msg3 . '<br>' . $msg4);
-                }
+            if ($totalFileCount == 0) {
+                return redirect()->back()->withErrors($v->errors())->withInput()->with('warning_msg', "Please upload artwork");
             } else {
-                return redirect()->back()->withErrors($v->errors())->withInput();
+                return redirect()->back()->withErrors($v->errors());
             }
+            
         } else {
 
             $OrderData = [

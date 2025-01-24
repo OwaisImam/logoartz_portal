@@ -857,7 +857,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                         <div class="box-header">
                                             <h3 class="box-title">Send Design to Admin</h3>
                                         </div>
-
                                         <div class="box-body">
                                             <!-- Date -->
                                             @include('designer/includes/front_alerts')
@@ -1453,12 +1452,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
             </div>
             {!! Form::close() !!}
         @endif
-
-
-
-
-
-
 
         </section>
         <!-- /.content -->

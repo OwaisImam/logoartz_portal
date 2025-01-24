@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Designer;
 
 use App\Http\Controllers\DesignerController;
+use App\Http\Helper;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use DB;
@@ -22,11 +23,6 @@ class Order extends DesignerController
         $this->data['orders'] = \App\vector_order::select('vector_order.*', 'customers.CustomerName')
                 ->where('DesignerID', \Session::get('DesignerID'))
                 ->leftJoin('customers', 'vector_order.CustomerID', '=', 'customers.CustomerID');
-
-
-
-
-
 
         if ($status != 'all') {
             if ($status == 0) {
@@ -229,100 +225,7 @@ class Order extends DesignerController
     public function vector_order_price($OrderID)
     {
 
-
-
-        $fileCount = 0;
         $CountRev = 0;
-
-        $error1 = false;
-        $msg1 = "";
-
-        $error2 = false;
-        $msg2 = "";
-
-        $error3 = false;
-        $msg3 = "";
-
-        $error4 = false;
-        $msg4 = "";
-
-        $error5 = false;
-        $msg5 = "";
-
-        $error6 = false;
-        $msg6 = "";
-
-
-        $filea =  Input::file('Filea');
-        $fileb =  Input::file('Fileb');
-        $filec =  Input::file('Filec');
-        $aFiles = 0;
-        $bFiles = 0;
-        $cFiles = 0;
-
-
-        $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
-
-
-        if (Input::hasFile('Filea')) {
-            foreach ($filea as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $aFiles++;
-                }
-
-            }
-
-            if ($aFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-        }
-
-        if (Input::hasFile('Fileb')) {
-            foreach ($fileb as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $bFiles++;
-                }
-
-            }
-
-            if ($bFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-        }
-
-        if (Input::hasFile('Filec')) {
-            foreach ($filec as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error.$countc = true;
-                    $msg.$countc = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $cFiles++;
-                }
-
-            }
-
-            if ($cFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-        }
-
-
-        if ($fileCount > 24) {
-            return redirect()->back()->with('warning_msg', 'Your Files Biggern then 24 File only 24 file allow');
-        }
-
 
         $valid["Price"] = 'required|integer|min:1';
 
@@ -335,13 +238,33 @@ class Order extends DesignerController
         $v = \Validator::make(\Input::all(), $valid, $messages);
         $v->setAttributeNames($valid_name);
 
-        if ($error1 || $error2 || $error3 || $error4 || $error5 || $error6) {
-            return redirect()->back()->withInput()->with('warning_msg', $msg1 . $msg2 . $msg3 . $msg4 . $msg5 . $msg6);
+
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+        $categories = ['Filea' => 'a', 'Fileb' => 'b', 'Filec' => 'c'];
+
+        $errorMessages = [];
+        $totalFileCount = 0;
+
+        foreach ($categories as $inputName => $categoryCode) {
+            if (Input::hasFile($inputName)) {
+                $files = Input::file($inputName);
+
+                foreach ($files as $file) {
+                    $extension = strtolower($file->getClientOriginalExtension());
+
+                    // Validate file extension
+                    if (!in_array($extension, $allowedExtensions)) {
+                        $errorMessages[] = "Invalid file type in category '{$inputName}' for file '{$file->getClientOriginalName()}'.";
+                    } else {
+                        $totalFileCount++;
+                    }
+                }
+            }
         }
 
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors())->withInput();
-        } else {
+        if (!empty($errorMessages)) {
+            return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
+       } else {
 
             $order = DB::table('vector_order')->where('VectorOrderID', $OrderID)->first();
 
@@ -394,55 +317,12 @@ class Order extends DesignerController
             }
 
 
-
-
-            $filename = '';
-
-            if (Input::hasFile('Filea')) {
-                $count = 1;
-                foreach ($filea as $fl) {
-
-                    $filename = 'vc_' .'order'. $OrderID . 'A_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $OrderID, 'File' => $file, 'Category' => 'a']);
-                    $count++;
+            // Proceed with file uploads if validation passed
+            foreach ($categories as $inputName => $categoryCode) {
+                if (Input::hasFile($inputName)) {
+                    $files = Input::file($inputName);
+                    Helper::handleVectorFileUploads($files, $categoryCode, $OrderID, $CountRev, $InsertID);
                 }
-
-            }
-
-
-
-            if (Input::hasFile('Fileb')) {
-                $count = 1;
-
-                foreach ($fileb as $fl) {
-
-                    $filename = 'vc_' .'order'. $OrderID . 'B_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $OrderID, 'File' => $file, 'Category' => 'b']);
-                    $count++;
-                }
-
-            }
-
-
-
-            if (Input::hasFile('Filec')) {
-                $count = 1;
-                foreach ($filec as $fl) {
-
-                    $filename = 'vc_' .'order'. $OrderID . 'C_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $OrderID, 'File' => $file, 'Category' => 'c']);
-                    $count++;
-                }
-
             }
 
 
@@ -488,38 +368,9 @@ class Order extends DesignerController
             }
         }
 
-
-
-
-
-
-
-        // if ($status != 'all') {
-        //     if ($status == 1) {
-        //         $this->data['orders'] = $this->data['orders']
-        //                 ->where('digitizing_orders.Status', 5)
-        //                 ->where('digitizing_orders.IsRead', 1)
-        //                 ->where('digitizing_orders.OrderType', '!=', 4);
-
-        //     } elseif ($status == 1) {
-        //        $this->data['orders'] = \App\DigiOrders::select('digitizing_orders.*', 'customers.CustomerName')
-        //         ->where('DesignerID', \Session::get('DesignerID'))
-        //         ->where('digitizing_orders.OrderType', 1)
-        //         ->leftJoin('customers', 'digitizing_orders.CustomerID', '=', 'customers.CustomerID');
-
-        //     } elseif ($status == 6) {
-        //         $this->data['orders'] = $this->data['orders']
-        //                 ->where('digitizing_orders.Status', 6)
-        //                 ->orwhere('digitizing_orders.Status', 7)
-        //                 ->orwhere('digitizing_orders.Status', 8);
-        //     } else {
-        //         $this->data['orders'] = $this->data['orders']->where('digitizing_orders.Status', $status);
-        //     }
-        // }
         $this->data['orders'] = $this->data['orders']
                 ->where('digitizing_orders.OrderType', '!=', 2)
-//                                ->orwhere('vector_order.OrderType', 3)
-                // ->orderBy('Status', 'asc')
+              
                 ->orderBy('digitizing_orders.DateModified', 'desc')
                 ->get();
 
@@ -590,109 +441,7 @@ class Order extends DesignerController
 
     public function digi_order_price($OrderID)
     {
-
-        $fileCount = 0;
         $CountRev = 0;
-
-        $error1 = false;
-        $msg1 = "";
-
-        $error2 = false;
-        $msg2 = "";
-
-        $error3 = false;
-        $msg3 = "";
-
-        $error4 = false;
-        $msg4 = "";
-
-        $error5 = false;
-        $msg5 = "";
-
-        $error6 = false;
-        $msg6 = "";
-
-
-        $filea =  Input::file('Filea');
-        $fileb =  Input::file('Fileb');
-        $filec =  Input::file('Filec');
-
-
-        $aFiles = 0;
-        $bFiles = 0;
-        $cFiles = 0;
-
-
-        $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
-
-
-
-
-        if (Input::hasFile('Filea')) {
-            foreach ($filea as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $aFiles++;
-                }
-
-            }
-
-            if ($aFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-
-        }
-
-
-        if (Input::hasFile('Fileb')) {
-            foreach ($fileb as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $bFiles++;
-
-                }
-
-            }
-            if ($bFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-
-
-        }
-
-        if (Input::hasFile('Filec')) {
-            foreach ($filec as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error.$countc = true;
-                    $msg.$countc = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                    $cFiles++;
-                }
-
-            }
-            if ($cFiles > 8) {
-                return redirect()->back()->with('warning_msg', 'Each Cetagory contain max 8 file only');
-            }
-
-
-        }
-
-        if ($fileCount > 24) {
-            return redirect()->back()->with('warning_msg', 'Your Files Biggern then 24 File only 24 file allow');
-        }
-
-
-
 
         $valid["Price"] = 'required|integer|min:0';
 
@@ -705,12 +454,32 @@ class Order extends DesignerController
         $v = \Validator::make(\Input::all(), $valid, $messages);
         $v->setAttributeNames($valid_name);
 
-        if ($error1 || $error2 || $error3 || $error4 || $error5 || $error6) {
-            return redirect()->back()->withInput()->with('warning_msg', $msg1 . $msg2 . $msg3 . $msg4 . $msg5 . $msg6);
+        
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+        $categories = ['Filea' => 'a', 'Fileb' => 'b', 'Filec' => 'c'];
+
+        $errorMessages = [];
+        $totalFileCount = 0;
+
+        foreach ($categories as $inputName => $categoryCode) {
+            if (Input::hasFile($inputName)) {
+                $files = Input::file($inputName);
+
+                foreach ($files as $file) {
+                    $extension = strtolower($file->getClientOriginalExtension());
+
+                    // Validate file extension
+                    if (!in_array($extension, $allowedExtensions)) {
+                        $errorMessages[] = "Invalid file type in category '{$inputName}' for file '{$file->getClientOriginalName()}'.";
+                    } else {
+                        $totalFileCount++;
+                    }
+                }
+            }
         }
 
-        if ($v->fails()) {
-            return redirect()->back()->withErrors($v->errors())->withInput();
+        if (!empty($errorMessages)) {
+            return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
         } else {
 
 
@@ -764,54 +533,12 @@ class Order extends DesignerController
 
             }
 
-
-            $filename = '';
-
-            if (Input::hasFile('Filea')) {
-                $count = 1;
-                foreach ($filea as $fl) {
-
-                    $filename = 'digi_' .'order'. $OrderID . 'A_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/digi';
-                    $fl->move($path, $file);
-                    \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $OrderID, 'File' => $file, 'Category' => 'a']);
-                    $count++;
+             // Proceed with file uploads if validation passed
+             foreach ($categories as $inputName => $categoryCode) {
+                if (Input::hasFile($inputName)) {
+                    $files = Input::file($inputName);
+                    Helper::handleDigiFileUploads($files, $categoryCode, $OrderID, $CountRev, $InsertID);
                 }
-
-            }
-
-
-
-            if (Input::hasFile('Fileb')) {
-                $count = 1;
-
-                foreach ($fileb as $fl) {
-
-                    $filename = 'digi_' .'order'. $OrderID . 'B_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/digi';
-                    $fl->move($path, $file);
-                    \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $OrderID, 'File' => $file, 'Category' => 'b']);
-                    $count++;
-                }
-
-            }
-
-
-
-            if (Input::hasFile('Filec')) {
-                $count = 1;
-                foreach ($filec as $fl) {
-
-                    $filename = 'digi_' .'order'. $OrderID . 'C_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/digi';
-                    $fl->move($path, $file);
-                    \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $OrderID, 'File' => $file, 'Category' => 'c']);
-                    $count++;
-                }
-
             }
 
 
@@ -1011,105 +738,33 @@ class Order extends DesignerController
     {
 
         try {
-
-            $fileCount = 0;
             $CountRev = 0;
-            $error = false;
 
-            $msg = "";
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+            $categories = ['Filea' => 'a', 'Fileb' => 'b', 'Filec' => 'c'];
 
-            $error1 = false;
-            $msg1 = "";
+            $errorMessages = [];
+            $totalFileCount = 0;
 
-            $error2 = false;
-            $msg2 = "";
+            foreach ($categories as $inputName => $categoryCode) {
+                if (Input::hasFile($inputName)) {
+                    $files = Input::file($inputName);
 
-            $error3 = false;
-            $msg3 = "";
+                    foreach ($files as $file) {
+                        $extension = strtolower($file->getClientOriginalExtension());
 
-            $error4 = false;
-            $msg4 = "";
-
-            $error5 = false;
-            $msg5 = "";
-
-            $error6 = false;
-            $msg6 = "";
-
-
-            $error7 = false;
-            $msg7 = "";
-
-            $error8 = false;
-            $msg8 = "";
-
-            $error9 = false;
-            $msg9 = "";
-
-
-            $error10 = false;
-            $msg10 = "";
-
-            $error11 = false;
-            $msg11 = "";
-
-            $error12 = false;
-            $msg12 = "";
-
-            $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
-
-            
-            $filea =  Input::file('Filea');
-            $fileb =  Input::file('Fileb');
-            $filec =  Input::file('Filec');
-            $errorCount = 1;
-           
-
-            if (Input::hasFile('Filea')) {
-                foreach ($filea as $fl) {
-                    $ext = $fl->getClientOriginalExtension();
-            if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                        $error  = true;
-                        $msg1.$errorCount = "Invalid File type<br>";
-                        $errorCount++;
-                    } else {
-                        $fileCount++;
+                        // Validate file extension
+                        if (!in_array($extension, $allowedExtensions)) {
+                            $errorMessages[] = "Invalid file type in category '{$inputName}' for file '{$file->getClientOriginalName()}'.";
+                        } else {
+                            $totalFileCount++;
+                        }
                     }
-
                 }
             }
 
-            if (Input::hasFile('Fileb')) {
-                foreach ($fileb as $fl) {
-                    $ext = $fl->getClientOriginalExtension();
-                    if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                        $error  = true;
-                        $msg2.$errorCount = "Invalid File type<br>";
-                        $errorCount++;
-                    } else {
-                        $fileCount++;
-                    }
-
-                }
-            }
-
-            if (Input::hasFile('Filec')) {
-                foreach ($filec as $fl) {
-                    $ext = $fl->getClientOriginalExtension();
-                    if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                        $error = true;
-                        $msg3.$errorCount = "Invalid File type<br>";
-                        $errorCount++;
-                    } else {
-                        $fileCount++;
-                    }
-
-                }
-            }
-
-            if ($error == true) {
-                return redirect()->back()->withInput()->with('warning_msg', $msg1 . $msg2 . $msg3. $msg4 . $msg5 . $msg6);
-
+            if (!empty($errorMessages)) {
+                return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
             } else {
 
                 $data = [
@@ -1135,59 +790,16 @@ class Order extends DesignerController
 
                 }
 
-
-
-
-                $filename = '';
-
-                if (Input::hasFile('Filea')) {
-                    $count = 1;
-                    foreach ($filea as $fl) {
-
-                        $filename = 'digi_' .'order'. $orderid . 'A_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                        $file = $filename;
-                        $path = public_path('uploads') . '/orders/digi';
-                        $fl->move($path, $file);
-                        \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $orderid, 'File' => $file, 'Category' => 'a']);
-                        $count++;
+                // Proceed with file uploads if validation passed
+                foreach ($categories as $inputName => $categoryCode) {
+                    if (Input::hasFile($inputName)) {
+                        $files = Input::file($inputName);
+                        Helper::handleDigiFileUploads($files, $categoryCode, $orderid, $CountRev, $InsertID);
                     }
-
                 }
 
-
-
-                if (Input::hasFile('Fileb')) {
-                    $count = 1;
-
-                    foreach ($fileb as $fl) {
-
-                        $filename = 'digi_' .'order'. $orderid . 'B_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                        $file = $filename;
-                        $path = public_path('uploads') . '/orders/digi';
-                        $fl->move($path, $file);
-                        \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $orderid, 'File' => $file, 'Category' => 'b']);
-                        $count++;
-                    }
-
-                }
-
-
-
-                if (Input::hasFile('Filec')) {
-                    $count = 1;
-                    foreach ($filec as $fl) {
-
-                        $filename = 'digi_' .'order'. $orderid . 'C_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                        $file = $filename;
-                        $path = public_path('uploads') . '/orders/digi';
-                        $fl->move($path, $file);
-                        \DB::table('digi_result_files')->insert(['DR_ID' => $InsertID, 'OrderID' => $orderid, 'File' => $file, 'Category' => 'c']);
-                        $count++;
-                    }
-
-                }
-
-                if (Input::hasFile('Filea') || Input::hasFile('Fileb') || Input::hasFile('Filec')) {
+                // Update order status if any files were uploaded
+                if ($totalFileCount > 0) {
                     \DB::table('digitizing_orders')->where('OrderID', $orderid)->update(['Status' => '6']);
                 }
 

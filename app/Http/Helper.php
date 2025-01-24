@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use Illuminate\Support\Facades\DB;
+
 class Helper
 {
 
@@ -124,5 +126,52 @@ class Helper
         }
 
         return implode(" ", array_filter($words));
+    }
+
+    public static function handleDigiFileUploads($files, $categoryCode, $orderId, $countRev, $insertId)
+    {
+        $count = 1;
+        $path = public_path('uploads/orders/digi');
+    
+        foreach ($files as $file) {
+            $filename = "digi_order{$orderId}{$categoryCode}_{$countRev}_{$count}." . $file->getClientOriginalExtension();
+    
+            // Move the file to the target directory
+            $file->move($path, $filename);
+    
+            // Insert into the database
+            DB::table('digi_result_files')->insert([
+                'DR_ID' => $insertId,
+                'OrderID' => $orderId,
+                'File' => $filename,
+                'Category' => $categoryCode,
+            ]);
+    
+            $count++;
+        }
+    }
+
+    public static function handleVectorFileUploads($files, $categoryCode, $orderId, $countRev, $insertId)
+    {
+        $count = 1;
+        $path = public_path('uploads/orders/vector');
+    
+        foreach ($files as $file) {
+            $filename = "vc_{$orderId}{$categoryCode}_{$countRev}_{$count}." . $file->getClientOriginalExtension();
+    
+            // Move the file to the target directory
+            $file->move($path, $filename);
+    
+            // Insert into the database
+            DB::table('vector_result_files')->insert(
+            [
+                'VR_ID' => $insertId,
+                'VectorOrderID' => $orderId,
+                'File' => $filename,
+                'Category' => $categoryCode,
+            ]);
+    
+            $count++;
+        }
     }
 }
