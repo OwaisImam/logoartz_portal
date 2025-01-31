@@ -5,7 +5,7 @@
         "type": "-",
         "size": 771,
         "lmtime": 0,
-        "modified": true
+        "modified": false
       },
       ".ftpquota": {
         "type": "-",
@@ -15,8 +15,8 @@
       },
       ".gitignore": {
         "type": "-",
-        "size": 17,
-        "lmtime": 0,
+        "size": 47,
+        "lmtime": 1737731641611,
         "modified": false
       },
       ".htaccess": {
@@ -65,45 +65,76 @@
       "app": {
         "Http": {
           "Controllers": {
-            "Web": {
-              "Accounts.php": {
+            "Designer": {
+              "Configuration.php": {
                 "type": "-",
-                "size": 5238,
+                "size": 2940,
                 "lmtime": 0,
                 "modified": false
               },
-              "Home.php": {
+              "Customers.php": {
                 "type": "-",
-                "size": 49817,
+                "size": 12217,
                 "lmtime": 0,
                 "modified": false
               },
-              "Home.php.bak": {
+              "Dashboard.php": {
                 "type": "-",
-                "size": 7096,
+                "size": 1921,
+                "lmtime": 0,
+                "modified": false
+              },
+              "DesignerAccounts.php": {
+                "type": "-",
+                "size": 3784,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Err403.php": {
+                "type": "-",
+                "size": 326,
+                "lmtime": 0,
+                "modified": false
+              },
+              "Login.php": {
+                "type": "-",
+                "size": 2111,
                 "lmtime": 0,
                 "modified": false
               },
               "Order.php": {
                 "type": "-",
-                "size": 85732,
-                "lmtime": 1730838634225,
-                "modified": false
+                "size": 33145,
+                "lmtime": 1737567455875,
+                "modified": true
               },
-              "Register.php": {
+              "Profile.php": {
                 "type": "-",
-                "size": 15177,
+                "size": 3374,
                 "lmtime": 0,
                 "modified": false
               },
-              "User.php": {
+              "Summary.php": {
                 "type": "-",
-                "size": 6617,
+                "size": 97958,
                 "lmtime": 0,
                 "modified": false
               }
             }
-          }
+          },
+          "Helper.php": {
+            "type": "-",
+            "size": 3920,
+            "lmtime": 1737567326539,
+            "modified": false
+          },
+          "Kernel.php": {
+            "type": "-",
+            "size": 2164,
+            "lmtime": 0,
+            "modified": false
+          },
+          "Middleware": {}
         }
       },
       "artisan": {
@@ -115,13 +146,13 @@
       "bootstrap": {},
       "composer.json": {
         "type": "-",
-        "size": 1506,
+        "size": 1653,
         "lmtime": 0,
         "modified": false
       },
       "composer.lock": {
         "type": "-",
-        "size": 172276,
+        "size": 230231,
         "lmtime": 0,
         "modified": false
       },
@@ -146,7 +177,104 @@
         "modified": false
       },
       "public": {},
-      "resources": {},
+      "resources": {
+        "views": {
+          "designer": {
+            "DigiOrderDetail.blade.php": {
+              "type": "-",
+              "size": 80138,
+              "lmtime": 1737566603932,
+              "modified": false
+            },
+            "DigiOrderDetail.blade.php.bak": {
+              "type": "-",
+              "size": 15579,
+              "lmtime": 0,
+              "modified": false
+            },
+            "DigiOrders.blade.php": {
+              "type": "-",
+              "size": 16386,
+              "lmtime": 0,
+              "modified": false
+            },
+            "DigiOrders.blade.php.bak": {
+              "type": "-",
+              "size": 11123,
+              "lmtime": 0,
+              "modified": false
+            },
+            "DigiQuotes.blade.php": {
+              "type": "-",
+              "size": 15746,
+              "lmtime": 0,
+              "modified": false
+            },
+            "VecOrderDetail.blade.php": {
+              "type": "-",
+              "size": 77354,
+              "lmtime": 0,
+              "modified": false
+            },
+            "VectorOrders.blade.php": {
+              "type": "-",
+              "size": 16109,
+              "lmtime": 0,
+              "modified": false
+            },
+            "VectorQuotes.blade.php": {
+              "type": "-",
+              "size": 15848,
+              "lmtime": 0,
+              "modified": false
+            },
+            "configuration.blade.php": {
+              "type": "-",
+              "size": 13293,
+              "lmtime": 0,
+              "modified": false
+            },
+            "dashboard.blade.php": {
+              "type": "-",
+              "size": 15349,
+              "lmtime": 0,
+              "modified": false
+            },
+            "dashboard.blade.php.bak": {
+              "type": "-",
+              "size": 9895,
+              "lmtime": 0,
+              "modified": false
+            },
+            "err403.blade.php": {
+              "type": "-",
+              "size": 3839,
+              "lmtime": 0,
+              "modified": false
+            },
+            "includes": {},
+            "login.blade.php": {
+              "type": "-",
+              "size": 2543,
+              "lmtime": 0,
+              "modified": false
+            },
+            "orderhistory.blade.php": {
+              "type": "-",
+              "size": 18027,
+              "lmtime": 0,
+              "modified": false
+            },
+            "profile.blade.php": {
+              "type": "-",
+              "size": 9534,
+              "lmtime": 0,
+              "modified": false
+            },
+            "summary": {}
+          }
+        }
+      },
       "routes": {},
       "storage": {},
       "tests": {},

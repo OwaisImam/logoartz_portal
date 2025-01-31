@@ -3393,6 +3393,34 @@ class Summary extends AdminController
         }
     }
 
+    public function digi_order_revision_complete($OrderID)
+    {
+
+        $order = \DB::table('digitizing_orders')->where('OrderID', $OrderID)->first();
+        if ($order->OrderType == 3 || $order->OrderType == 9 || $order->OrderType == 0) {
+            $type = 9;
+            $status = 10;
+        }
+
+        if ($order->OrderType == 1) {
+            $status = 10;
+        }
+
+        // MessageForDesigner
+        \DB::table('digitizing_orders')::where('OrderID', $OrderID)->update(['Status' => 7, 'MessageForCustomer' => Input::get('MessageForCustomer'), 'IsRead' => 2]);
+
+        $data = [
+            'OrderID' => $OrderID,
+            'From' => 1,
+            'To' => 2,
+            'RevisionType' => 1,
+            'Message' => \Input::get('MessageForCustomer'),
+            'DateAdded' => new \DateTime()
+        ];
+        \DB::table('digi_revision')->insert($data);
+        return redirect('admin/Norder-details/' . $OrderID)->with('success', 'Order Revision Sent To Designer Successfully');
+    }
+
     public function quote_revision($vectorid)
     {
 

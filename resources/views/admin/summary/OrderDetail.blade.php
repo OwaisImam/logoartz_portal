@@ -905,7 +905,30 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                         <!-- /.box -->
 
+                     
                     </div>
+                    {!! Form::open(['url' => 'admin/digi_order_revision_complete/' . $DigiOrders->OrderID]) !!}
+                        <div class="box box-primary">
+                            <div class="box-header">
+                                <h3 class="box-title">Complete Order</h3>
+                            </div>
+                            <div class="box-body">
+                                <!-- Date -->
+
+                                <div class="form-group">
+                                    <label>Instruction For Customer:</label>
+                                    {!! Form::textarea('MessageForCustomer', null, [
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Enter your message here',
+                                    ]) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block btn-success">MARK AS COMPLETE</button>
+                            </div>
+                        </div>
+                    {!! Form::close() !!}
+                    
             </div>
 
 
@@ -1201,7 +1224,6 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                                     <div class="box box-primary">
                                         <div class="box-header">
                                             <h3 class="box-title">Revise Order</h3>
-
                                         </div>
 
                                         <div class="box-body">

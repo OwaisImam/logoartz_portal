@@ -377,6 +377,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/digi-approve-designer/{id}', 'Admin\Summary@approve_digi_design');
     Route::post('/digi-send-order/{id}', 'Admin\Summary@send_digi_design');
 
+    Route::post('/digi_order_revision_complete/{id}', 'Admin\Summary@digi_order_revision_complete');
     Route::post('/digi_order_revision/{id}', 'Admin\Summary@digi_order_revision');
     Route::post('/digi_quote_revision/{id}', 'Admin\Summary@digi_quote_revision');
 

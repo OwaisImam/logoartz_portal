@@ -264,7 +264,7 @@ class Order extends DesignerController
 
         if (!empty($errorMessages)) {
             return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
-       } else {
+        } else {
 
             $order = DB::table('vector_order')->where('VectorOrderID', $OrderID)->first();
 
@@ -370,7 +370,7 @@ class Order extends DesignerController
 
         $this->data['orders'] = $this->data['orders']
                 ->where('digitizing_orders.OrderType', '!=', 2)
-              
+
                 ->orderBy('digitizing_orders.DateModified', 'desc')
                 ->get();
 
@@ -454,7 +454,7 @@ class Order extends DesignerController
         $v = \Validator::make(\Input::all(), $valid, $messages);
         $v->setAttributeNames($valid_name);
 
-        
+
         $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
         $categories = ['Filea' => 'a', 'Fileb' => 'b', 'Filec' => 'c'];
 
@@ -533,8 +533,8 @@ class Order extends DesignerController
 
             }
 
-             // Proceed with file uploads if validation passed
-             foreach ($categories as $inputName => $categoryCode) {
+            // Proceed with file uploads if validation passed
+            foreach ($categories as $inputName => $categoryCode) {
                 if (Input::hasFile($inputName)) {
                     $files = Input::file($inputName);
                     Helper::handleDigiFileUploads($files, $categoryCode, $OrderID, $CountRev, $InsertID);
@@ -569,83 +569,31 @@ class Order extends DesignerController
     {
         $fileCount = 0;
         $CountRev = 0;
-        $error = false;
+        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'emb', 'dst', 'dsb','pcs', 'ai', 'hus', 'jef', 'pdf', 'pof', 'u01', 'pxf', 'exp', 'cnd', 'ppt', 'doc', 'pes', 'xxx', 'toyota100', 'eps'];
+        $categories = ['Filea' => 'a', 'Fileb' => 'b', 'Filec' => 'c'];
 
-        $msg = "";
+        $errorMessages = [];
+        $totalFileCount = 0;
 
-        $error1 = false;
-        $msg1 = "";
+        foreach ($categories as $inputName => $categoryCode) {
+            if (Input::hasFile($inputName)) {
+                $files = Input::file($inputName);
 
-        $error2 = false;
-        $msg2 = "";
+                foreach ($files as $file) {
+                    $extension = strtolower($file->getClientOriginalExtension());
 
-        $error3 = false;
-        $msg3 = "";
-
-        $error4 = false;
-        $msg4 = "";
-
-        $error5 = false;
-        $msg5 = "";
-
-        $error6 = false;
-        $msg6 = "";
-
-        $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', "PNG", 'gif','EMB', 'emb', 'DST', 'PDF', 'pdf', 'pof', 'pxf', "Exp", 'cnd', 'ppt', 'doc', 'PES', 'xxx', 'toyota100', 'eps', 'EPS'];
-
-
-        $filea =  Input::file('Filea');
-        $fileb =  Input::file('Fileb');
-        $filec =  Input::file('Filec');
-        $errorCount = 1;
-
-
-
-        if (Input::hasFile('Filea')) {
-
-            foreach ($filea as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg.$errorCount = "Invalid File type<br>";
-                    $errorCount++;
-                } else {
-                    $fileCount++;
+                    // Validate file extension
+                    if (!in_array($extension, $allowedExtensions)) {
+                        $errorMessages[] = "Invalid file type in category '{$inputName}' for file '{$file->getClientOriginalName()}'.";
+                    } else {
+                        $totalFileCount++;
+                    }
                 }
             }
         }
 
-        if (Input::hasFile('Fileb')) {
-            foreach ($fileb as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error  = true;
-                    $msg.$errorCount = "Invalid File type<br>";
-                    $errorCount++;
-                } else {
-                    $fileCount++;
-                }
-
-            }
-        }
-
-        if (Input::hasFile('Filec')) {
-            foreach ($filec as $fl) {
-                $ext = $fl->getClientOriginalExtension();
-                if (in_array(strtolower($ext), array_map('strtolower', $allowed_ext))) {
-                    $error = true;
-                    $msg.$errorCount = "Invalid File type<br>";
-                } else {
-                    $fileCount++;
-                }
-
-            }
-        }
-
-        if ($error == true) {
-
-            return redirect()->back()->withInput()->with('warning_msg', $msg1 . $msg2 . $msg3, $msg4 . $msg5 . $msg6);
-
+        if (!empty($errorMessages)) {
+            return redirect()->back()->withInput()->with('warning_msg', implode('<br>', $errorMessages));
         } else {
             $data = [
                 'VectorOrderID' => $vectorid,
@@ -670,61 +618,16 @@ class Order extends DesignerController
 
             }
 
-
-
-
-            $filename = '';
-
-            if (Input::hasFile('Filea')) {
-                $count = 1;
-                foreach ($filea as $fl) {
-
-                    $filename = 'vc_' .'order'. $vectorid . 'A_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $vectorid, 'File' => $file, 'Category' => 'a']);
-                    $count++;
+            // Proceed with file uploads if validation passed
+            foreach ($categories as $inputName => $categoryCode) {
+                if (Input::hasFile($inputName)) {
+                    $files = Input::file($inputName);
+                    Helper::handleVectorFileUploads($files, $categoryCode, $vectorid, $CountRev, $InsertID);
                 }
-
             }
 
-
-
-            if (Input::hasFile('Fileb')) {
-                $count = 1;
-
-                foreach ($fileb as $fl) {
-
-                    $filename = 'vc_' .'order'. $vectorid . 'B_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $vectorid, 'File' => $file, 'Category' => 'b']);
-                    $count++;
-                }
-
-            }
-
-
-
-            if (Input::hasFile('Filec')) {
-                $count = 1;
-                foreach ($filec as $fl) {
-
-                    $filename = 'vc_' .'order'. $vectorid . 'C_' . $CountRev . '_' . $count .'.' . $fl->getClientOriginalExtension();
-                    $file = $filename;
-                    $path = public_path('uploads') . '/orders/vector';
-                    $fl->move($path, $file);
-                    \DB::table('vector_result_files')->insert(['VR_ID' => $InsertID, 'VectorOrderID' => $vectorid, 'File' => $file, 'Category' => 'c']);
-                    $count++;
-                }
-
-            }
-
-
-
-            if (Input::hasFile('Filea') || Input::hasFile('Fileb') || Input::hasFile('Filec')) {
+            // Update order status if any files were uploaded
+            if ($totalFileCount > 0) {
                 \DB::table('vector_order')->where('VectorOrderID', $vectorid)->update(['Status' => '6']);
             }
 
