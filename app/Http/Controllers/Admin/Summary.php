@@ -15,8 +15,7 @@ use Illuminate\Http\Request;
 
 class Summary extends AdminController
 {
-
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
     }
@@ -142,7 +141,7 @@ class Summary extends AdminController
 
 
                 return view('admin.summary.customers.index', $this->data);
-            } else if ($Cat == 2) {
+            } elseif ($Cat == 2) {
                 // echo "Its Vector"; die;
 
 
@@ -283,7 +282,7 @@ class Summary extends AdminController
                 $this->data['d_Orders'] = $d_Qurey->orderby('digitizing_orders.OrderID', 'desc')->get();
 
                 return view('admin.summary.sales.index', $this->data);
-            } else if ($Cat == 2) {
+            } elseif ($Cat == 2) {
 
 
                 $this->data['Cat'] = 2;
@@ -401,7 +400,7 @@ class Summary extends AdminController
                 $this->data['Orders'] = $Qurey->orderby('digitizing_orders.OrderID', 'desc')->get();
 
                 return view('admin.summary.designers.index', $this->data);
-            } else if ($Cat == 1) {
+            } elseif ($Cat == 1) {
                 $this->data['Cat'] = 1;
 
                 $Qurey = \App\vector_order::select('vector_order.VectorOrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'OrderType', 'vector_order.IsRead')
@@ -493,7 +492,7 @@ class Summary extends AdminController
 
                 $this->data['DigiOrders'] = $Qurey->orderby('digitizing_orders.OrderID', 'desc')->get();
                 return view('admin.summary.history.historyindi', $this->data);
-            } else if ($Cat == 1) {
+            } elseif ($Cat == 1) {
                 $this->data['Cat'] = 1;
 
 
@@ -509,7 +508,7 @@ class Summary extends AdminController
                 $this->data['VecOrders'] = $Qurey->orderby('vector_order.VectorOrderID', 'desc')->get();
 
                 return view('admin.summary.history.historyindi', $this->data);
-            } else if ($Cat == 3) {
+            } elseif ($Cat == 3) {
                 #Both Digitizing and Vector Data
                 #Digitizing
                 $Qurey = \App\DigiOrders::select('digitizing_orders.OrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'OrderType', 'digitizing_orders.IsRead', 'digitizing_orders.OrderStatus')
@@ -1017,7 +1016,7 @@ class Summary extends AdminController
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
                 ->leftjoin('salesperson', 'salesperson.SalesPersonID', '=', 'customers.SalesPersonID')
                 ->where('digitizing_orders.OrderType', $StatusID)
-                ->orderBy('digitizing_orders.DateModified',  'desc')
+                ->orderBy('digitizing_orders.DateModified', 'desc')
                 ->get();
         }
 
@@ -1146,7 +1145,7 @@ class Summary extends AdminController
 
 
         if ($StatusID == 'all') {
-            $this->data['VectorOrders'] = \App\vector_order::select('VectorOrderID', 'customers.CustomerID as CusId', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'vector_order.Status', 'OrderType', 'vector_order.IsRead', 'vector_order.OrderStatus',  'salesperson.SalesPersonName as salesrep', 'vector_order.DateAdded', 'vector_order.DateModified')
+            $this->data['VectorOrders'] = \App\vector_order::select('VectorOrderID', 'customers.CustomerID as CusId', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'vector_order.Status', 'OrderType', 'vector_order.IsRead', 'vector_order.OrderStatus', 'salesperson.SalesPersonName as salesrep', 'vector_order.DateAdded', 'vector_order.DateModified')
                 ->leftjoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
                 ->leftjoin('designers', 'designers.DesignerID', '=', 'vector_order.DesignerID')
                 ->leftjoin('salesperson', 'salesperson.SalesPersonID', '=', 'customers.SalesPersonID')
@@ -1443,7 +1442,7 @@ class Summary extends AdminController
                 'IsRead' => $read,
                 'AssignStatus' => 1,
                 'Status' => $status,
-                'DateModified' => new \DateTime
+                'DateModified' => new \DateTime()
             ];
 
             $DesignerID = \Input::get('DesignerID');
@@ -1569,7 +1568,7 @@ class Summary extends AdminController
                 'IsRead' => $read,
                 'AssignStatus' => 1,
                 'Status' => $status,
-                'DateModified' => new \DateTime
+                'DateModified' => new \DateTime()
             ];
 
             \App\vector_order::where('VectorOrderID', $VectorOrderID)->update($orderDetail);
@@ -1662,7 +1661,7 @@ class Summary extends AdminController
                 'IsRead' => $read,
                 'AssignStatus' => 1,
                 'Status' => $status,
-                'DateModified' => new \DateTime
+                'DateModified' => new \DateTime()
             ];
             \DB::table('digitizing_orders')->where('OrderID', $OrderID)->update($orderDetail);
             $DesignerID = \Input::get('DesignerID');
@@ -1785,7 +1784,7 @@ class Summary extends AdminController
                 'IsRead' => $read,
                 'AssignStatus' => 1,
                 'Status' => $status,
-                'DateModified' => new \DateTime
+                'DateModified' => new \DateTime()
             ];
             $DesignerID = \Input::get('DesignerID');
             $D_data = DB::table('designers')->select('DesignerName', 'Email')->where('DesignerID', $DesignerID)->first();
@@ -2015,7 +2014,7 @@ class Summary extends AdminController
                 return redirect()->back()->withErrors($v->errors())->withInput();
             }
         } else {
-            $cat = new \App\Customers;
+            $cat = new \App\Customers();
 
             $cat->CustomerName = Input::get('CustomerName');
             $cat->Cell = Input::get('Cell');
@@ -2031,7 +2030,7 @@ class Summary extends AdminController
             $cat->Username = Input::get('Username');
             $cat->Password = \Hash::make(Input::get('Password'));
             $cat->Status = Input::get('Status');
-            $cat->DateAdded = new \DateTime;
+            $cat->DateAdded = new \DateTime();
 
             $cat->save();
 
@@ -2150,7 +2149,7 @@ class Summary extends AdminController
                 $cat->Password = \Hash::make(Input::get('Password'));
             }
             $cat->Status = Input::get('Status');
-            $cat->DateModified = new \DateTime;
+            $cat->DateModified = new \DateTime();
 
             $cat->save();
 
@@ -2185,7 +2184,7 @@ class Summary extends AdminController
         return redirect('admin/customers')->with('success', "Selected Customer Deleted Successfully");
     }
 
-    function VecSendQuote($VectorOrderID)
+    public function VecSendQuote($VectorOrderID)
     {
 
         $query;
@@ -2242,7 +2241,7 @@ class Summary extends AdminController
 
         if ($OrderType == 2) {
 
-            // Vec Quote Email 
+            // Vec Quote Email
 
             $mailFrom = 'technical-team@logoartz.com';
             \Mail::send(
@@ -2287,9 +2286,9 @@ class Summary extends AdminController
         return redirect('admin/Vec_order-details/' . $VectorOrderID)->with('success', 'Quote Sent To Customer Successfully');
     }
 
-    function SendQuote($OrderID)
+    public function SendQuote($OrderID)
     {
-        // Line 1305 for Order 
+        // Line 1305 for Order
 
 
         $query;
@@ -2346,7 +2345,7 @@ class Summary extends AdminController
 
         if ($OrderType == 2) {
 
-            // Digi Quote Email 
+            // Digi Quote Email
 
             $mailFrom = 'technical-team@logoartz.com';
             \Mail::send(
@@ -2392,7 +2391,7 @@ class Summary extends AdminController
     }
 
 
-    function new_vector_quote($quotestatus)
+    public function new_vector_quote($quotestatus)
     {
         $this->data['VectorOrders'] = \App\vector_order::select('VectorOrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'vector_order.Status', 'OrderType', 'IsRead')
             ->leftjoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
@@ -2405,7 +2404,7 @@ class Summary extends AdminController
         return view('admin.summary.VectorOrders', $this->data);
     }
 
-    function new_digi_quote($quotestatus)
+    public function new_digi_quote($quotestatus)
     {
         //        $this->data['DigiOrders'] = \App\DigiOrders::select('OrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber','digitizing_orders.Status', 'OrderType')
         //                                    ->leftjoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
@@ -2414,7 +2413,7 @@ class Summary extends AdminController
         //                                    ->get();
         //       $this->data['OrderStatuses'] = Config('order_statuses');
         //       $this->data['OrderTypes'] = Config('order_types');
-        //       
+        //
         //       return view('admin.summary.NewOrders', $this->data);
         $this->data['DigiOrders'] = \App\DigiOrders::select('OrderID', 'CustomerName', 'DesignerName', 'DesignName', 'PONumber', 'digitizing_orders.Status', 'OrderType', 'IsRead')
             ->leftjoin('customers', 'customers.CustomerID', '=', 'digitizing_orders.CustomerID')
@@ -2819,7 +2818,7 @@ class Summary extends AdminController
         $fprice = Input::get('OrderPrice');
         // Discount
         $discount = \Input::get('Discount');
-        //Final Price After Discount 
+        //Final Price After Discount
         $finalprice = Input::get('finalprice');
 
 
@@ -2841,7 +2840,7 @@ class Summary extends AdminController
 
         // if($vecOrderDetail->OrderType != 1 || $vecOrderDetail->OrderType != 4 || $vecOrderDetail->OrderType !=  9){
         //     if($qty == ''){
-        //         $qty = 1;    
+        //         $qty = 1;
         //     }
         // }
 
@@ -2964,7 +2963,7 @@ class Summary extends AdminController
                     }
                 );
             } elseif ($OrderType == 9) {
-                // Free Order Revision Email 
+                // Free Order Revision Email
 
                 // Email For Order Revision
                 $mailFrom = 'technical-team@logoartz.com';
@@ -2982,7 +2981,7 @@ class Summary extends AdminController
                         }
                     }
                 );
-                //     
+                //
 
 
 
@@ -3008,7 +3007,7 @@ class Summary extends AdminController
                 );
             } else {
 
-                // Normal Order Email  
+                // Normal Order Email
 
                 $mailFrom = 'technical-team@logoartz.com';
                 \Mail::send(
@@ -3037,7 +3036,7 @@ class Summary extends AdminController
 
     public function send_digi_design($OrderID)
     {
-        // O R D E R 
+        // O R D E R
 
         //2419 Vector
 
@@ -3051,7 +3050,7 @@ class Summary extends AdminController
         $fprice = Input::get('OrderPrice');
         // Discount
         $discount = \Input::get('Discount');
-        //Final Price After Discount 
+        //Final Price After Discount
         $finalprice = Input::get('finalprice');
 
 
@@ -3071,7 +3070,7 @@ class Summary extends AdminController
         // }
 
         //   if($qty > 1){
-        //        $price = $price * $qty;     
+        //        $price = $price * $qty;
         //     }
 
         $accounts = [
@@ -3187,7 +3186,7 @@ class Summary extends AdminController
                     );
                 }
             } elseif ($OrderType == 9) {
-                // Free Order Revision Email 
+                // Free Order Revision Email
 
                 $mailFrom = 'technical-team@logoartz.com';
                 \Mail::send(
@@ -3263,7 +3262,7 @@ class Summary extends AdminController
                 }
             } else {
 
-                // Normal Order Email  
+                // Normal Order Email
                 $mailFrom = 'technical-team@logoartz.com';
                 \Mail::send(
                     'includes.emails.orderready',
@@ -3407,7 +3406,7 @@ class Summary extends AdminController
         }
 
         // MessageForDesigner
-        \DB::table('digitizing_orders')::where('OrderID', $OrderID)->update(['Status' => 7, 'MessageForCustomer' => Input::get('MessageForCustomer'), 'IsRead' => 2]);
+        \DB::table('digitizing_orders')->where('OrderID', $OrderID)->update(['Status' => 7, 'MessageForCustomer' => Input::get('MessageForCustomer'), 'IsRead' => 2]);
 
         $data = [
             'OrderID' => $OrderID,
@@ -3442,7 +3441,7 @@ class Summary extends AdminController
                 'DateAdded' => new \DateTime()
             ];
             \DB::table('vector_revision')->insert($data);
-            return redirect('admin/Vec_order-details/' . $vectorid)->with('success', 'Order Revision Sent To Customer Successfully');
+            return redirect('admin/Vec_order-details/' . $vectorid)->with('success', 'Order Revision Completed Successfully');
         }
     }
 
@@ -3557,7 +3556,7 @@ class Summary extends AdminController
         $DPrices = 0;
         $VPrices = 0;
 
-        $Prices=0;
+        $Prices = 0;
 
 
         if (Input::has('DOrderIDs') || Input::has('VOrderIDs') && Input::has('CustomerID')) {
@@ -3716,7 +3715,7 @@ class Summary extends AdminController
 
             $this->data['todaydate'] = date("d:m:Y");
 
-            $Due =  explode(':',  $this->data['todaydate']);
+            $Due =  explode(':', $this->data['todaydate']);
             $Dueday = $Due[0] + 4;
             $Duedate = $Dueday . ':' . $Due[1] . ':' . $Due[2];
 
@@ -3725,9 +3724,9 @@ class Summary extends AdminController
 
             // $TodayDate = date('d-m-Y', strtotime($OrdersData->DateAdded));
 
-            // dd($date); 
+            // dd($date);
 
-            //   echo $TodayDate; die; 
+            //   echo $TodayDate; die;
 
 
 
@@ -3772,7 +3771,7 @@ class Summary extends AdminController
             $this->data['TotalPrice'] = $Prices;
             $this->data['todaydate'] = date("d:m:Y");
 
-            $Due =  explode(':',  $this->data['todaydate']);
+            $Due =  explode(':', $this->data['todaydate']);
             $Dueday = $Due[0] + 4;
             $Duedate = $Dueday . ':' . $Due[1] . ':' . $Due[2];
 
@@ -3847,7 +3846,7 @@ class Summary extends AdminController
 
             $this->data['todaydate'] = date("d:m:Y");
 
-            $Due =  explode(':',  $this->data['todaydate']);
+            $Due =  explode(':', $this->data['todaydate']);
             $Dueday = $Due[0] + 4;
             $Duedate = $Dueday . ':' . $Due[1] . ':' . $Due[2];
 
@@ -3897,7 +3896,7 @@ class Summary extends AdminController
 
             $this->data['todaydate'] = date("d:m:Y");
 
-            $Due =  explode(':',  $this->data['todaydate']);
+            $Due =  explode(':', $this->data['todaydate']);
             $Dueday = $Due[0] + 4;
             $Duedate = $Dueday . ':' . $Due[1] . ':' . $Due[2];
 
@@ -4073,7 +4072,7 @@ class Summary extends AdminController
                     ->leftjoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
                     ->where('digitizing_orders.CustomerID', $customerId)
                     ->whereIn('digitizing_orders.OrderType', [2, 4])
-                    ->orderBy('digitizing_orders.DateModified',  'desc')
+                    ->orderBy('digitizing_orders.DateModified', 'desc')
                     ->get();
 
 
@@ -4085,7 +4084,7 @@ class Summary extends AdminController
                     ->leftjoin('designers', 'designers.DesignerID', '=', 'digitizing_orders.DesignerID')
                     ->where('digitizing_orders.CustomerID', $customerId)
                     ->whereIn('digitizing_orders.OrderType', [0, 1, 3, 9])
-                    ->orderBy('digitizing_orders.DateModified',  'desc')
+                    ->orderBy('digitizing_orders.DateModified', 'desc')
                     ->get();
 
 
@@ -4094,7 +4093,7 @@ class Summary extends AdminController
                     ->leftjoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
                     ->leftjoin('designers', 'designers.DesignerID', '=', 'vector_order.DesignerID')
                     ->where('vector_order.CustomerID', $customerId)
-                    ->whereIn('vector_order.OrderType',  [2, 4])
+                    ->whereIn('vector_order.OrderType', [2, 4])
                     ->orderBy('vector_order.DateModified', 'desc')
                     ->get();
 
@@ -4103,7 +4102,7 @@ class Summary extends AdminController
                     ->leftjoin('customers', 'customers.CustomerID', '=', 'vector_order.CustomerID')
                     ->leftjoin('designers', 'designers.DesignerID', '=', 'vector_order.DesignerID')
                     ->where('vector_order.CustomerID', $customerId)
-                    ->whereIn('vector_order.OrderType',  [0, 1, 3, 9])
+                    ->whereIn('vector_order.OrderType', [0, 1, 3, 9])
                     ->orderBy('vector_order.DateModified', 'desc')
                     ->get();
 

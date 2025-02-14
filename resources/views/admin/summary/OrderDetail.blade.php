@@ -907,6 +907,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
 
                      
                     </div>
+                    @if($DigiOrders->Status != 7)
                     {!! Form::open(['url' => 'admin/digi_order_revision_complete/' . $DigiOrders->OrderID]) !!}
                         <div class="box box-primary">
                             <div class="box-header">
@@ -928,6 +929,7 @@ $allowed_ext = ['jpg', 'JPG', 'JPEG', 'jpeg', 'png', 'PNG', 'gif', 'GIF'];
                             </div>
                         </div>
                     {!! Form::close() !!}
+                    @endif
                     
             </div>
 

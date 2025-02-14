@@ -6,26 +6,62 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Input;
 use Validator;
 use DB;
+use Illuminate\Http\Request;
 
-class Customers extends AdminController {
-
-    function __construct() {
+class Customers extends AdminController
+{
+    public function __construct()
+    {
         parent::__construct();
     }
 
-    public function index() {
+    public function index(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $draw = $request->get('draw');
+            $start = $request->get("start");
+            $length = $request->get("length");
+            $search = $request->get('search')['value'];
+
+            $query = Customers::query();
+
+            // Search logic
+            if (!empty($search)) {
+                $query->where('name', 'like', '%'.$search.'%')
+                      ->orWhere('email', 'like', '%'.$search.'%');
+            }
+
+            // Total records
+            $total = $query->count();
+
+            // Pagination
+            $data = $query->offset($start)
+                          ->limit($length)
+                          ->get();
+
+            return response()->json([
+                'draw' => $draw,
+                'recordsTotal' => Customers::count(),
+                'recordsFiltered' => $total,
+                'data' => $data
+            ]);
+        }
+
         $this->data['recordsTotal'] = \App\Customers::count();
 
         return view('admin.customers.index', $this->data);
     }
-    public function customers_list() {
+
+    public function customers_list()
+    {
         $start = (Input::has('start') ? (int) Input::get('start') : 0);
         $length = (Input::has('length') ? (int) Input::get('length') : 25);
         $HearAbout = Config('hear_about');
-     
+
         $columns = ["", "CustomerID", "CustomerName", "Cell", "Email", "Status", "CustomerArrive", "DateAdded","DateModified"];
 
-        $query = \App\Customers::select(['CustomerID', 'CustomerName', 'Cell', 'Email', 
+        $query = \App\Customers::select(['CustomerID', 'CustomerName', 'Cell', 'Email',
                     DB::raw("CONCAT('<small class=\"label bg-', IF(Status = 0, 'red', 'green'), '\" ><i class=\"fa ', IF(Status = 0, 'fa-times', 'fa-check'), '\"></i> ', IF(Status = 1, 'Active', 'Deactive'), '</small>') AS Status"), 'HearAbout',
                     DB::raw("DATE_FORMAT(DateAdded, \"%d-%b-%Y<br>%r\") as DateAdded"),
                     DB::raw("DATE_FORMAT(DateModified, \"%d-%b-%Y<br>%r\") as DateModified")]);
@@ -47,9 +83,9 @@ class Customers extends AdminController {
         // $maxRow = count($result);
         $data = [];
         foreach ($result as $Rs) {
-        $path = url('admin/customers/sortdetails').'/' . $Rs->CustomerID;
-         $fullPath = '<a href="'.$path.'"> '.$Rs->CustomerName.'</a>';
-         
+            $path = url('admin/customers/sortdetails').'/' . $Rs->CustomerID;
+            $fullPath = '<a href="'.$path.'"> '.$Rs->CustomerName.'</a>';
+
             $data[] = [
                 "<input type=\"checkbox\" class=\"check\" name=\"ids[]\" value=\"" . $Rs->CustomerID . "\" />",
                 $Rs->CustomerID,
@@ -68,7 +104,8 @@ class Customers extends AdminController {
         exit(0);
     }
 
-    public function countries_dd() {
+    public function countries_dd()
+    {
         $query = \App\Countries::where('Status', 1);
         $parents = $query->select('CountryName', 'CountryID')->get();
         $parent_pages = ["0" => "Select Country"];
@@ -82,7 +119,8 @@ class Customers extends AdminController {
         return $parent_pages;
     }
 
-    public function add() {
+    public function add()
+    {
         $this->data['countries_dd'] = $this->countries_dd();
         //$this->data['salesperson'] = \App\SalesPerson::select('SalesPersonID', 'SalesPersonName')->get();
 
@@ -91,7 +129,8 @@ class Customers extends AdminController {
         return view('admin.customers.add', $this->data);
     }
 
-    public function save() {
+    public function save()
+    {
 
         $error = false;
         $msg = "";
@@ -159,7 +198,7 @@ class Customers extends AdminController {
                 return redirect()->back()->withErrors($v->errors())->withInput();
             }
         } else {
-            $cat = new \App\Customers;
+            $cat = new \App\Customers();
 
             $cat->CustomerName = Input::get('CustomerName');
             $cat->Cell = Input::get('Cell');
@@ -174,14 +213,18 @@ class Customers extends AdminController {
             $cat->Username = Input::get('Username');
             $cat->Password = \Hash::make(Input::get('Password'));
             $cat->IsActivated = 1;
-            if(!empty(Input::get('SalesPerson'))) {  $cat->SalesPersonID = Input::get('SalesPerson'); }
-            if(!empty(Input::get('FreeOrder')))   {  $cat->FreeOrderPlaced = Input::get('FreeOrder');  }
+            if (!empty(Input::get('SalesPerson'))) {
+                $cat->SalesPersonID = Input::get('SalesPerson');
+            }
+            if (!empty(Input::get('FreeOrder'))) {
+                $cat->FreeOrderPlaced = Input::get('FreeOrder');
+            }
             $cat->priceplane = Input::get('Pplane');
             $cat->CsNote = Input::get('CsNote');
             $cat->ActivationCode = "";
             $cat->IsActivated = 1;
             $cat->Status = Input::get('Status');
-            $cat->DateAdded = new \DateTime;
+            $cat->DateAdded = new \DateTime();
 
             $cat->save();
 
@@ -203,12 +246,13 @@ class Customers extends AdminController {
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $query = \DB::table('customers');
         $query->where('CustomerID', $id);
 
         $this->data['cust'] = $query->first();
-         $this->data['salesperson'] = \App\SalesPerson::pluck('SalesPersonName', 'SalesPersonID');
+        $this->data['salesperson'] = \App\SalesPerson::pluck('SalesPersonName', 'SalesPersonID');
 
         if (empty($this->data['cust'])) {
             return redirect('admin/customers')->with('warning_msg', "Invalid Customer ID");
@@ -218,7 +262,8 @@ class Customers extends AdminController {
         }
     }
 
-    public function update($id) {
+    public function update($id)
+    {
 
         $error = false;
         $msg = "";
@@ -280,7 +325,7 @@ class Customers extends AdminController {
             }
         } else {
 
-                // dd(Input::get('CsNote'));
+            // dd(Input::get('CsNote'));
 
             $cat = \App\Customers::find($id);
 
@@ -298,11 +343,13 @@ class Customers extends AdminController {
             if (Input::has('Password') && Input::get('Password') != "") {
                 $cat->Password = \Hash::make(Input::get('Password'));
             }
-            if(!empty(Input::get('SalesPerson'))) {  $cat->SalesPersonID = Input::get('SalesPerson'); }
+            if (!empty(Input::get('SalesPerson'))) {
+                $cat->SalesPersonID = Input::get('SalesPerson');
+            }
             $cat->priceplane = Input::get('Pplane');
             $cat->CsNote = Input::get('CsNote');
             $cat->Status = Input::get('Status');
-            $cat->DateModified = new \DateTime;
+            $cat->DateModified = new \DateTime();
 
             $cat->save();
 
@@ -327,54 +374,54 @@ class Customers extends AdminController {
         }
     }
 
-public function CustomerAthenR($CustomerID)
-{
+    public function CustomerAthenR($CustomerID)
+    {
 
-    if(!empty($CustomerID))
-     {
-        return redirect()->to('admin/sjdnasjclientaskdn/LdedeeGj8kIsdasN/'.$CustomerID);         
-     } else {
+        if (!empty($CustomerID)) {
+            return redirect()->to('admin/sjdnasjclientaskdn/LdedeeGj8kIsdasN/'.$CustomerID);
+        } else {
 
-     return redirect('admin/customers')->with('warning_msg', "System Error!! Contect Technical Team");
-     }
-
+            return redirect('admin/customers')->with('warning_msg', "System Error!! Contect Technical Team");
+        }
 
 
-}
 
-public function w_dujbjm_client($CustomerID)
-{
+    }
+
+    public function w_dujbjm_client($CustomerID)
+    {
         if (\Session::has('CustomerLogin')) {
             return redirect()->back()->withErrors("One Customer Login Only");
-            } else{
+        } else {
 
-              $user = DB::table('customers')
-                    ->where('CustomerID', $CustomerID)
-                    ->where('Status', 1)
-                    ->first();
-              }
-
-          
-           if (!empty($user)){
-                        \Session::put('CustomerLogin', true);
-                        \Session::put("CustomerID", $user->CustomerID);
-                        \Session::put("SalesPersonID", $user->SalesPersonID);
-                        \Session::put('CustomerName', $user->CustomerName);
-                        \Session::put('Cell', $user->Cell);
-                        \Session::put('Email', $user->Email);
-                        return redirect('/CustomerDash');
-                 
-            } else {
-                 return redirect()->back()->withErrors("Unknown Error, Error# 75893-4");
-                     
-                  }
-       
+            $user = DB::table('customers')
+                  ->where('CustomerID', $CustomerID)
+                  ->where('Status', 1)
+                  ->first();
+        }
 
 
-  }
+        if (!empty($user)) {
+            \Session::put('CustomerLogin', true);
+            \Session::put("CustomerID", $user->CustomerID);
+            \Session::put("SalesPersonID", $user->SalesPersonID);
+            \Session::put('CustomerName', $user->CustomerName);
+            \Session::put('Cell', $user->Cell);
+            \Session::put('Email', $user->Email);
+            return redirect('/CustomerDash');
+
+        } else {
+            return redirect()->back()->withErrors("Unknown Error, Error# 75893-4");
+
+        }
 
 
-public function delete() {
+
+    }
+
+
+    public function delete()
+    {
         if (count(\Input::get('ids')) > 0) {
             DB::table('customers')
                     ->whereIn('CustomerID', \Input::get('ids'))
